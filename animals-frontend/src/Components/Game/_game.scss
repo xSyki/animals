@@ -12,7 +12,8 @@
     &__dice {
         flex-grow: 1;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
+        gap: 20vw;
         align-items: center;
     }
 

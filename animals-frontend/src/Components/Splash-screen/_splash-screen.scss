@@ -1,0 +1,44 @@
+.splash-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+
+    &__title {
+        position: absolute;
+        padding: 30px;
+        font-size: 3rem;
+    }
+
+    &__handle-game {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__join-game {}
+
+    &__join-title {
+        text-align: center;
+        font-size: 2rem;
+        padding: 10px;
+    }
+
+    &__join-label {}
+
+    &__join-title {}
+
+    &__join-input {}
+
+    &__join-button {}
+
+    &__or {
+        padding: 20px;
+    }
+
+    &__create-game {}
+
+    &__create-button {}
+}

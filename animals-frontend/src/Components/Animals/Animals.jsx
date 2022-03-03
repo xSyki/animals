@@ -1,12 +1,6 @@
 import React from 'react';
-import animalsInterface from '../../interfaces/animalsInterface'
 
-
-interface propsInterface {
-    animals: animalsInterface
-}
-
-function Animals(props: propsInterface) {
+function Animals(props) {
 
     const { rabbit, sheep, pig, cow, horse, smallDog, bigDog } = props.animals;
     return (

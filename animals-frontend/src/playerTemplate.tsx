@@ -1,6 +1,6 @@
 import playersInterface from "./interfaces/playerInterface";
 
-const players: playersInterface[] = [
+const players = [
     {
         id: 1,
         name: "SykiSykiNarkotyki",

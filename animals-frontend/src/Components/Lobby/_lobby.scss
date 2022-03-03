@@ -1,0 +1,10 @@
+.lobby {
+    &__players {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__player {
+        display: flex;
+    }
+}
