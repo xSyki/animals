@@ -1,25 +1,38 @@
 .animals {
+    position: relative;
     display: flex;
     flex-direction: row;
     width: 100%;
+    // flex-grow: 1;
     height: 7vh;
     justify-content: center;
     align-items: center;
+    background: transparent url(https://syki.pl/wp-content/uploads/2022/03/single-board.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    max-width: 600px;
 }
 
 .animal {
-    width: calc(100%/7);
-    height: 100%;
+    width: calc(100%/9);
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    height: 80%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    border: 2px solid black;
+    // border: 2px solid white;
     border-radius: 5px;
+    color: white;
+    font-size: 1rem;
 
     &__photo {
         margin-top: 10px;
-        max-height: 70%;
+        max-height: 60%;
         max-width: 100%;
     }
 

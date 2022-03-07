@@ -19,6 +19,7 @@
     }
 
     .number {
+
         .animal-img {
             max-height: 50px;
             max-width: 50px;
@@ -228,50 +229,98 @@ $height:96px;
 
 .dice {
     &__show-1 {
-        transform: translateZ(-100px) rotateX(90deg) rotateY(-35deg) rotateZ(0deg);
+        transform: translateZ(-100px) rotateX(450deg) rotateY(-35deg) rotateZ(0deg);
+    }
+
+    &__show-1-1 {
+        transform: translateZ(-100px) rotateX(90deg) rotateY(-35deg) rotateZ(360deg);
     }
 
     &__show-2 {
         transform: translateZ(-100px) rotateX(35deg) rotateY(-5deg) rotateZ(0deg);
     }
 
+    &__show-2-2 {
+        transform: translateZ(-100px) rotateX(35deg) rotateY(-5deg) rotateZ(-360deg);
+    }
+
     &__show-3 {
-        transform: translateZ(0px) rotateX(30deg) rotateY(-70deg) rotateZ(0deg);
+        transform: translateZ(0px) rotateX(30deg) rotateY(-430deg) rotateZ(0deg);
+    }
+
+    &__show-3-3 {
+        transform: translateZ(0px) rotateX(30deg) rotateY(-70deg) rotateZ(360deg);
     }
 
     &__show-4 {
-        transform: translateZ(-100px) rotateX(20deg) rotateY(-140deg) rotateZ(0deg);
+        transform: translateZ(-100px) rotateX(20deg) rotateY(220deg) rotateZ(0deg);
+    }
+
+    &__show-4-4 {
+        transform: translateZ(-100px) rotateX(20deg) rotateY(-140deg) rotateZ(-360deg);
     }
 
     &__show-5 {
         transform: translateZ(-100px) rotateX(20deg) rotateY(-210deg) rotateZ(7deg);
     }
 
+    &__show-5-5 {
+        transform: translateZ(-100px) rotateX(20deg) rotateY(-210deg) rotateZ(367deg);
+    }
+
     &__show-6 {
-        transform: translateZ(-100px) rotateX(20deg) rotateY(70deg) rotateZ(0deg);
+        transform: translateZ(-100px) rotateX(-340deg) rotateY(70deg) rotateZ(0deg);
+    }
+
+    &__show-6-6 {
+        transform: translateZ(-100px) rotateX(20deg) rotateY(70deg) rotateZ(-360deg);
     }
 
     &__show-7 {
-        transform: translateZ(-100px) rotateX(-150deg) rotateY(0deg) rotateZ(0deg);
+        transform: translateZ(-100px) rotateX(-150deg) rotateY(360deg) rotateZ(0deg);
+    }
+
+    &__show-7-7 {
+        transform: translateZ(-100px) rotateX(-150deg) rotateY(0deg) rotateZ(360deg);
     }
 
     &__show-8 {
         transform: translateZ(-100px) rotateX(25deg) rotateY(255deg) rotateZ(180deg);
     }
 
+    &__show-8-8 {
+        transform: translateZ(-100px) rotateX(25deg) rotateY(255deg) rotateZ(-180deg);
+    }
+
     &__show-9 {
-        transform: translateZ(-100px) rotateX(25deg) rotateY(325deg) rotateZ(180deg);
+        transform: translateZ(-100px) rotateX(25deg) rotateY(-45deg) rotateZ(180deg);
+    }
+
+    &__show-9-9 {
+        transform: translateZ(-100px) rotateX(25deg) rotateY(325deg) rotateZ(-180deg);
     }
 
     &__show-10 {
         transform: translateZ(-100px) rotateX(25deg) rotateY(400deg) rotateZ(180deg);
     }
 
+    &__show-10-10 {
+        transform: translateZ(-100px) rotateX(25deg) rotateY(40deg) rotateZ(180deg);
+    }
+
     &__show-11 {
-        transform: translateZ(-100px) rotateX(25deg) rotateY(470deg) rotateZ(180deg);
+        transform: translateZ(-100px) rotateX(25deg) rotateY(110deg) rotateZ(180deg);
+    }
+
+    &__show-11-11 {
+        transform: translateZ(-100px) rotateX(25deg) rotateY(470deg) rotateZ(-180deg);
     }
 
     &__show-12 {
         transform: translateZ(-100px) rotateX(277deg) rotateY(35deg) rotateZ(0deg);
+    }
+
+    &__show-12-12 {
+        transform: translateZ(-100px) rotateX(277deg) rotateY(35deg) rotateZ(360deg);
     }
 }

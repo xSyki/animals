@@ -14,8 +14,8 @@ function Player(props) {
                 <div className='player__profile'>
                     {player.playerId === props.mySocketId && !props.isStarted ?
                         <>
-                            <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
-                            {props.name !== name &&
+                            <input className='player__name-input' type="text" value={name} onChange={(event) => setName(event.target.value)} />
+                            {props.player.name !== name &&
                                 <button onClick={() => props.updateNickName(name)}>Submit</button>}
                         </> :
                         <div className='player__nickname'>

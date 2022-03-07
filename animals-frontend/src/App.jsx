@@ -3,7 +3,6 @@ import './css/styles.css';
 import { Routes, Route } from "react-router-dom";
 import Game from './Components/Game/Game';
 import SplashScreen from './Components/Splash-screen/Splash-screen';
-import Lobby from './Components/Lobby/Lobby';
 
 function App() {
 

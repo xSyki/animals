@@ -7,7 +7,9 @@
     &__title {
         position: absolute;
         padding: 30px;
-        font-size: 3rem;
+        font-size: 4rem;
+        color: white;
+        text-shadow: 0 2px 2px rgba(0, 0, 0, 0.20);
     }
 
     &__handle-game {
@@ -18,27 +20,97 @@
         align-items: center;
     }
 
-    &__join-game {}
+    &__join-game {
+        color: white;
+    }
 
     &__join-title {
         text-align: center;
-        font-size: 2rem;
+        font-size: 2.5rem;
         padding: 10px;
+    }
+
+    &__join-box {
+        border: 2px solid white;
+        border-radius: 3rem;
     }
 
     &__join-label {}
 
     &__join-title {}
 
-    &__join-input {}
+    &__join-input {
+        height: 4rem;
+        font-size: 1.5rem;
+        width: 7rem;
+        background: transparent;
+        border: none;
+        padding-left: 10px;
+        color: white;
 
-    &__join-button {}
+        &::placeholder {
+            color: rgb(230, 230, 230);
+        }
+    }
+
+    &__join-button {
+        background: linear-gradient(to bottom, #e6a827, #f48c24);
+        padding: 10px 15px 10px 15px;
+        height: 4rem;
+        border-radius: 3rem;
+        font-size: 1.5rem;
+        border: 2px solid white;
+        text-transform: uppercase;
+        color: white;
+        text-shadow: 0 2px 2px rgba(0, 0, 0, 0.20);
+        box-shadow: -1px 1px 0 #b2d4ec, -1px 1px 0 #b2d4ec inset, 0 3px 2px rgba(0, 0, 0, 0.20), 0 3px 4px rgba(0, 0, 0, 0.20) inset, 0 6px 6px rgba(0, 0, 0, 0.30);
+    }
 
     &__or {
         padding: 20px;
+        font-size: 2rem;
+        color: white;
+        text-align: center;
+        overflow: hidden;
+        width: 100%;
+
+        &:before,
+        &:after {
+            background-color: rgb(255, 255, 255);
+            content: "";
+            display: inline-block;
+            height: 2px;
+            position: relative;
+            vertical-align: middle;
+            width: 50%;
+        }
+
+        &:before {
+            right: 0.5em;
+            margin-left: -50%;
+        }
+
+        &:after {
+            left: 0.5em;
+            margin-right: -50%;
+        }
     }
 
     &__create-game {}
 
-    &__create-button {}
+    &__create-button {
+        height: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to bottom, #e6a827, #f48c24);
+        padding: 20px 30px 20px 30px;
+        border-radius: 3rem;
+        font-size: 1.5rem;
+        border: 2px solid white;
+        text-transform: uppercase;
+        color: white;
+        text-shadow: 0 2px 2px rgba(0, 0, 0, 0.20);
+        box-shadow: -1px 1px 0 #b2d4ec, -1px 1px 0 #b2d4ec inset, 0 3px 2px rgba(0, 0, 0, 0.20), 0 3px 4px rgba(0, 0, 0, 0.20) inset, 0 6px 6px rgba(0, 0, 0, 0.30);
+    }
 }
