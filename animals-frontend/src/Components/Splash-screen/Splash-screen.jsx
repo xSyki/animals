@@ -12,7 +12,8 @@ function SplashScreen(props) {
         navigate(`/game/${id}`);
     }
 
-    const handleJoinGame = () => {
+    const handleJoinGame = (e) => {
+        e.preventDefault();
         navigate(`/game/${code.toUpperCase()}`);
     }
 
@@ -29,10 +30,10 @@ function SplashScreen(props) {
                 <div className='splash-screen__join-game'>
                     <h2 className='splash-screen__join-title'>Join game!</h2>
                     <div className='splash-screen__join-box'>
-                        <label htmlFor="" className='splash-screen__join-label' onSubmit={handleJoinGame}>
+                        <form htmlFor="" className='splash-screen__join-label' onSubmit={handleJoinGame}>
                             <input type="text" placeholder='CODE' className='splash-screen__join-input' maxLength={5} value={code} onChange={(event) => setCode(event.target.value.toLocaleUpperCase())} />
                             <button className='splash-screen__join-button' onClick={handleJoinGame}>Join</button>
-                        </label>
+                        </form>
                     </div>
                 </div>
                 <div className='splash-screen__or'>or</div>

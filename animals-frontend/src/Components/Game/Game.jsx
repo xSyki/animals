@@ -90,12 +90,16 @@ function Game(props) {
             gameId: id,
         }
         socket.emit("playerJoinGame", idData);
+
+        // return () => {
+        //     socket.emit("disconnect");
+        // }
     }, [])
 
     const renderPlayers = () => {
         if (players) {
             return players.map(player => {
-                return <Player key={player.playerId} player={player} mySocketId={mySocketId} updateNickName={handleNickNameUpdate} isStarted={game.started} />
+                return <Player gameRound={game.round} key={player.playerId} player={player} mySocketId={mySocketId} updateNickName={handleNickNameUpdate} isStarted={game.started} />
             })
         }
     }

@@ -12,17 +12,36 @@ const initializeGame = (sio, socket) => {
     gameSocket = socket;
 
     gameSocket.on("disconnect", () => {
+        console.log("w1");
         const isPlayer = players.find((player) => player.playerId === socket.id);
 
         let gameId = '';
 
         if(isPlayer !== undefined) {
+            console.log("w2");
             gameId = isPlayer.gameId;
             if(games.find(game => game.gameId === gameId) !== undefined) {
                 games.find(game => game.gameId === gameId).players = games.find(game => game.gameId === gameId).players.filter(value => value !== socket.id);
+                console.log("w3");
+
+                if(games.find(game => game.gameId === gameId).round === isPlayer.playerId) {
+                    console.log("w4");
+                    const objIndex = games.findIndex(game => game.gameId === gameId);
+                    if(objIndex === -1) return;
+                
+                    const gamePlayers = players.filter(player => player.gameId === gameId);
+                
+                    const actualIndex = gamePlayers.findIndex(player => player.playerId == games.find(game => game.gameId === gameId).round);
+                
+                    let newRoundPlayerIndex = actualIndex+1;
+                
+                    if(newRoundPlayerIndex === gamePlayers.length) newRoundPlayerIndex = 0;
+                
+                    games[objIndex].round = gamePlayers[newRoundPlayerIndex].playerId;
+                }
 
                 if(isPlayer.creator) {
-                    // const newCreatorSocketId = games.find(game => game.gameId === gameId).players.find(player => player.playerId !== socket.id).playerId;
+                    console.log("w5");
                     const newCreatorSocketId = games.find(game => game.gameId === gameId).players;
                     if(newCreatorSocketId.length === 0) {
                         games = games.filter(game => game.gameId !== gameId);
@@ -33,20 +52,25 @@ const initializeGame = (sio, socket) => {
                         io.sockets.in(gameId).emit('playersUpdate', players.filter(player => player.gameId === gameId));
                         io.sockets.to(newCreatorSocketId).emit('mySocketId', {mySocketId: newCreatorSocketId, creator: true});
                     }
+                } else {
+                    console.log("w6");
+                    if(games.find(game => game.gameId === gameId).started && games.find(game => game.gameId === gameId).players.length <= 1 ) {
+                        games.find(game => game.gameId === gameId).players.map(playerM => {
+                            players = players.filter((player)=> player.playerId !== playerM.id);
+                        })
+                        games = games.filter(game => game.gameId !== gameId);
+                        io.sockets.in(gameId).emit('gameDoesntExist');
+                    } else {
+                        players = players.filter(player => player.playerId !== isPlayer.playerId);
+                        io.sockets.in(gameId).emit('gameUpdate', games.filter(game => game.gameId === gameId));
+                        io.sockets.in(gameId).emit('playersUpdate', players.filter(player => player.gameId === gameId));
+                    }
                 }
-                if(games.find(game => game.gameId === gameId).started && games.find(game => game.gameId === gameId).players.length <= 1 ) {
-                    games.find(game => game.gameId === gameId).players.map(playerM => {
-                        players = players.filter((player)=> player.playerId !== playerM.id);
-                    })
-                    games = games.filter(game => game.gameId !== gameId);
-                    io.sockets.in(gameId).emit('gameDoesntExist');
-                }
-            }
 
+            }
             gameSocket.leave(gameId);
         }
 
-        players = players.filter((player)=> player.playerId !== socket.id);
     })
 
     gameSocket.on("endGame", endGame);

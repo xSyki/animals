@@ -111,6 +111,11 @@ input {
   border-radius: 0;
 }
 
+:root {
+  --green-addon: #008c47;
+  --red-addon: #e92125;
+}
+
 html * {
   font-family: 'Curse Casual', sans-serif;
 }
@@ -400,6 +405,10 @@ html {
   text-transform: uppercase;
 }
 
+.game__players {
+  margin-bottom: 20px;
+}
+
 .game__start {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -492,7 +501,7 @@ html {
 .dice .side {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  background: transparent url(https://i.ibb.co/Hz1xvnM/dice-sprite.png) 0 0 no-repeat;
+  background: transparent url(https://syki.pl/wp-content/uploads/2022/03/dice8.png) 0 0 no-repeat;
 }
 
 .dice .number .animal-img {
@@ -611,41 +620,41 @@ html {
   /* golden */
 }
 
-#wrapper.green-marble #d12 {
+#wrapper.side-one #d12 {
   color: #fff;
   text-shadow: 2px 2px 2px #000;
 }
 
-#wrapper.green-marble #d12 .side {
+#wrapper.side-one #d12 .side {
   background-position: -140px -479px;
 }
 
-#wrapper.pink-marble #d12 {
+#wrapper.side-two #d12 {
   color: #000;
   text-shadow: -2px 2px 2px #fff;
 }
 
-#wrapper.pink-marble #d4 .side {
+#wrapper.side-two #d4 .side {
   background-position: -280px 0;
 }
 
-#wrapper.pink-marble #d6 .side {
+#wrapper.side-two #d6 .side {
   background-position: -280px -132px;
 }
 
-#wrapper.pink-marble #d8 .side {
+#wrapper.side-two #d8 .side {
   background-position: -280px -243px;
 }
 
-#wrapper.pink-marble #d10 .side {
+#wrapper.side-two #d10 .side {
   background-position: -280px -356px;
 }
 
-#wrapper.pink-marble #d12 .side {
+#wrapper.side-two #d12 .side {
   background-position: -280px -479px;
 }
 
-#wrapper.pink-marble #d20 .side {
+#wrapper.side-two #d20 .side {
   background-position: -280px -585px;
 }
 
@@ -823,12 +832,12 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 0px 10px 0px 10px;
-  height: 10vh;
+  height: 12vh;
 }
 
 .player__profile {
-  height: 3vh;
+  margin-top: 10px;
+  height: 5vh;
   color: white;
   font-size: 1.5rem;
 }
@@ -845,14 +854,11 @@ html {
           justify-content: center;
 }
 
-.player__name-input {
-  color: white;
-  font-size: 1.5rem;
-  background-color: transparent;
-  border: 2px solid white;
+.player__nickname.active {
+  color: var(--green-addon);
 }
 
-.player__animals {
+.player__name-form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -860,6 +866,39 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  border: 2px solid white;
+  border-radius: 3rem;
+}
+
+.player__name-input {
+  width: 150px;
+  color: white;
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none;
+  text-align: center;
+}
+
+.player__input-submit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: -webkit-gradient(linear, left top, left bottom, from(#e6a827), to(#f48c24));
+  background: linear-gradient(to bottom, #e6a827, #f48c24);
+  border-radius: 3rem;
+  font-size: 1.5rem;
+  border: 2px solid white;
+  text-transform: uppercase;
+  color: white;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: -1px 1px 0 #b2d4ec, -1px 1px 0 #b2d4ec inset, 0 3px 2px rgba(0, 0, 0, 0.2), 0 3px 4px rgba(0, 0, 0, 0.2) inset, 0 6px 6px rgba(0, 0, 0, 0.3);
+          box-shadow: -1px 1px 0 #b2d4ec, -1px 1px 0 #b2d4ec inset, 0 3px 2px rgba(0, 0, 0, 0.2), 0 3px 4px rgba(0, 0, 0, 0.2) inset, 0 6px 6px rgba(0, 0, 0, 0.3);
 }
 
 .animals {
@@ -931,10 +970,7 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 100%;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  height: 70%;
 }
 
 .exchange__offers {
@@ -1042,6 +1078,7 @@ html {
 }
 
 .exchange__end-btn {
+  margin-top: 10px;
   margin-bottom: 10px;
   justify-self: flex-end;
   height: 4rem;

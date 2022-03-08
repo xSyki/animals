@@ -2,12 +2,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0px 10px 0px 10px;
-    height: 10vh;
+    // margin: 0px 10px 0px 10px;
+    height: 12vh;
 
     &__profile {
         // padding: 2px 5% 2px 5%;
-        height: 3vh;
+        margin-top: 10px;
+        height: 5vh;
         color: white;
         font-size: 1.5rem;
     }
@@ -16,17 +17,39 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+        &.active {
+            color: var(--green-addon);
+        }
+    }
+
+    &__name-form {
+        display: flex;
+        flex-direction: row;
+        border: 2px solid white;
+        border-radius: 3rem;
     }
 
     &__name-input {
+        width: 150px;
         color: white;
         font-size: 1.5rem;
         background-color: transparent;
-        border: 2px solid white;
+        border: none;
+        text-align: center;
     }
 
-    &__animals {
+    &__input-submit {
         display: flex;
-        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to bottom, #e6a827, #f48c24);
+        border-radius: 3rem;
+        font-size: 1.5rem;
+        border: 2px solid white;
+        text-transform: uppercase;
+        color: white;
+        text-shadow: 0 2px 2px rgba(0, 0, 0, 0.20);
+        box-shadow: -1px 1px 0 #b2d4ec, -1px 1px 0 #b2d4ec inset, 0 3px 2px rgba(0, 0, 0, 0.20), 0 3px 4px rgba(0, 0, 0, 0.20) inset, 0 6px 6px rgba(0, 0, 0, 0.30);
     }
 }

@@ -3,8 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
-    flex-grow: 1;
+    height: 70%;
 
     &__offers {
         flex-grow: 1;
@@ -76,6 +75,7 @@
     }
 
     &__end-btn {
+        margin-top: 10px;
         margin-bottom: 10px;
         justify-self: flex-end;
         height: 4rem;

@@ -120,9 +120,11 @@ function Dize(props) {
         setActualDizeRoll(props.dize);
     }, [props.dize])
 
+    const className = props.type === "first" ? "side-one" : "side-two"
+
     return (
         <>
-            <div id="wrapper" className="">
+            <div id="wrapper" className={className}>
                 <div id="d12" className={`dice dice__show-${actualDizeRoll}`}>
                     <div className="cap-top">
                         <div className="side one">

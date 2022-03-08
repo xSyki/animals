@@ -20,12 +20,9 @@ function Exchange(props) {
     }
 
     useEffect(() => {
-        setPlayerHerd(props.players.find(player => player.playerId === props.mySocketId).herd)
+        setPlayerHerd(props.players.find(player => player.playerId === props.mySocketId).herd);
+        setGameHerd(props.gameHerd);
     })
-
-    // socket.on("playersUpdate", players => {
-    //     setPlayerHerd(players.find(player => player.playerId === props.mySocketId).herd);
-    // })
 
     const renderOffers = () => {
         return exchangeTable.map((offer, index) => {

@@ -15,8 +15,18 @@
 
     .side {
         backface-visibility: hidden;
-        background: transparent url(https://i.ibb.co/Hz1xvnM/dice-sprite.png) 0 0 no-repeat;
+        background: transparent url(https://syki.pl/wp-content/uploads/2022/03/dice8.png) 0 0 no-repeat;
     }
+
+    // .sideOne {
+    //     backface-visibility: hidden;
+    //     background: transparent url(https://syki.pl/wp-content/uploads/2022/03/green.png) 0 0 no-repeat;
+    // }
+
+    // .sideTwo {
+    //     backface-visibility: hidden;
+    //     background: transparent url(https://syki.pl/wp-content/uploads/2022/03/red.png) 0 0 no-repeat;
+    // }
 
     .number {
 
@@ -124,7 +134,7 @@ $height:96px;
 #wrapper {
 
     /* green marble */
-    &.green-marble {
+    &.side-one {
         #d12 {
             color: #fff;
             text-shadow: 2px 2px 2px #000;
@@ -136,7 +146,7 @@ $height:96px;
     }
 
     /* pink marble */
-    &.pink-marble {
+    &.side-two {
 
         #d12 {
             color: #000;
