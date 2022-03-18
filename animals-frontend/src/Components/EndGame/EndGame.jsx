@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { mySocketId, socket } from '../../socket';
+import { useEffect, useState } from 'react';
+import { socket } from '../../socket';
 import { useNavigate } from "react-router-dom";
 const { v4: uuid } = require('uuid');
 
@@ -9,7 +9,9 @@ function EndGame(props) {
     let navigate = useNavigate();
 
     const createNextGame = () => {
-        const id = send();
+        const id = uuid().slice(0, 5).toUpperCase();
+        socket.emit('createNextGame', { gameId: props.gameId, newGameRoomId: id })
+        socket.emit('createNewGame', id);
         const name = props.players.find(player => player.playerId === props.mySocketId).name;
         const idData = {
             gameId: id,
@@ -18,34 +20,26 @@ function EndGame(props) {
         socket.emit("playerJoinGame", idData);
         props.reset();
         navigate(`/game/${id}`);
-    }
+    };
+
+    socket.on("nextGameCreated", id => {
+        setNewGameId(id);
+    });
 
     const joinNextGame = () => {
         const name = props.players.find(player => player.playerId === props.mySocketId).name;
         const idData = {
             gameId: newGameId,
-            name
+            name: name
         }
         socket.emit("playerJoinGame", idData);
         props.reset();
         navigate(`/game/${newGameId}`);
-    }
-
-    const send = () => {
-        const newGameRoomId = uuid().slice(0, 5).toUpperCase();
-        socket.emit('createNextGame', { gameId: props.gameId, newGameRoomId })
-        socket.emit('createNewGame', newGameRoomId);
-        return newGameRoomId;
-    }
-
-    socket.on("nextGameCreated", id => {
-        console.log(id);
-        setNewGameId(id);
-    })
+    };
 
     useEffect(() => {
         socket.emit('endGame', { gameId: props.gameId, mySocketId: props.mySocketId });
-    })
+    }, []);
 
     return (
         <>

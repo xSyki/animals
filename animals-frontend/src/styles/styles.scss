@@ -1,10 +1,17 @@
 @import './_reset';
 @import './_variables';
+@import './button';
 @import './_app';
+@import '../Components/Game/game768px/mixin-players-4';
+@import '../Components/Game/game768px/mixin-players-5';
+@import '../Components/Game/game768px/mixin-players-6';
 @import '../Components/Splash-screen/splash-screen';
 @import '../Components/Game/game';
+@import '../Components/TableExchange/tableExchange';
+@import '../Components/Game/game768px/game-768px';
 @import '../Components/Dize/dize';
 @import '../Components/Player/player';
 @import '../Components/Animals/animals';
 @import '../Components/Exchange/exchange';
+@import '../Components/Exchange/Offer/offer';
 @import '../Components/EndGame/end-game';

@@ -1,26 +1,21 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { socket } from '../../socket';
 const { v4: uuid } = require('uuid');
 
-function SplashScreen(props) {
+function SplashScreen() {
     const [code, setCode] = useState('');
     let navigate = useNavigate();
 
     const handleCreateGame = () => {
-        const id = send();
+        const id = uuid().slice(0, 5).toUpperCase();
+        socket.emit('createNewGame', id);
         navigate(`/game/${id}`);
     }
 
     const handleJoinGame = (e) => {
         e.preventDefault();
         navigate(`/game/${code.toUpperCase()}`);
-    }
-
-    const send = () => {
-        const newGameRoomId = uuid().slice(0, 5).toUpperCase();
-        socket.emit('createNewGame', newGameRoomId);
-        return newGameRoomId;
     }
 
     return (
@@ -31,8 +26,8 @@ function SplashScreen(props) {
                     <h2 className='splash-screen__join-title'>Join game!</h2>
                     <div className='splash-screen__join-box'>
                         <form htmlFor="" className='splash-screen__join-label' onSubmit={handleJoinGame}>
-                            <input type="text" placeholder='CODE' className='splash-screen__join-input' maxLength={5} value={code} onChange={(event) => setCode(event.target.value.toLocaleUpperCase())} />
-                            <button className='splash-screen__join-button' onClick={handleJoinGame}>Join</button>
+                            <input type="text" placeholder='CODE' className='splash-screen__join-input' minLength={5} maxLength={5} value={code} onChange={(event) => setCode(event.target.value.toLocaleUpperCase())} />
+                            <button className='splash-screen__join-button' disabled={code.length !== 5} onClick={handleJoinGame}>Join</button>
                         </form>
                     </div>
                 </div>

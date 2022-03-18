@@ -1,11 +1,13 @@
 .game {
-    height: 100%;
+    position: relative;
+    height: 100vh;
+    height: --webkit-fill-available;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 
     &__code {
         justify-self: flex-start;
-        margin-top: 20px;
         align-self: center;
         display: flex;
         justify-content: center;
@@ -13,7 +15,6 @@
         font-size: 2rem;
         width: 60vw;
         max-width: 200px;
-        padding: 0px 0px 0px 0px;
         text-align: center;
         color: white;
         text-shadow: 0 2px 2px rgba(0, 0, 0, 0.20);
@@ -24,26 +25,16 @@
     }
 
     &__code-copy-link {
+        @include button;
         height: 4rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(to bottom, #e6a827, #f48c24);
-        padding: 20px 30px 20px 30px;
-        border-radius: 3rem;
-        font-size: 1.5rem;
-        border: 2px solid white;
-        text-transform: uppercase;
-        color: white;
-        text-shadow: 0 2px 2px rgba(0, 0, 0, 0.20);
-        box-shadow: -1px 1px 0 #b2d4ec, -1px 1px 0 #b2d4ec inset, 0 3px 2px rgba(0, 0, 0, 0.20), 0 3px 4px rgba(0, 0, 0, 0.20) inset, 0 6px 6px rgba(0, 0, 0, 0.30);
     }
 
     &__board {
         display: flex;
         flex-grow: 1;
+        height: 100%;
         flex-direction: column;
-        min-height: 40vh;
+        transition: 0.3s linear;
     }
 
     &__dice {
@@ -54,7 +45,15 @@
         align-items: center;
     }
 
+    &__buttons {
+        display: flex;
+        justify-content: center;
+        justify-self: flex-end;
+        height: 4rem;
+    }
+
     &__herd {
+        height: 12vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -67,54 +66,27 @@
         text-transform: uppercase;
     }
 
-    &__players {
-        margin-bottom: 20px;
+    &__start-options {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
     }
 
     &__start {
-        flex-grow: 1;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
     }
 
     &__start-game-btn {
-        margin-bottom: 20px;
+        @include button;
         align-self: center;
         height: 4rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(to bottom, #e6a827, #f48c24);
-        padding: 20px 30px 20px 30px;
-        border-radius: 3rem;
-        font-size: 1.5rem;
-        border: 2px solid white;
-        text-transform: uppercase;
-        color: white;
-        text-shadow: 0 2px 2px rgba(0, 0, 0, 0.20);
-        box-shadow: -1px 1px 0 #b2d4ec, -1px 1px 0 #b2d4ec inset, 0 3px 2px rgba(0, 0, 0, 0.20), 0 3px 4px rgba(0, 0, 0, 0.20) inset, 0 6px 6px rgba(0, 0, 0, 0.30);
-    }
-
-    &__exchange {
-        flex-grow: 1;
     }
 
     &__button {
-        margin: 20px;
+        @include button;
         align-self: center;
         height: 4rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(to bottom, #e6a827, #f48c24);
-        padding: 20px 30px 20px 30px;
-        border-radius: 3rem;
-        font-size: 1.5rem;
-        border: 2px solid white;
-        text-transform: uppercase;
-        color: white;
-        text-shadow: 0 2px 2px rgba(0, 0, 0, 0.20);
-        box-shadow: -1px 1px 0 #b2d4ec, -1px 1px 0 #b2d4ec inset, 0 3px 2px rgba(0, 0, 0, 0.20), 0 3px 4px rgba(0, 0, 0, 0.20) inset, 0 6px 6px rgba(0, 0, 0, 0.30);
     }
 }

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaCopy } from 'react-icons/fa';
+import TableExchange from '../TableExchange/TableExchange';
 import Player from '../Player/Player';
 import Animals from '../Animals/Animals';
 import { useParams, useNavigate } from "react-router-dom";
@@ -8,7 +9,9 @@ import Dize from '../Dize/Dize';
 import Exchange from '../Exchange/Exchange';
 import EndGame from '../EndGame/EndGame';
 
-function Game(props) {
+function Game() {
+
+    let { id } = useParams();
 
     const [players, setPlayers] = useState();
 
@@ -18,19 +21,17 @@ function Game(props) {
 
     const [isCreator, setisCreator] = useState(false);
 
-    const [isDized, setIsDized] = useState(false);
-
     const [actualDize, setActualDize] = useState({ firstDize: 1, secoundDize: 1 });
 
     const [isExchanged, setIsExchanged] = useState(false);
+
+    const [isDized, setIsDized] = useState(false);
 
     const [winner, setWinner] = useState();
     let navigate = useNavigate();
 
     socket.on("createNewGame", game => {
-        game.map(game => {
-            setGame(game);
-        })
+        setGame(...game);
     })
 
     socket.on("gameDoesntExist", () => {
@@ -38,9 +39,7 @@ function Game(props) {
     })
 
     socket.on("gameUpdate", game => {
-        game.map(game => {
-            setGame(game);
-        })
+        setGame(...game);
     })
 
     socket.on("winner", winner => {
@@ -55,10 +54,6 @@ function Game(props) {
         setPlayers(players);
     })
 
-    socket.on("playerJoinedRoom", data => {
-        setPlayers(data.players);
-    })
-
     socket.on("mySocketId", data => {
         setMySocketId(data.mySocketId);
         setisCreator(data.creator);
@@ -71,41 +66,43 @@ function Game(props) {
     const handleDize = () => {
         socket.emit("dize", { gameId: game.gameId, socketId: mySocketId });
         setIsDized(true);
+
+        const timer = setTimeout(() => {
+            socket.emit("endRound", { socketId: mySocketId, gameId: game.gameId });
+        }, 1600)
+
+        const timer2 = setTimeout(() => {
+            setIsDized(false);
+            setIsExchanged(false);
+        }, 2000)
+
+        return () => {
+            clearTimeout(timer);
+            clearTimeout(timer2);
+        };
     }
 
     socket.on('recieveDize', data => {
         setActualDize(data);
     })
 
-    const endRound = () => {
-        setIsDized(false);
-        socket.emit("endRound", { socketId: mySocketId, gameId: game.gameId });
-        setIsExchanged(false);
-    }
-
-    let { id } = useParams();
-
     useEffect(() => {
         const idData = {
             gameId: id,
         }
         socket.emit("playerJoinGame", idData);
-
-        // return () => {
-        //     socket.emit("disconnect");
-        // }
     }, [])
 
     const renderPlayers = () => {
         if (players) {
             return players.map(player => {
-                return <Player gameRound={game.round} key={player.playerId} player={player} mySocketId={mySocketId} updateNickName={handleNickNameUpdate} isStarted={game.started} />
+                return <Player gameRound={game.round} key={player.playerId} player={player} players={players} mySocketId={mySocketId} updateNickName={handleNickNameUpdate} isStarted={game.started} />
             })
         }
     }
 
     function copyToClipboard(text) {
-        navigator.clipboard.writeText(text);
+        navigator.clipboard.writeText(`${text}`);
     }
 
     const reset = () => {
@@ -113,7 +110,6 @@ function Game(props) {
         setGame({});
         setMySocketId('');
         setisCreator(false);
-        setIsDized(false);
         setActualDize({ firstDize: 1, secoundDize: 1 });
         setIsExchanged(false);
         setWinner();
@@ -121,31 +117,37 @@ function Game(props) {
 
     const isMyRound = game.round === mySocketId;
 
+    const isAfterExchanged = game.started && isMyRound && isExchanged;
+    const isNotMyTurn = game.started && !isMyRound;
+    const showDice = isAfterExchanged || isNotMyTurn;
+
+    const showExchange = isMyRound && !isExchanged;
+
     return (
         <>
-            <div className='game'>
+            <div className={`game ${players ? `game__players-${players.length}` : ""} ${players ? `game__my-index-${players.findIndex(playerA => playerA.playerId === mySocketId)}` : ""}`}>
                 <div className='game__board'>
-                    {!game.started && <div className='game__code'>Code: {id} <button className='game__code-copy-link' onClick={() => copyToClipboard(id)}><FaCopy /></button></div>}
-                    {game.started && isMyRound && isExchanged && <div className='game__dice'>
-                        <div className='game__dize-1'><Dize dize={actualDize.firstDize} type={"first"} /></div>
-                        <div className='game__dize-2'><Dize dize={actualDize.secoundDize} type={"secound"} /></div>
-                    </div>}
-                    {game.started && !isMyRound && <div className='game__dice'>
-                        <div className='game__dize-1'><Dize dize={actualDize.firstDize} type={"first"} /></div>
-                        <div className='game__dize-2'><Dize dize={actualDize.secoundDize} type={"secound"} /></div>
-                    </div>}
-                    {!game.started && isCreator &&
-                        <div className='game__start'>
-                            <button onClick={handleStartGame} className="game__start-game-btn" disabled={players && players.length === 1}>
-                                Start Game
-                            </button>
-                        </div>}
-                    {isMyRound && !isDized && isExchanged &&
-                        <button onClick={handleDize} className="game__button">
-                            Dice
-                        </button>
+                    {!game.started &&
+                        <div className='game__start-options'>
+                            <div className='game__code'>
+                                Code: {id}
+                                <button className='game__code-copy-link' onClick={() => copyToClipboard(id)}>
+                                    <FaCopy />
+                                </button>
+                            </div>
+                        </div>
                     }
-                    {isMyRound && !isExchanged &&
+                    {showDice &&
+                        <div className='game__dice'>
+                            <div className='game__dize-1'>
+                                <Dize dize={actualDize.firstDize} type={"first"} />
+                            </div>
+                            <div className='game__dize-2'>
+                                <Dize dize={actualDize.secoundDize} type={"secound"} />
+                            </div>
+                        </div>
+                    }
+                    {showExchange &&
                         <>
                             {players &&
                                 <Exchange
@@ -157,20 +159,41 @@ function Game(props) {
                             }
                         </>
                     }
-                    {isMyRound && isDized &&
-                        <button onClick={endRound} className="game__button">
-                            End round
-                        </button>
+                    <div className='game__buttons'>
+                        {!game.started && isCreator &&
+                            <button onClick={handleStartGame} className="game__start-game-btn" disabled={players && players.length === 1}>
+                                Start Game
+                            </button>}
+                        {isMyRound && isExchanged && !isDized &&
+                            <button onClick={handleDize} className="game__button">
+                                Dice
+                            </button>
+                        }
+                        {isMyRound && !isExchanged &&
+                            <button className='exchange__end-btn' onClick={() => setIsExchanged(true)}>End exchanges</button>
+                        }
+                    </div>
+                    {game.started &&
+                        <div className='game__herd'>
+                            <div className='game__herd-title'>
+                                Game herd
+                            </div>
+                            {game.herd && <Animals animals={game.herd} />}
+                        </div>
                     }
-                    {game.started && <div className='game__herd'>
-                        <div className='game__herd-title'>Game herd</div>
-                        {game.herd && <Animals animals={game.herd} />}
-                    </div>}
                 </div>
-                <div className='game__players'>
-                    {renderPlayers()}
-                </div>
-                {winner && <EndGame winner={winner} isCreator={isCreator} gameId={game.gameId} mySocketId={mySocketId} reset={reset} players={players} />}
+                {renderPlayers()}
+                <TableExchange />
+                {winner &&
+                    <EndGame
+                        winner={winner}
+                        isCreator={isCreator}
+                        gameId={game.gameId}
+                        mySocketId={mySocketId}
+                        reset={reset}
+                        players={players}
+                    />
+                }
             </div >
         </>
     );

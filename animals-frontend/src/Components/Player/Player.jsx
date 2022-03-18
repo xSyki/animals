@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Animals from '../Animals/Animals';
 
 
@@ -13,11 +13,15 @@ function Player(props) {
         props.updateNickName(name);
     }
 
+    const isMe = player.playerId === props.mySocketId;
+
+    const index = props.players.findIndex(playerA => playerA.playerId === player.playerId);
+
     return (
         <>
-            <div className='player'>
+            <div className={`player player__${index}`}>
                 <div className='player__profile'>
-                    {player.playerId === props.mySocketId && !props.isStarted ?
+                    {isMe && !props.isStarted ?
                         <>
                             <form onSubmit={handleSubmit} className="player__name-form">
                                 <input className='player__name-input' maxLength={12} type="text" value={name} onChange={(event) => setName(event.target.value)} />

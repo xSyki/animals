@@ -1,32 +1,17 @@
 .dice {
-    // position: absolute;
     transform-style: preserve-3d;
-    transition: 1s ease-in-out;
-    // animation: spin 50s infinite linear;
-    //transform: rotateX(-45deg) rotateY(45deg);
+    transition: 1.5s ease-in-out;
 
     span {
         position: absolute;
-        // margin: 100px 0 0 100px;
         display: block;
         font-size: 2.5em;
-        // padding: 10px;
     }
 
     .side {
         backface-visibility: hidden;
         background: transparent url(https://syki.pl/wp-content/uploads/2022/03/dice8.png) 0 0 no-repeat;
     }
-
-    // .sideOne {
-    //     backface-visibility: hidden;
-    //     background: transparent url(https://syki.pl/wp-content/uploads/2022/03/green.png) 0 0 no-repeat;
-    // }
-
-    // .sideTwo {
-    //     backface-visibility: hidden;
-    //     background: transparent url(https://syki.pl/wp-content/uploads/2022/03/red.png) 0 0 no-repeat;
-    // }
 
     .number {
 
@@ -176,64 +161,6 @@ $height:96px;
         #d20 .side {
             background-position: -280px -585px;
         }
-    }
-
-    /* leather */
-    &.leather {
-        #d12 {
-            color: #41281d;
-            text-shadow: 0 0 6px #ec9a6e;
-        }
-
-        #d12 .side {
-            background-position: -420px -479px;
-        }
-    }
-
-    /* water */
-    &.water {
-        #d12 {
-            color: #fff;
-            text-shadow: 2px 2px 2px #000;
-
-            .side {
-                /* sides get jittery when backface is visible */
-                backface-visibility: visible;
-                opacity: .8;
-            }
-        }
-
-        #d12 .side {
-            background-position: -560px -479px;
-        }
-    }
-
-    /* blue circles */
-    &.blue-circles {
-
-        #d12 {
-            color: #c4e7ff;
-            text-shadow: 0 0 8px #000;
-        }
-
-        #d12 .side {
-            background-position: -700px -479px;
-        }
-
-    }
-
-    /* golden */
-    &.golden {
-
-        #d12 {
-            color: #5e3c00;
-            text-shadow: 2px 2px 8px #fff;
-        }
-
-        #d12 .side {
-            background-position: -840px -479px;
-        }
-
     }
 }
 

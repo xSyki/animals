@@ -3,32 +3,37 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    // flex-grow: 1;
     height: 7vh;
     justify-content: center;
     align-items: center;
-    background: transparent url(https://syki.pl/wp-content/uploads/2022/03/single-board.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
     max-width: 600px;
-}
 
-.animal {
-    width: calc(100%/9);
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: url(https://syki.pl/wp-content/uploads/2022/03/single-board.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
 
-    margin-top: 5px;
-    margin-bottom: 5px;
+    &__animal {
+        width: calc(100%/9);
 
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    // border: 2px solid white;
-    border-radius: 5px;
-    color: white;
-    font-size: 1rem;
+        margin-top: 5px;
+        margin-bottom: 5px;
+
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 1rem;
+    }
 
     &__photo {
         margin-top: 10px;
@@ -39,4 +44,5 @@
     &__name {
         margin-bottom: 7px;
     }
+
 }

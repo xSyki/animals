@@ -1,95 +1,25 @@
 .exchange {
+    flex-grow: 1;
+    width: 100%;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 70%;
 
     &__offers {
+        height: 30vh;
         flex-grow: 1;
-        width: 100%;
+        width: max-content;
         display: flex;
         flex-direction: column;
-        overflow-y: scroll;
+        overflow-y: auto;
         align-items: center;
-    }
-
-    &__offer {
-        margin-top: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        padding: 10px;
-        height: 7vh;
-        justify-content: center;
-        align-items: center;
-        background: transparent url(https://syki.pl/wp-content/uploads/2022/03/single-board.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        max-width: 600px;
-    }
-
-    &__offer-what {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 3rem;
-        color: white;
-    }
-
-    &__arrow {
-        margin: 0px 5px 0px 5px;
-        font-size: 3rem;
-        color: white;
-    }
-
-    &__offer-for {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 3rem;
-        color: white;
-    }
-
-    &__offer-img {
-        max-height: 50px;
-        max-width: 50px;
-    }
-
-    &__submit-btn {
-        margin-left: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(to bottom, #e6a827, #f48c24);
-        padding: 5px 10px 5px 10px;
-        border-radius: 3rem;
-        font-size: 1.5rem;
-        border: 2px solid white;
-        text-transform: uppercase;
-        color: white;
-        text-shadow: 0 2px 2px rgba(0, 0, 0, 0.20);
-        box-shadow: -1px 1px 0 #b2d4ec, -1px 1px 0 #b2d4ec inset, 0 3px 2px rgba(0, 0, 0, 0.20), 0 3px 4px rgba(0, 0, 0, 0.20) inset, 0 6px 6px rgba(0, 0, 0, 0.30);
     }
 
     &__end-btn {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        justify-self: flex-end;
+        @include button;
+        // margin-top: 10px;
+        // margin-bottom: 10px;
         height: 4rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(to bottom, #e6a827, #f48c24);
-        padding: 20px 30px 20px 30px;
-        border-radius: 3rem;
-        font-size: 1.5rem;
-        border: 2px solid white;
-        text-transform: uppercase;
-        color: white;
-        text-shadow: 0 2px 2px rgba(0, 0, 0, 0.20);
-        box-shadow: -1px 1px 0 #b2d4ec, -1px 1px 0 #b2d4ec inset, 0 3px 2px rgba(0, 0, 0, 0.20), 0 3px 4px rgba(0, 0, 0, 0.20) inset, 0 6px 6px rgba(0, 0, 0, 0.30);
     }
 }
