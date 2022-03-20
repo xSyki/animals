@@ -102,10 +102,10 @@ function playerJoinsGame(idData) {
         creator: creator,
         herd: {
             rabbit: 0,
-            sheep: 2,
-            pig: 1,
-            cow: 1,
-            horse: 1,
+            sheep: 0,
+            pig: 0,
+            cow: 0,
+            horse: 0,
             smallDog: 0,
             bigDog: 0
         }
