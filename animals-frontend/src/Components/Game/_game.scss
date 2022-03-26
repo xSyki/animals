@@ -7,6 +7,7 @@
     overflow: hidden;
 
     &__code {
+        margin-top: 10px;
         justify-self: flex-start;
         align-self: center;
         display: flex;
@@ -79,6 +80,7 @@
     }
 
     &__start-game-btn {
+        margin-bottom: 30px;
         @include button;
         align-self: center;
         height: 4rem;

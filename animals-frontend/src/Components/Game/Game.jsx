@@ -8,6 +8,8 @@ import { socket } from '../../socket';
 import Dize from '../Dize/Dize';
 import Exchange from '../Exchange/Exchange';
 import EndGame from '../EndGame/EndGame';
+import OfferRecieved from '../OfferRecieved/OfferRecieved';
+import Chat from '../Chat/Chat';
 
 function Game() {
 
@@ -24,6 +26,10 @@ function Game() {
     const [actualDize, setActualDize] = useState({ firstDize: 1, secoundDize: 1 });
 
     const [isExchanged, setIsExchanged] = useState(false);
+
+    const [offerSent, setOfferSent] = useState(false);
+
+    const [offerRecieved, setOfferRecieved] = useState(false);
 
     const [isDized, setIsDized] = useState(false);
 
@@ -62,6 +68,14 @@ function Game() {
     const handleStartGame = () => {
         socket.emit("startGame", game.gameId);
     }
+
+    socket.on("acceptExchange", (data) => {
+        setOfferRecieved(data);
+    })
+
+    socket.on("endExchangeWithPlayer", (answer) => {
+        setOfferSent(false);
+    })
 
     const handleDize = () => {
         socket.emit("dize", { gameId: game.gameId, socketId: mySocketId });
@@ -102,7 +116,25 @@ function Game() {
     }
 
     function copyToClipboard(text) {
-        navigator.clipboard.writeText(`${text}`);
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(text);
+        } else {
+            const dummyElement = document.createElement('span');
+            dummyElement.style.whiteSpace = 'pre'
+            dummyElement.textContent = text;
+            document.body.appendChild(dummyElement)
+
+            const selection = window.getSelection();
+            selection.removeAllRanges()
+            const range = document.createRange()
+            range.selectNode(dummyElement)
+            selection.addRange(range)
+
+            document.execCommand('copy');
+
+            selection.removeAllRanges()
+            document.body.removeChild(dummyElement)
+        }
     }
 
     const reset = () => {
@@ -118,10 +150,10 @@ function Game() {
     const isMyRound = game.round === mySocketId;
 
     const isAfterExchanged = game.started && isMyRound && isExchanged;
-    const isNotMyTurn = game.started && !isMyRound;
+    const isNotMyTurn = game.started && !isMyRound && !offerRecieved;
     const showDice = isAfterExchanged || isNotMyTurn;
 
-    const showExchange = isMyRound && !isExchanged;
+    const showExchange = isMyRound && !isExchanged && !offerRecieved;
 
     return (
         <>
@@ -155,9 +187,15 @@ function Game() {
                                     mySocketId={mySocketId}
                                     gameId={game.gameId}
                                     players={players}
-                                    setIsExchanged={setIsExchanged} />
+                                    setIsExchanged={setIsExchanged}
+                                    offerSent={offerSent}
+                                    setOfferSent={setOfferSent}
+                                />
                             }
                         </>
+                    }
+                    {offerRecieved &&
+                        <OfferRecieved offerRecieved={offerRecieved} players={players} setOfferRecieved={setOfferRecieved} />
                     }
                     <div className='game__buttons'>
                         {!game.started && isCreator &&
@@ -169,7 +207,7 @@ function Game() {
                                 Dice
                             </button>
                         }
-                        {isMyRound && !isExchanged &&
+                        {isMyRound && !isExchanged && !offerSent &&
                             <button className='exchange__end-btn' onClick={() => setIsExchanged(true)}>End exchanges</button>
                         }
                     </div>
@@ -184,6 +222,10 @@ function Game() {
                 </div>
                 {renderPlayers()}
                 <TableExchange />
+                <Chat
+                    mySocketId={mySocketId}
+                    gameId={game.gameId}
+                />
                 {winner &&
                     <EndGame
                         winner={winner}

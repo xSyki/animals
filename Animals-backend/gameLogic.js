@@ -5,6 +5,8 @@ var games = [];
 
 var players = [];
 
+var messages = {};
+
 const exchangeTable = require('./exchangeTable');
 
 const firstDiceType = require('./firstDiceType');
@@ -28,11 +30,17 @@ const initializeGame = (sio, socket) => {
 
     gameSocket.on("exchange", exchange);
 
+    gameSocket.on("exchangeWithPlayer", exchangeAnimalWithPlayer);
+
+    gameSocket.on("answerOffer", answerOffer)
+
     gameSocket.on("dize", dize);
 
     gameSocket.on("endRound", endRound);
 
     gameSocket.on("createNextGame", createNextGame);
+
+    gameSocket.on("sendMessage", sendMessage)
 }
 
 function createNewGame(gameId) {
@@ -52,7 +60,9 @@ function createNewGame(gameId) {
             bigDog: 2
         },
         players: []
-    })
+    });
+
+    messages[gameId] = [];
 
     this.emit('createNewGame', games.filter(game => game.gameId === gameId));
 }
@@ -116,6 +126,7 @@ function playerJoinsGame(idData) {
     io.sockets.to(idData.mySocketId).emit('mySocketId', {mySocketId: idData.mySocketId, creator});
     io.sockets.in(idData.gameId).emit('playersUpdate', players.filter(player => player.gameId === idData.gameId));
     io.sockets.in(idData.gameId).emit('gameUpdate', games.filter(game => game.gameId === idData.gameId));
+    io.sockets.in(gameId).emit("messagesUpdate", messages[idData.gameId]);
 }
 
 function userNameUpdate({mySocketId, newName, gameId}) {
@@ -171,6 +182,36 @@ function exchange({gameId, socketId, index, offerFor, offerWhat}) {
     if(checkIsWinner(newPlayerHerd)) {
         io.sockets.in(gameId).emit('winner', players.find(player => player.playerId === socketId));
     }
+}
+
+function exchangeAnimalWithPlayer({socketId, toPlayerId, gameId, index, offerFor, offerWhat}) {
+    const fromPlayer = players.find(player => player.playerId === socketId);
+    const toPlayer = players.find(player => player.playerId === toPlayerId);
+
+    if(!fromPlayer && !toPlayer) return;
+    if(fromPlayer.herd[offerFor.animal] < offerFor.amount) return;
+    if(toPlayer.herd[offerWhat.animal] < offerWhat.amount) return;
+    io.sockets.to(toPlayerId).emit('acceptExchange', {socketId, toPlayerId, gameId, index, offerFor, offerWhat});
+}
+
+function answerOffer({answer, socketId, toPlayerId, gameId, index, offerFor, offerWhat}) {
+    if(!answer) {
+        io.sockets.to(socketId).emit('endExchangeWithPlayer', answer);
+        return;
+    }
+    const fromPlayer = players.find(player => player.playerId === socketId);
+    const toPlayer = players.find(player => player.playerId === toPlayerId);
+
+    if(!fromPlayer && !toPlayer) return;
+
+    fromPlayer.herd[offerFor.animal] -= offerFor.amount;
+    fromPlayer.herd[offerWhat.animal] += offerWhat.amount;
+
+    toPlayer.herd[offerFor.animal] += offerFor.amount;
+    toPlayer.herd[offerWhat.animal] -= offerWhat.amount;
+
+    io.sockets.in(gameId).emit('playersUpdate', players.filter(player => player.gameId === gameId));
+    io.sockets.to(socketId).emit('endExchangeWithPlayer', answer);
 }
 
 function dize({gameId, socketId}) {
@@ -296,6 +337,7 @@ function endGame({gameId, mySocketId}) {
 
     if(game) {
         game.isEnded = true;
+        delete messages[gameId];
     }
     
     socket.leave(gameId);
@@ -325,6 +367,7 @@ function disconnect() {
             players = players.filter((player)=> player.playerId !== playerM.id);
         });
         games = games.filter(game => game.gameId !== gameId);
+        delete messages[gameId];
         io.sockets.in(gameId).emit('gameDoesntExist');
         return;
     }
@@ -366,6 +409,15 @@ function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function sendMessage({socketId, gameId, message}) {
+    const player = players.find(player => player.playerId == socketId);
+    if(!player) return;
+
+    messages[gameId].push({author: player.name, content: message})
+
+    io.sockets.in(gameId).emit("messagesUpdate", messages[gameId]);
 }
 
 exports.initializeGame = initializeGame;

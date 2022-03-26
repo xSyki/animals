@@ -9,6 +9,10 @@
         &__board {
             height: 100%;
             padding: 50px;
+
+            .game__code {
+                margin-top: unset;
+            }
         }
 
         &__herd {
@@ -22,6 +26,10 @@
             grid-template-areas:
                 "board"
                 "player-0";
+
+            .game__board {
+                padding: 0px 50px 50px 50px;
+            }
 
             .game__buttons {
                 margin-bottom: 30px;

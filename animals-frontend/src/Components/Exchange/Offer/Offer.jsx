@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { socket } from '../../../socket';
 
