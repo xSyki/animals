@@ -282,7 +282,7 @@ function dize({gameId, socketId}) {
                 newHerd[secoundDiceAnimal] += Math.floor((newHerd[secoundDiceAnimal]+1)/2);
             } else {
                 newHerd[secoundDiceAnimal] += newGameHerd[secoundDiceAnimal];
-                newGameHerd[firstDiceAnimal] = 0;
+                newGameHerd[secoundDiceAnimal] = 0;
             }
         }
     }

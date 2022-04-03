@@ -2,7 +2,6 @@ var app = require('../app');
 var debug = require('debug')('animals-backend:server');
 var http = require('http');
 const { Server } = require('socket.io')
-const connection = require('../sockets')
 const gameLogic = require('../gameLogic')
 
 var port = normalizePort(process.env.PORT || '3000');
