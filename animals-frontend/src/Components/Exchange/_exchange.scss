@@ -14,6 +14,24 @@
         flex-direction: column;
         overflow-y: auto;
         align-items: center;
+
+        &::-webkit-scrollbar {
+            background: transparent;
+            width: 7px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: rgba(255, 0, 0, 0);
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: white;
+            border-radius: 3rem;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: #ececec;
+        }
     }
 
     &__wait {

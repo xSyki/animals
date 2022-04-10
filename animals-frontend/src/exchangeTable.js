@@ -1,10 +1,12 @@
-const rabbit = "https://syki.pl/wp-content/uploads/2022/03/rabbit.png";
-const sheep = "https://syki.pl/wp-content/uploads/2022/03/sheep.png";
-const pig = "https://syki.pl/wp-content/uploads/2022/03/pig.png";
-const cow = "https://syki.pl/wp-content/uploads/2022/03/cow.png";
-const horse = "https://syki.pl/wp-content/uploads/2022/03/271cf234747654b.png";
-const smallDog = "https://syki.pl/wp-content/uploads/2022/03/smallDog.png"
-const bigDog = "https://syki.pl/wp-content/uploads/2022/03/bigDog.png";
+import animals from "./animalImages";
+
+const rabbit = animals.find(animal => animal.name === "rabbit").image;
+const sheep = animals.find(animal => animal.name === "sheep").image;
+const pig = animals.find(animal => animal.name === "pig").image;
+const cow = animals.find(animal => animal.name === "cow").image;
+const horse = animals.find(animal => animal.name === "horse").image;
+const smallDog = animals.find(animal => animal.name === "smallDog").image;
+const bigDog = animals.find(animal => animal.name === "bigDog").image;
 
 const exchangeTable = [
     [

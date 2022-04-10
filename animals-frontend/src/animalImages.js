@@ -1,18 +1,18 @@
 const animals = [
     {name: "rabbit",
-        image: "https://syki.pl/wp-content/uploads/2022/03/rabbit.png"},
+        image: "https://syki.pl/wp-content/uploads/2022/04/rabbit-2.png"},
     {name: "sheep",
-        image: "https://syki.pl/wp-content/uploads/2022/03/sheep.png"},
+        image: "https://syki.pl/wp-content/uploads/2022/04/sheep-2.png"},
     {name: "pig",
-        image: "https://syki.pl/wp-content/uploads/2022/03/pig.png"},
+        image: "https://syki.pl/wp-content/uploads/2022/04/pig-2.png"},
     {name: "cow",
-        image: "https://syki.pl/wp-content/uploads/2022/03/cow.png"},
+        image: "https://syki.pl/wp-content/uploads/2022/04/cow-2.png"},
     {name: "horse",
-        image: "https://syki.pl/wp-content/uploads/2022/03/271cf234747654b.png"},
+        image: "https://syki.pl/wp-content/uploads/2022/04/horse-2.png"},
     {name: "smallDog",
-        image: "https://syki.pl/wp-content/uploads/2022/03/smallDog.png"},
+        image: "https://syki.pl/wp-content/uploads/2022/04/smallDog-2.png"},
     {name: "bigDog",
-        image: "https://syki.pl/wp-content/uploads/2022/03/bigDog.png"}
+        image: "https://syki.pl/wp-content/uploads/2022/04/bigDog-2.png"}
 ]
 
 export default animals;

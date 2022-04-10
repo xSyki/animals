@@ -1,10 +1,12 @@
-const rabbit = "https://syki.pl/wp-content/uploads/2022/03/rabbit.png";
-const sheep = "https://syki.pl/wp-content/uploads/2022/03/sheep.png";
-const pig = "https://syki.pl/wp-content/uploads/2022/03/pig.png";
-const cow = "https://syki.pl/wp-content/uploads/2022/03/4e0ce113d3898c4.png";
-const horse = "https://syki.pl/wp-content/uploads/2022/03/271cf234747654b.png";
-const nov = "https://syki.pl/wp-content/uploads/2022/03/fox.png"
-const wolf = "https://syki.pl/wp-content/uploads/2022/03/wolf-outline.png";
+import animals from "./animalImages";
+
+const rabbit = animals.find(animal => animal.name === "rabbit").image;
+const sheep = animals.find(animal => animal.name === "sheep").image;
+const pig = animals.find(animal => animal.name === "pig").image;
+const cow = animals.find(animal => animal.name === "cow").image;
+const horse = animals.find(animal => animal.name === "horse").image;
+const nov = "https://syki.pl/wp-content/uploads/2022/04/fox-2.png";
+const wolf = "https://syki.pl/wp-content/uploads/2022/04/wolf-2.png";
 
 export const firstDiceType = [
     {

@@ -136,12 +136,10 @@ html * {
   width: 100%;
   height: 100vh;
   height: --webkit-fill-available;
-  background-image: url("https://i.pinimg.com/564x/cc/19/6c/cc196c12fe225ff45a1850f413676545.jpg");
+  background-image: url("https://syki.pl/wp-content/uploads/2022/04/background.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  -webkit-filter: blur(5px);
-          filter: blur(5px);
   z-index: -99;
 }
 
@@ -3170,6 +3168,24 @@ html {
           align-items: center;
 }
 
+.exchange__offers::-webkit-scrollbar {
+  background: transparent;
+  width: 7px;
+}
+
+.exchange__offers::-webkit-scrollbar-track {
+  background: rgba(255, 0, 0, 0);
+}
+
+.exchange__offers::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 3rem;
+}
+
+.exchange__offers::-webkit-scrollbar-thumb:hover {
+  background: #ececec;
+}
+
 .exchange__wait {
   height: 100%;
   -ms-flex-item-align: center;
@@ -3435,6 +3451,7 @@ html {
 .offer__img {
   max-height: 50px;
   max-width: 50px;
+  padding: 2px 0px 2px 0px;
 }
 
 .offer__submit-btn {
