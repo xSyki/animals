@@ -115,7 +115,7 @@ function playerJoinsGame(idData) {
             sheep: 0,
             pig: 0,
             cow: 0,
-            horse: 10,
+            horse: 0,
             smallDog: 0,
             bigDog: 0
         }

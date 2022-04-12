@@ -16,7 +16,7 @@ function TableExchange() {
                     <div className="table__offers">
                         {exchangeTable.map(offer => {
                             return (
-                                <div className="table__offer">
+                                <div className="table__offer" key={offer[0].animal + "-" + offer[1].animal}>
                                     <div className='table__what'>
                                         {offer[0].amount}
                                         <img src={offer[0].image} className='table__img' alt={offer[0].animal} />

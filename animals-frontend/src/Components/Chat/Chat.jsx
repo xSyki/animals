@@ -12,7 +12,7 @@ function Chat({ mySocketId, gameId }) {
     const renderMessages = () => {
         return messages.map((message) => {
             return (
-                <div className="chat__message message">
+                <div className="chat__message message" key={message.author + "i" + message.content}>
                     <p className="message__author">{message.author}: </p>
                     <p className="message__content">{message.content}</p>
                 </div>

@@ -3817,7 +3817,7 @@ html {
   max-width: 400px;
   height: 70vh;
   max-height: 400px;
-  background: transparent url(hhttps://syki.pl/wp-content/uploads/2022/03/boards-16-9.png);
+  background: transparent url(https://syki.pl/wp-content/uploads/2022/03/boards-16-9.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -4199,5 +4199,27 @@ html {
     -webkit-transform: translate(0%, 0%);
             transform: translate(0%, 0%);
   }
+}
+
+.not-found {
+  position: relative;
+  height: 100vh;
+  height: --webkit-fill-available;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.not-found__title {
+  font-size: 5rem;
+  color: white;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 /*# sourceMappingURL=styles.css.map */

@@ -1,6 +1,6 @@
 import io from 'socket.io-client'
 
-const URL = 'https://super-farmer.herokuapp.com';
+const URL = 'http://superfarmer.io/';
 
 const socket = io(URL)
 

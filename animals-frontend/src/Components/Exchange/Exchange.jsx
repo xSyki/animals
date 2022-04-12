@@ -40,6 +40,7 @@ function Exchange(props) {
                         offerTwo={offer[1]}
                         mySocketId={props.mySocketId}
                         gameId={props.gameId}
+                        key={offer[0].animal + "-" + offer[1].animal}
                     />
                 )
             } else if (offerOnePlayer) {
@@ -52,6 +53,7 @@ function Exchange(props) {
                         mySocketId={props.mySocketId}
                         gameId={props.gameId}
                         setOfferSent={props.setOfferSent}
+                        key={offer[0].animal + "-" + offer[1].animal}
                     />
                 )
             }
@@ -64,6 +66,7 @@ function Exchange(props) {
                         offerTwo={offer[0]}
                         mySocketId={props.mySocketId}
                         gameId={props.gameId}
+                        key={offer[1].animal + "-" + offer[0].animal}
                     />
                 )
             } else if (offerTwoPlayer) {
@@ -76,6 +79,7 @@ function Exchange(props) {
                         mySocketId={props.mySocketId}
                         gameId={props.gameId}
                         setOfferSent={props.setOfferSent}
+                        key={offer[1].animal + "-" + offer[0].animal}
                     />
                 )
             }
