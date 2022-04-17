@@ -5,8 +5,8 @@ const sheep = animals.find(animal => animal.name === "sheep").image;
 const pig = animals.find(animal => animal.name === "pig").image;
 const cow = animals.find(animal => animal.name === "cow").image;
 const horse = animals.find(animal => animal.name === "horse").image;
-const nov = "https://syki.pl/wp-content/uploads/2022/04/fox-2.png";
-const wolf = "https://syki.pl/wp-content/uploads/2022/04/wolf-2.png";
+const nov = "/Images/Animals/fox-2.png";
+const wolf = "/Images/Animals/wolf-2.png";
 
 export const firstDiceType = [
     {

@@ -1,13 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.fbd17dfd.css",
-    "main.js": "/static/js/main.41c7487e.js",
+    "main.css": "/static/css/main.0657d3aa.css",
+    "main.js": "/static/js/main.78247a5b.js",
+    "static/media/beoad-wide.png": "/static/media/beoad-wide.4e5920bd9aa763dc425b.png",
+    "static/media/boards-16-9.png": "/static/media/boards-16-9.8aaaa32150e48cd47ddb.png",
+    "static/media/single-board.png": "/static/media/single-board.f39a99955c0ba5003659.png",
     "index.html": "/index.html",
-    "main.fbd17dfd.css.map": "/static/css/main.fbd17dfd.css.map",
-    "main.41c7487e.js.map": "/static/js/main.41c7487e.js.map"
+    "main.0657d3aa.css.map": "/static/css/main.0657d3aa.css.map",
+    "main.78247a5b.js.map": "/static/js/main.78247a5b.js.map"
   },
   "entrypoints": [
-    "static/css/main.fbd17dfd.css",
-    "static/js/main.41c7487e.js"
+    "static/css/main.0657d3aa.css",
+    "static/js/main.78247a5b.js"
   ]
 }

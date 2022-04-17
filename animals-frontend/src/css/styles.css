@@ -614,7 +614,7 @@ html {
     padding: 20px 20px 30px 20px;
     -webkit-animation: showTable 0.3s;
             animation: showTable 0.3s;
-    background: transparent url(https://syki.pl/wp-content/uploads/2022/03/beoad-wide.png);
+    background: transparent url(../../public/Images/Boards/beoad-wide.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -3091,7 +3091,7 @@ html {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: url(https://syki.pl/wp-content/uploads/2022/03/single-board.png);
+  background: url(../../public/Images/Boards/single-board.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -3407,7 +3407,7 @@ html {
   height: 7vh;
   justify-content: center;
   align-items: center;
-  background: transparent url(https://syki.pl/wp-content/uploads/2022/03/single-board.png);
+  background: transparent url(../../public/Images/Boards/single-board.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -3817,7 +3817,7 @@ html {
   max-width: 400px;
   height: 70vh;
   max-height: 400px;
-  background: transparent url(https://syki.pl/wp-content/uploads/2022/03/boards-16-9.png);
+  background: transparent url(../../public/Images/Boards/boards-16-9.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
