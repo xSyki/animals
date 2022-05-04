@@ -1,4 +1,4 @@
-@import url("http://fonts.cdnfonts.com/css/curse-casual");
+@import url("https://fonts.cdnfonts.com/css/curse-casual");
 *,
 *:before,
 *:after {
@@ -3511,7 +3511,7 @@ html {
   height: 7vh;
   justify-content: center;
   align-items: center;
-  background: transparent url(https://syki.pl/wp-content/uploads/2022/03/single-board.png);
+  background: transparent url(../../public/Images/Boards/single-board.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -3646,7 +3646,7 @@ html {
   color: white;
   font-size: 2rem;
   gap: 20px;
-  background: transparent url(https://syki.pl/wp-content/uploads/2022/03/boards-16-9.png);
+  background: transparent url(../../public/Images/Boards/boards-16-9.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;

@@ -1,18 +1,23 @@
 var app = require('../app');
 var debug = require('debug')('animals-backend:server');
-var http = require('http');
-const { Server } = require('socket.io')
-const gameLogic = require('../gameLogic')
+var { createServer } = require('http');
 
-var port = normalizePort(process.env.PORT || '3000');
+const { Server } = require('socket.io');
+const gameLogic = require('../gameLogic');
+
+var port = normalizePort('12471');
 app.set('port', port);
-var server = http.createServer(app);
+var server = createServer(app);
+
+console.log(server);
 
 const socketServer = new Server(server, {
   cors: {
     origin: '*'
   }
 });
+
+console.log(socketServer);
 
 socketServer.on('connection', client => {
   gameLogic.initializeGame(socketServer, client);
