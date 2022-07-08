@@ -5,19 +5,15 @@ var { createServer } = require('http');
 const { Server } = require('socket.io');
 const gameLogic = require('../gameLogic');
 
-var port = normalizePort('12471');
+var port = normalizePort('3000');
 app.set('port', port);
 var server = createServer(app);
-
-console.log(server);
 
 const socketServer = new Server(server, {
   cors: {
     origin: '*'
   }
 });
-
-console.log(socketServer);
 
 socketServer.on('connection', client => {
   gameLogic.initializeGame(socketServer, client);

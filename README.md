@@ -6,14 +6,29 @@ Url: https://www.superfarmer.io
 
 ![SuperFarmerScreen](https://syki.pl/Photos/superFarmer/superFarmer-pc.png)
 
-## Available Scripts
+## To run app
 
+### For frontend
+
+To run:
 In the project directory, you can run:
 
-### `cd Animals-backend`
+```bash
+cd Animals-fronend
+npm install
+npm start
+```
 
-### `npm install`
+To build:
+```bash
+cd Animals-fronend
+npm run build
+```
 
-and then
+### For backend
 
-### `npm start`
+```bash
+cd Animals-backend
+npm install
+npm start
+```

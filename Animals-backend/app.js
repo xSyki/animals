@@ -6,7 +6,7 @@ var cors = require('cors');
 
 var app = express();
 app.use(cors({
-  origin: ['farmer.syki.pl', 'superfarmer.io', 'https://super-farmer.herokuapp.com']
+  origin: ['superfarmer.io']
 }))
 
 app.use(logger('dev'));

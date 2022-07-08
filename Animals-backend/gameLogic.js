@@ -17,48 +17,50 @@ const initializeGame = (sio, socket) => {
     gameSocket = socket;
 
     gameSocket.on("disconnect", disconnect)
-
-    gameSocket.on("endGame", endGame);
-
+    
     gameSocket.on("createNewGame", createNewGame);
-
+    
     gameSocket.on("playerJoinGame", playerJoinsGame);
-
+    
     gameSocket.on("userNameUpdate", userNameUpdate);
+    
+    gameSocket.on("sendMessage", sendMessage);
 
     gameSocket.on("startGame", startGame);
 
-    gameSocket.on("exchange", exchange);
-
-    gameSocket.on("exchangeWithPlayer", exchangeAnimalWithPlayer);
-
-    gameSocket.on("answerOffer", answerOffer)
-
     gameSocket.on("dize", dize);
 
+    gameSocket.on("exchange", exchange);
+    
+    gameSocket.on("exchangeWithPlayer", exchangeAnimalWithPlayer);
+    
+    gameSocket.on("answerOffer", answerOffer);
+    
     gameSocket.on("endRound", endRound);
+    
+    gameSocket.on("endGame", endGame);
 
     gameSocket.on("createNextGame", createNextGame);
-
-    gameSocket.on("sendMessage", sendMessage)
 }
 
 function createNewGame(gameId) {
+
+    const defaultGameHerd = {
+        rabbit: 60,
+        sheep: 24,
+        pig: 20,
+        cow: 12,
+        horse: 6,
+        smallDog: 4,
+        bigDog: 2
+    }
 
     games.push({
         gameId: gameId,
         round: '',
         started: false,
         isEnded: false,
-        herd: {
-            rabbit: 60,
-            sheep: 24,
-            pig: 20,
-            cow: 12,
-            horse: 6,
-            smallDog: 4,
-            bigDog: 2
-        },
+        herd: defaultGameHerd,
         players: []
     });
 
@@ -72,22 +74,17 @@ function playerJoinsGame(idData) {
 
     const { gameId, name } = idData
 
-    const game = games.find(game => game.gameId === gameId )
-
-    const joinedPlayers = players.filter(player => player.gameId === gameId)
+    const game = games.find(game => game.gameId === gameId );
     
     if(!game) {
         io.sockets.to(sock.id).emit('gameDoesntExist');
         return;
     };
 
-    if(game.started) {
-        io.sockets.to(sock.id).emit('gameDoesntExist');
-        return;
-    }
+    const joinedPlayers = players.filter(player => player.gameId === gameId);
 
-    const maxPlayers = 6
-    if(joinedPlayers.length === maxPlayers) {
+    const maxPlayers = 6;
+    if(game.started || joinedPlayers.length === maxPlayers) {
         io.sockets.to(sock.id).emit('gameDoesntExist');
         return;
     }
@@ -105,20 +102,22 @@ function playerJoinsGame(idData) {
 
     let newName = name ? name : `Player#${idData.mySocketId.slice(0, 5)}`;
 
+    const defaultHerd = {
+        rabbit: 0,
+        sheep: 0,
+        pig: 0,
+        cow: 0,
+        horse: 0,
+        smallDog: 0,
+        bigDog: 0
+    }
+
     players.push({
         name: newName,
         playerId: idData.mySocketId,
         gameId: idData.gameId,
         creator: creator,
-        herd: {
-            rabbit: 0,
-            sheep: 0,
-            pig: 0,
-            cow: 0,
-            horse: 0,
-            smallDog: 0,
-            bigDog: 0
-        }
+        herd: defaultHerd
     })
 
     games.find(game => game.gameId === idData.gameId ).players.push(sock.id);
@@ -132,9 +131,9 @@ function playerJoinsGame(idData) {
 function userNameUpdate({mySocketId, newName, gameId}) {
     const player = players.find(player => player.playerId === this.id);
 
-    if(player) {
-        player.name = newName;
-    }
+    if(!player) return;
+
+    player.name = newName;
 
     io.sockets.in(gameId).emit('playersUpdate', players.filter(player => player.gameId === gameId));
 }
@@ -160,8 +159,7 @@ function exchange({gameId, socketId, index, offerFor, offerWhat}) {
     const player = players.find(player => player.playerId === socketId);
     const game = games.find(game => game.gameId === gameId);
 
-    if(!player) return;
-    if(!game) return;
+    if(!player || !game) return;
 
     const newGameHerd = game.herd;
     const newPlayerHerd = player.herd;
@@ -226,8 +224,7 @@ function dize({gameId, socketId}) {
     const player = players.find(player => player.playerId === socketId);
     const game = games.find(game => game.gameId === gameId);
 
-    if(!player) return;
-    if(!game) return;
+    if(!player || !game) return;
 
     const newGameHerd = game.herd;
     const newHerd = player.herd;
@@ -349,12 +346,15 @@ function disconnect() {
 
     const player = players.find((player) => player.playerId === socket.id);
     if(!player) return;
+    
     const { gameId, playerId, creator } = player;
     players = players.filter(player => player.playerId !== socket.id);
 
     const game = games.find(game => game.gameId === gameId);
     if(!game) return;
+
     let { players: gamePlayers, round, started, isEnded } = game;
+
     const actualIndex = gamePlayers.findIndex(playerId => playerId === round);
     gamePlayers = gamePlayers.filter(playerId => playerId !== socket.id);
 
