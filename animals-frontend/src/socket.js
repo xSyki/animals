@@ -1,6 +1,6 @@
 import io from 'socket.io-client'
 
-const URL = 'https://www.superfarmer.io';
+const URL = 'http://localhost:3000';
 
 const socket = io(URL)
 
