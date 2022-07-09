@@ -36,7 +36,7 @@ function Player(props) {
                         </div>
                     }
                 </div>
-                <Animals animals={player.herd} />
+                <Animals playerHerd={player.herd} />
             </div>
         </>
     );

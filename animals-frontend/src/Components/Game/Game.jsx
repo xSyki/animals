@@ -5,7 +5,7 @@ import Player from '../Player/Player';
 import Animals from '../Animals/Animals';
 import { useParams, useNavigate } from "react-router-dom";
 import { socket } from '../../socket';
-import Dize from '../Dize/Dize';
+import Dice from '../Dice/Dice';
 import Exchange from '../Exchange/Exchange';
 import EndGame from '../EndGame/EndGame';
 import OfferRecieved from '../OfferRecieved/OfferRecieved';
@@ -23,7 +23,7 @@ function Game() {
 
     const [isCreator, setisCreator] = useState(false);
 
-    const [actualDize, setActualDize] = useState({ firstDize: 1, secoundDize: 1 });
+    const [actualDice, setActualDice] = useState({ firstDice: 1, secoundDice: 1 });
 
     const [isExchanged, setIsExchanged] = useState(false);
 
@@ -31,7 +31,7 @@ function Game() {
 
     const [offerRecieved, setOfferRecieved] = useState(false);
 
-    const [isDized, setIsDized] = useState(false);
+    const [isDiced, setIsDiced] = useState(false);
 
     const [winner, setWinner] = useState();
 
@@ -65,8 +65,8 @@ function Game() {
         setPlayers(players);
     })
 
-    socket.on('recieveDize', data => {
-        setActualDize(data);
+    socket.on('recieveDice', data => {
+        setActualDice(data);
     })
 
     socket.on("acceptExchange", (data) => {
@@ -89,16 +89,16 @@ function Game() {
         socket.emit("userNameUpdate", { mySocketId: mySocketId, newName, gameId: game.gameId })
     }
 
-    const handleDize = () => {
-        socket.emit("dize", { gameId: game.gameId, socketId: mySocketId });
-        setIsDized(true);
+    const handleDice = () => {
+        socket.emit("dice", { gameId: game.gameId, socketId: mySocketId });
+        setIsDiced(true);
 
         const timer = setTimeout(() => {
             socket.emit("endRound", { socketId: mySocketId, gameId: game.gameId });
         }, 1600)
 
         const timer2 = setTimeout(() => {
-            setIsDized(false);
+            setIsDiced(false);
             setIsExchanged(false);
         }, 2000)
 
@@ -143,7 +143,7 @@ function Game() {
         setGame({});
         setMySocketId('');
         setisCreator(false);
-        setActualDize({ firstDize: 1, secoundDize: 1 });
+        setActualDice({ firstDice: 1, secoundDice: 1 });
         setIsExchanged(false);
         setWinner();
     }
@@ -174,11 +174,11 @@ function Game() {
                     }
                     {showDice &&
                         <div className='game__dice'>
-                            <div className='game__dize-1'>
-                                <Dize dize={actualDize.firstDize} type={"first"} />
+                            <div>
+                                <Dice dice={actualDice.firstDice} type={"first"} />
                             </div>
-                            <div className='game__dize-2'>
-                                <Dize dize={actualDize.secoundDize} type={"secound"} />
+                            <div>
+                                <Dice dice={actualDice.secoundDice} type={"secound"} />
                             </div>
                         </div>
                     }
@@ -205,8 +205,8 @@ function Game() {
                             <button onClick={handleStartGame} className="game__start-game-btn" disabled={players && players.length === 1}>
                                 Start Game
                             </button>}
-                        {isMyRound && isExchanged && !isDized &&
-                            <button onClick={handleDize} className="game__button">
+                        {isMyRound && isExchanged && !isDiced &&
+                            <button onClick={handleDice} className="game__button">
                                 Dice
                             </button>
                         }

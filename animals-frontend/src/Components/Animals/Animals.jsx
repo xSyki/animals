@@ -1,13 +1,15 @@
-import animals from "../../animalImages";
+import animals from "../../animalsImages";
 
 function Animals(props) {
 
+    const { playerHerd } = props;
+
     return (
         <div className='animals player__animals'>
-            {animals.map((animal) => {
-                return (<div className='animals__animal' key={animal.name}>
-                    <img className='animals__photo' src={animal.image} alt={animal.name} />
-                    <p className='animals__name'>{props.animals[animal.name]}</p>
+            {Object.keys(animals).map((animalName) => {
+                return (<div className='animals__animal' key={animalName}>
+                    <img className='animals__photo' src={animals[animalName]} alt={animalName} />
+                    <p className='animals__name'>{playerHerd ? playerHerd[animalName] : 0}</p>
                 </div>)
             })}
         </div>

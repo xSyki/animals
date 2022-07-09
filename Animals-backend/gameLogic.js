@@ -9,8 +9,8 @@ var messages = {};
 
 const exchangeTable = require('./exchangeTable');
 
-const firstDiceType = require('./firstDiceType');
-const secoundDiceType = require('./secoundDiceType');
+const dices = require('./dices');
+const {firstDice, secoundDice} = dices;
 
 const initializeGame = (sio, socket) => {
     io = sio;
@@ -28,7 +28,7 @@ const initializeGame = (sio, socket) => {
 
     gameSocket.on("startGame", startGame);
 
-    gameSocket.on("dize", dize);
+    gameSocket.on("dice", dice);
 
     gameSocket.on("exchange", exchange);
     
@@ -212,14 +212,14 @@ function answerOffer({answer, socketId, toPlayerId, gameId, index, offerFor, off
     io.sockets.to(socketId).emit('endExchangeWithPlayer', answer);
 }
 
-function dize({gameId, socketId}) {
-    const firstDize = getRandomInt(1, 12);
-    const secoundDize = getRandomInt(1, 12);
+function dice({gameId, socketId}) {
+    const firstDice = getRandomInt(1, 12);
+    const secoundDice = getRandomInt(1, 12);
 
-    io.sockets.in(gameId).emit('recieveDize', {firstDize, secoundDize});
+    io.sockets.in(gameId).emit('recieveDice', {firstDice, secoundDice});
 
-    const firstDiceAnimal = firstDiceType[firstDize-1].animal;
-    const secoundDiceAnimal = secoundDiceType[secoundDize-1].animal;
+    const firstDiceAnimal = firstDice[firstDice-1];
+    const secoundDiceAnimal = secoundDice[secoundDice-1];
 
     const player = players.find(player => player.playerId === socketId);
     const game = games.find(game => game.gameId === gameId);

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { socket } from '../../socket';
-const { v4: uuid } = require('uuid');
+// const { v4: uuid } = require('uuid');
+import { v4 as uuid } from 'uuid';
 
 function SplashScreen() {
     const [code, setCode] = useState('');

@@ -14,7 +14,7 @@
         "../Components/Game/_game.scss",
         "../Components/TableExchange/_tableExchange.scss",
         "../Components/Game/game768px/_game-768px.scss",
-        "../Components/Dize/_dize.scss",
+        "../Components/Dice/_dice.scss",
         "../Components/Player/_player.scss",
         "../Components/Animals/_animals.scss",
         "../Components/Exchange/_exchange.scss",

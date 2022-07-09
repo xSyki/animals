@@ -1,86 +1,88 @@
 import { useEffect, useState } from 'react';
 
-import { firstDiceType, secoundDiceType } from '../../dizeTypes';
+import { firstDiceType, secoundDiceType } from './diceTypes';
 
-function Dize(props) {
+function Dice(props) {
 
-    const { dize } = props;
+    const { dice } = props;
 
-    const [actualDizeRoll, setActualDizeRoll] = useState(dize);
+    const [actualDiceRoll, setActualDiceRoll] = useState(dice);
 
-    const actualDize = props.type === "first" ? firstDiceType : secoundDiceType;
+    const actualDice = props.type === "first" ? firstDiceType : secoundDiceType;
 
     useEffect(() => {
-        setActualDizeRoll(dize);
-    }, [dize]);
+        setActualDiceRoll(dice);
+    }, [dice]);
 
     const className = props.type === "first" ? "side-one" : "side-two";
+
+    console.log(actualDice);
 
     return (
         <>
             <div id="wrapper" className={className}>
-                <div id="d12" className={`dice dice__show-${actualDizeRoll}`}>
+                <div id="d12" className={`dice dice__show-${actualDiceRoll}`}>
                     <div className="cap-top">
                         <div className="side one">
                             <div className="number center">
-                                <img className='animal-img' src={actualDize[0].image} alt={actualDize[0].name} />
+                                <img className='animal-img' src={actualDice[0].image} alt={actualDice[0].name} />
                             </div>
                         </div>
                         <div className="side two">
                             <div className="number center">
-                                <img className='animal-img' src={actualDize[1].image} alt={actualDize[1].name} />
+                                <img className='animal-img' src={actualDice[1].image} alt={actualDice[1].name} />
                             </div>
                         </div>
                         <div className="side three">
                             <div className="number center">
-                                <img className='animal-img' src={actualDize[2].image} alt={actualDize[2].name} />
+                                <img className='animal-img' src={actualDice[2].image} alt={actualDice[2].name} />
                             </div>
                         </div>
                         <div className="side four">
                             <div className="number center">
-                                <img className='animal-img' src={actualDize[3].image} alt={actualDize[3].name} />
+                                <img className='animal-img' src={actualDice[3].image} alt={actualDice[3].name} />
                             </div>
                         </div>
                         <div className="side five">
                             <div className="number center">
-                                <img className='animal-img' src={actualDize[4].image} alt={actualDize[4].name} />
+                                <img className='animal-img' src={actualDice[4].image} alt={actualDice[4].name} />
                             </div>
                         </div>
                         <div className="side six">
                             <div className="number center">
-                                <img className='animal-img' src={actualDize[5].image} alt={actualDize[5].name} />
+                                <img className='animal-img' src={actualDice[5].image} alt={actualDice[5].name} />
                             </div>
                         </div>
                     </div>
                     <div className="cap-bottom">
                         <div className="side seven">
                             <div className="number center">
-                                <img className='animal-img' src={actualDize[6].image} alt={actualDize[6].name} />
+                                <img className='animal-img' src={actualDice[6].image} alt={actualDice[6].name} />
                             </div>
                         </div>
                         <div className="side eight">
                             <div className="number center">
-                                <img className='animal-img' src={actualDize[7].image} alt={actualDize[7].name} />
+                                <img className='animal-img' src={actualDice[7].image} alt={actualDice[7].name} />
                             </div>
                         </div>
                         <div className="side nine">
                             <div className="number center">
-                                <img className='animal-img' src={actualDize[8].image} alt={actualDize[8].name} />
+                                <img className='animal-img' src={actualDice[8].image} alt={actualDice[8].name} />
                             </div>
                         </div>
                         <div className="side ten">
                             <div className="number center">
-                                <img className='animal-img' src={actualDize[9].image} alt={actualDize[9].name} />
+                                <img className='animal-img' src={actualDice[9].image} alt={actualDice[9].name} />
                             </div>
                         </div>
                         <div className="side eleven">
                             <div className="number center">
-                                <img className='animal-img' src={actualDize[10].image} alt={actualDize[10].name} />
+                                <img className='animal-img' src={actualDice[10].image} alt={actualDice[10].name} />
                             </div>
                         </div>
                         <div className="side twelve">
                             <div className="number center">
-                                <img className='animal-img' src={actualDize[11].image} alt={actualDize[11].name} />
+                                <img className='animal-img' src={actualDice[11].image} alt={actualDice[11].name} />
                             </div>
                         </div>
                     </div>
@@ -90,4 +92,4 @@ function Dize(props) {
     )
 }
 
-export default Dize;
+export default Dice;
