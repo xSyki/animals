@@ -13,7 +13,7 @@
     font-size: 2rem;
     gap: 20px;
 
-    background: transparent url(../../public/Images/Boards/boards-16-9.png);
+    background: transparent url(../assets/images/boards/board-16-9.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -23,14 +23,10 @@
         flex-direction: row;
     }
 
-    &__who {}
-
     &__arrow {
         margin-left: 10px;
         margin-right: 10px;
     }
-
-    &__to {}
 
     &__offer {
         display: flex;

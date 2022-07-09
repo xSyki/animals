@@ -136,7 +136,7 @@ html * {
   width: 100%;
   height: 100vh;
   height: --webkit-fill-available;
-  background-image: url(../../public/Images/background.jpg);
+  background-image: url(../assets/images/background.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -614,7 +614,7 @@ html {
     padding: 20px 20px 30px 20px;
     -webkit-animation: showTable 0.3s;
             animation: showTable 0.3s;
-    background: transparent url(../../public/Images/Boards/beoad-wide.png);
+    background: transparent url(../assets/images/boards/board-wide.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -985,7 +985,7 @@ html {
   }
   .game__players-4.game__my-index-0 .player__1 .animals::before,
   .game__players-4.game__my-index-0 .player__3 .animals::before {
-    background: url(https://syki.pl/wp-content/uploads/2022/03/single-board-90deg.png);
+    background: url(../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1081,7 +1081,7 @@ html {
   }
   .game__players-4.game__my-index-1 .player__2 .animals::before,
   .game__players-4.game__my-index-1 .player__0 .animals::before {
-    background: url(https://syki.pl/wp-content/uploads/2022/03/single-board-90deg.png);
+    background: url(../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1177,7 +1177,7 @@ html {
   }
   .game__players-4.game__my-index-2 .player__3 .animals::before,
   .game__players-4.game__my-index-2 .player__1 .animals::before {
-    background: url(https://syki.pl/wp-content/uploads/2022/03/single-board-90deg.png);
+    background: url(../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1273,7 +1273,7 @@ html {
   }
   .game__players-4.game__my-index-3 .player__0 .animals::before,
   .game__players-4.game__my-index-3 .player__2 .animals::before {
-    background: url(https://syki.pl/wp-content/uploads/2022/03/single-board-90deg.png);
+    background: url(../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -2688,7 +2688,7 @@ html {
 .dice .side {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  background: transparent url(../../public/Images/Dize/dice8.png) 0 0 no-repeat;
+  background: transparent url(../assets/images/dice.png) 0 0 no-repeat;
 }
 
 .dice .number .animal-img {
@@ -3091,7 +3091,7 @@ html {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: url(../../public/Images/Boards/single-board.png);
+  background: url(../assets/images/boards/single-board.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -3407,7 +3407,7 @@ html {
   height: 7vh;
   justify-content: center;
   align-items: center;
-  background: transparent url(../../public/Images/Boards/single-board.png);
+  background: transparent url(../assets/images/boards/single-board.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -3511,7 +3511,7 @@ html {
   height: 7vh;
   justify-content: center;
   align-items: center;
-  background: transparent url(../../public/Images/Boards/single-board.png);
+  background: transparent url(../assets/images/boards/single-board.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -3646,7 +3646,7 @@ html {
   color: white;
   font-size: 2rem;
   gap: 20px;
-  background: transparent url(../../public/Images/Boards/boards-16-9.png);
+  background: transparent url(../assets/images/boards/board-16-9.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -3817,7 +3817,7 @@ html {
   max-width: 400px;
   height: 70vh;
   max-height: 400px;
-  background: transparent url(../../public/Images/Boards/boards-16-9.png);
+  background: transparent url(../assets/images/boards/board-16-9.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;

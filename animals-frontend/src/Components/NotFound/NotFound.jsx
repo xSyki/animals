@@ -1,4 +1,4 @@
-function OfferRecieved({ offerRecieved, players, setOfferRecieved }) {
+function NotFound() {
 
     return (
         <div className='not-found' >
@@ -7,4 +7,4 @@ function OfferRecieved({ offerRecieved, players, setOfferRecieved }) {
     )
 }
 
-export default OfferRecieved;
+export default NotFound;

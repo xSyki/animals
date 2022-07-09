@@ -1,12 +1,14 @@
 import animals from "./animalImages";
 
+import nov from "./assets/images/animals/fox.png";
+import wolf from "./assets/images/animals/wolf.png";
+
+
 const rabbit = animals.find(animal => animal.name === "rabbit").image;
 const sheep = animals.find(animal => animal.name === "sheep").image;
 const pig = animals.find(animal => animal.name === "pig").image;
 const cow = animals.find(animal => animal.name === "cow").image;
 const horse = animals.find(animal => animal.name === "horse").image;
-const nov = "/Images/Animals/fox-2.png";
-const wolf = "/Images/Animals/wolf-2.png";
 
 export const firstDiceType = [
     {

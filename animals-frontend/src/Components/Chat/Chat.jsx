@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { FaRegPaperPlane, FaPlus } from 'react-icons/fa';
-import exchangeTable from "../../exchangeTable";
 import { socket } from "../../socket";
 
 function Chat({ mySocketId, gameId }) {
 
-    const [isChat, setIsChat] = useState();
+    const [isChat, setIsChat] = useState(false);
     const [messages, setMessages] = useState([]);
     const [messageToSend, setMessageToSend] = useState("");
 

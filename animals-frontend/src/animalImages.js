@@ -1,18 +1,27 @@
+import rabbitImage from './assets/images/animals/rabbit.png';
+import sheepImage from './assets/images/animals/sheep.png';
+import pigImage from './assets/images/animals/pig.png';
+import cowImage from './assets/images/animals/cow.png';
+import horseImage from './assets/images/animals/horse.png';
+import smallDogImage from './assets/images/animals/small-dog.png';
+import bigDogImage from './assets/images/animals/big-dog.png';
+
+
 const animals = [
     {name: "rabbit",
-        image: "/Images/Animals/rabbit-2.png"},
+        image: rabbitImage},
     {name: "sheep",
-        image: "/Images/Animals/sheep-3.png"},
+        image: sheepImage},
     {name: "pig",
-        image: "/Images/Animals/pig2.png"},
+        image: pigImage},
     {name: "cow",
-        image: "/Images/Animals/cow-3.png"},
+        image: cowImage},
     {name: "horse",
-        image: "/Images/Animals/horse-2.png"},
+        image: horseImage},
     {name: "smallDog",
-        image: "/Images/Animals/smallDog2.png"},
+        image: smallDogImage},
     {name: "bigDog",
-        image: "/Images/Animals/bigDog-2.png"}
+        image: bigDogImage}
 ]
 
 export default animals;

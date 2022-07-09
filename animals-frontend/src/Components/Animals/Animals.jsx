@@ -6,7 +6,7 @@ function Animals(props) {
         <div className='animals player__animals'>
             {animals.map((animal) => {
                 return (<div className='animals__animal' key={animal.name}>
-                    <img className='animals__photo' src={animal.image} />
+                    <img className='animals__photo' src={animal.image} alt={animal.name} />
                     <p className='animals__name'>{props.animals[animal.name]}</p>
                 </div>)
             })}

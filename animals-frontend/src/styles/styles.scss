@@ -1,7 +1,7 @@
 @import './_reset';
 @import './_variables';
-@import './button';
-@import './_app';
+@import './mixins/button';
+@import '../Components/_app';
 @import '../Components/Game/game768px/mixin-players-4';
 @import '../Components/Game/game768px/mixin-players-5';
 @import '../Components/Game/game768px/mixin-players-6';

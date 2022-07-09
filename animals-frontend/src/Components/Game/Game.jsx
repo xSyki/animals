@@ -34,10 +34,23 @@ function Game() {
     const [isDized, setIsDized] = useState(false);
 
     const [winner, setWinner] = useState();
+
     let navigate = useNavigate();
+
+    useEffect(() => {
+        const idData = {
+            gameId: id,
+        }
+        socket.emit("playerJoinGame", idData);
+    }, [id])
 
     socket.on("createNewGame", game => {
         setGame(...game);
+    })
+
+    socket.on("mySocketId", data => {
+        setMySocketId(data.mySocketId);
+        setisCreator(data.creator);
     })
 
     socket.on("gameDoesntExist", () => {
@@ -48,26 +61,13 @@ function Game() {
         setGame(...game);
     })
 
-    socket.on("winner", winner => {
-        setWinner(winner);
-    })
-
-    const handleNickNameUpdate = (newName) => {
-        socket.emit("userNameUpdate", { mySocketId: mySocketId, newName, gameId: game.gameId })
-    }
-
     socket.on("playersUpdate", players => {
         setPlayers(players);
     })
 
-    socket.on("mySocketId", data => {
-        setMySocketId(data.mySocketId);
-        setisCreator(data.creator);
+    socket.on('recieveDize', data => {
+        setActualDize(data);
     })
-
-    const handleStartGame = () => {
-        socket.emit("startGame", game.gameId);
-    }
 
     socket.on("acceptExchange", (data) => {
         setOfferRecieved(data);
@@ -76,6 +76,18 @@ function Game() {
     socket.on("endExchangeWithPlayer", (answer) => {
         setOfferSent(false);
     })
+
+    socket.on("winner", winner => {
+        setWinner(winner);
+    })
+
+    const handleStartGame = () => {
+        socket.emit("startGame", game.gameId);
+    }
+
+    const handleNickNameUpdate = (newName) => {
+        socket.emit("userNameUpdate", { mySocketId: mySocketId, newName, gameId: game.gameId })
+    }
 
     const handleDize = () => {
         socket.emit("dize", { gameId: game.gameId, socketId: mySocketId });
@@ -95,17 +107,6 @@ function Game() {
             clearTimeout(timer2);
         };
     }
-
-    socket.on('recieveDize', data => {
-        setActualDize(data);
-    })
-
-    useEffect(() => {
-        const idData = {
-            gameId: id,
-        }
-        socket.emit("playerJoinGame", idData);
-    }, [])
 
     const renderPlayers = () => {
         if (players) {
@@ -150,7 +151,9 @@ function Game() {
     const isMyRound = game.round === mySocketId;
 
     const isAfterExchanged = game.started && isMyRound && isExchanged;
+
     const isNotMyTurn = game.started && !isMyRound && !offerRecieved;
+
     const showDice = isAfterExchanged || isNotMyTurn;
 
     const showExchange = isMyRound && !isExchanged && !offerRecieved;
