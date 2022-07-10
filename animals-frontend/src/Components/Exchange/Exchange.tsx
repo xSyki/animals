@@ -1,12 +1,28 @@
 import { useEffect, useState } from 'react';
+import herdInterface from '../../Interfaces/herdInterface';
+import playerInterface from '../../Interfaces/playerInterface';
 import exchangeTable from '../TableExchange/exchangeTable';
 import Offer from './Offer/Offer';
 import OfferToPlayer from './OfferToPlayer/OfferToPlayer';
 
-function Exchange(props) {
-    const [playerHerd, setPlayerHerd] = useState(props.players.find(player => player.playerId === props.mySocketId).herd);
+import { defaultPlayers } from '../Game/defaultValues';
+
+interface exchangePropsInterface {
+    players: playerInterface[],
+    gameHerd: herdInterface,
+    setIsExchanged: React.Dispatch<React.SetStateAction<boolean>>,
+    mySocketId: string,
+    gameId: string,
+    setOfferSent: React.Dispatch<React.SetStateAction<boolean>>,
+    offerSent: boolean
+}
+
+function Exchange(props: exchangePropsInterface) {
     const [gameHerd, setGameHerd] = useState(props.gameHerd);
     const [players, setPlayers] = useState(props.players);
+
+    const player = props.players.find(player => player.playerId === props.mySocketId)
+    const playerHerd = player ? player.herd : defaultPlayers[0].herd;
 
     const canExchange = () => {
         let isExchanges = false;
@@ -47,7 +63,6 @@ function Exchange(props) {
                 jsx.push(
                     <OfferToPlayer
                         players={otherPlayers.filter(player => player.herd[offer[1].animal] >= offer[1].amount)}
-                        index={index}
                         offerOne={offer[0]}
                         offerTwo={offer[1]}
                         mySocketId={props.mySocketId}
@@ -60,7 +75,6 @@ function Exchange(props) {
             if (offerTwo) {
                 jsx.push(
                     <Offer
-                        type="gameOffer"
                         index={index}
                         offerOne={offer[1]}
                         offerTwo={offer[0]}
@@ -73,7 +87,6 @@ function Exchange(props) {
                 jsx.push(
                     <OfferToPlayer
                         players={otherPlayers.filter(player => player.herd[offer[0].animal] >= offer[0].amount)}
-                        index={index}
                         offerOne={offer[1]}
                         offerTwo={offer[0]}
                         mySocketId={props.mySocketId}
@@ -89,7 +102,6 @@ function Exchange(props) {
     }
 
     useEffect(() => {
-        setPlayerHerd(props.players.find(player => player.playerId === props.mySocketId).herd);
         setGameHerd(props.gameHerd);
         setPlayers(props.players);
     })
@@ -100,14 +112,13 @@ function Exchange(props) {
 
     return (
         <>
-            {canExchange && !props.offerSent && <div className='game__exchange exchange'>
+            {!props.offerSent && <div className='game__exchange exchange'>
                 <div className='exchange__offers'>
                     {renderOffers()}
                 </div>
             </div>}
             {props.offerSent &&
                 <div className='exchange__wait'>
-                    {/* Wait... */}
                     <div className='dot-pulse'></div>
                 </div>
             }

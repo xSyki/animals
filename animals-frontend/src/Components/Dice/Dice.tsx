@@ -1,22 +1,26 @@
 import { useEffect, useState } from 'react';
+import { diceEnum } from '../../Interfaces/diceInterface';
 
 import { firstDiceType, secoundDiceType } from './diceTypes';
 
-function Dice(props) {
+interface dicePropsInterface {
+    dice: number,
+    type: diceEnum
+}
+
+function Dice(props: dicePropsInterface) {
 
     const { dice, type } = props;
 
     const [actualDiceRoll, setActualDiceRoll] = useState(dice);
 
-    const actualDice = type === "first" ? firstDiceType : secoundDiceType;
+    const actualDice = type === diceEnum.first ? firstDiceType : secoundDiceType;
 
     useEffect(() => {
         setActualDiceRoll(dice);
     }, [dice]);
 
-    const className = type === "first" ? "side-one" : "side-two";
-
-    console.log(actualDice);
+    const className = type === diceEnum.first ? "side-one" : "side-two";
 
     return (
         <>

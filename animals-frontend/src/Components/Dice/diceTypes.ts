@@ -7,37 +7,37 @@ import novImage from "../../assets/images/animals/fox.png";
 import wolfImage from "../../assets/images/animals/wolf.png";
 
 const rabbit = {
-    animal: "rabbit",
+    name: "rabbit",
     image: rabbitImage
 }
 
 const sheep = {
-    animal: "sheep",
+    name: "sheep",
     image: sheepImage
 }
 
 const pig = {
-    animal: "pig",
+    name: "pig",
     image: pigImage
 }
 
 const cow = {
-    animal: "cow",
+    name: "cow",
     image: cowImage
 }
 
 const horse = {
-    animal: "horse",
+    name: "horse",
     image: horseImage
 }
 
 const nov = {
-    animal: "nov",
+    name: "nov",
     image: novImage
 }
 
 const wolf = {
-    animal: "wolf",
+    name: "wolf",
     image: wolfImage
 }
 

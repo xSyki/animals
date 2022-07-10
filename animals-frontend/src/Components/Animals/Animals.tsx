@@ -5,8 +5,9 @@ import cowImage from '../../assets/images/animals/cow.png';
 import horseImage from '../../assets/images/animals/horse.png';
 import smallDogImage from '../../assets/images/animals/small-dog.png';
 import bigDogImage from '../../assets/images/animals/big-dog.png';
+import herdInterface from '../../Interfaces/herdInterface';
 
-const animals = {
+const animalsImages = {
     rabbit: rabbitImage,
     sheep: sheepImage,
     pig: pigImage,
@@ -16,16 +17,20 @@ const animals = {
     bigDog: bigDogImage
 }
 
-function Animals(props) {
+interface AnimalsPropsInterface {
+    animals: herdInterface
+}
 
-    const { playerHerd } = props;
+function Animals(props: AnimalsPropsInterface) {
+
+    const { animals } = props;
 
     return (
         <div className='animals player__animals'>
-            {Object.keys(animals).map((animalName) => {
+            {Object.keys(animalsImages).map((animalName, index) => {
                 return (<div className='animals__animal' key={animalName}>
-                    <img className='animals__photo' src={animals[animalName]} alt={animalName} />
-                    <p className='animals__name'>{playerHerd ? playerHerd[animalName] : 0}</p>
+                    <img className='animals__photo' src={Object.values(animalsImages)[index]} alt={animalName} />
+                    <p className='animals__name'>{animals ? Object.values(animals)[index] : 0}</p>
                 </div>)
             })}
         </div>

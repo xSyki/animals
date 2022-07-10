@@ -1,11 +1,20 @@
 import { FaArrowRight } from 'react-icons/fa';
 import { socket } from '../../../connection/socket';
+import { animalInterface } from '../../TableExchange/exchangeTable';
 
-function Offer(props) {
+interface offerInterface {
+    index: number,
+    offerOne: animalInterface,
+    offerTwo: animalInterface,
+    mySocketId: string,
+    gameId: string
+}
+
+function Offer(props: offerInterface) {
 
     const { index, offerOne, offerTwo, mySocketId, gameId } = props;
 
-    const exchangeAnimalWithHerd = (index, offerFor, offerWhat) => {
+    const exchangeAnimalWithHerd = (index: number, offerFor: string, offerWhat: string) => {
         socket.emit("exchange",
             {
                 socketId: mySocketId,

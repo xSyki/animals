@@ -66,7 +66,7 @@ function createNewGame(gameId) {
 
     messages[gameId] = [];
 
-    this.emit('createNewGame', games.filter(game => game.gameId === gameId));
+    this.emit('createNewGame', games.find(game => game.gameId === gameId));
 }
 
 function playerJoinsGame(idData) {
@@ -107,7 +107,7 @@ function playerJoinsGame(idData) {
         sheep: 0,
         pig: 0,
         cow: 0,
-        horse: 0,
+        horse: 1,
         smallDog: 0,
         bigDog: 0
     }
@@ -124,7 +124,7 @@ function playerJoinsGame(idData) {
 
     io.sockets.to(idData.mySocketId).emit('mySocketId', {mySocketId: idData.mySocketId, creator});
     io.sockets.in(idData.gameId).emit('playersUpdate', players.filter(player => player.gameId === idData.gameId));
-    io.sockets.in(idData.gameId).emit('gameUpdate', games.filter(game => game.gameId === idData.gameId));
+    io.sockets.in(idData.gameId).emit('gameUpdate', games.find(game => game.gameId === idData.gameId));
     io.sockets.in(gameId).emit("messagesUpdate", messages[idData.gameId]);
 }
 
@@ -150,7 +150,7 @@ function startGame(gameId) {
         game.started = true;
     }
 
-    io.sockets.in(gameId).emit('gameUpdate', games.filter(game => game.gameId === gameId));
+    io.sockets.in(gameId).emit('gameUpdate', games.find(game => game.gameId === gameId));
     io.sockets.in(gameId).emit('playersUpdate', players.filter(player => player.gameId === gameId));
 }
 
@@ -175,24 +175,24 @@ function exchange({gameId, socketId, index, offerFor, offerWhat}) {
     }
 
     io.sockets.in(gameId).emit('playersUpdate', players.filter(player => player.gameId === gameId));
-    io.sockets.in(gameId).emit('gameUpdate', games.filter(game => game.gameId === gameId));
+    io.sockets.in(gameId).emit('gameUpdate', games.find(game => game.gameId === gameId));
 
     if(checkIsWinner(newPlayerHerd)) {
         io.sockets.in(gameId).emit('winner', players.find(player => player.playerId === socketId));
     }
 }
 
-function exchangeAnimalWithPlayer({socketId, toPlayerId, gameId, index, offerFor, offerWhat}) {
+function exchangeAnimalWithPlayer({socketId, toPlayerId, gameId, offerFor, offerWhat}) {
     const fromPlayer = players.find(player => player.playerId === socketId);
     const toPlayer = players.find(player => player.playerId === toPlayerId);
 
     if(!fromPlayer && !toPlayer) return;
     if(fromPlayer.herd[offerFor.animal] < offerFor.amount) return;
     if(toPlayer.herd[offerWhat.animal] < offerWhat.amount) return;
-    io.sockets.to(toPlayerId).emit('acceptExchange', {socketId, toPlayerId, gameId, index, offerFor, offerWhat});
+    io.sockets.to(toPlayerId).emit('acceptExchange', {socketId, toPlayerId, gameId, offerFor, offerWhat});
 }
 
-function answerOffer({answer, socketId, toPlayerId, gameId, index, offerFor, offerWhat}) {
+function answerOffer({answer, socketId, toPlayerId, gameId, offerFor, offerWhat}) {
     if(!answer) {
         io.sockets.to(socketId).emit('endExchangeWithPlayer', answer);
         return;
@@ -285,7 +285,7 @@ function dice({gameId, socketId}) {
     }
 
     io.sockets.in(gameId).emit('playersUpdate', players.filter(player => player.gameId === gameId));
-    io.sockets.in(gameId).emit('gameUpdate', games.filter(game => game.gameId === gameId));
+    io.sockets.in(gameId).emit('gameUpdate', games.find(game => game.gameId === gameId));
 
     if(checkIsWinner(newHerd)) {
         io.sockets.in(gameId).emit('winner', players.find(player => player.playerId === socketId));
@@ -317,7 +317,7 @@ function endRound({gameId, socketId}) {
     if(newRoundPlayerIndex === gamePlayers.length) newRoundPlayerIndex = 0;
     game.round = gamePlayers[newRoundPlayerIndex].playerId;
 
-    io.sockets.in(gameId).emit('gameUpdate', games.filter(game => game.gameId === gameId));
+    io.sockets.in(gameId).emit('gameUpdate', games.find(game => game.gameId === gameId));
 }
 
 function createNextGame({gameId, newGameRoomId}) {
@@ -401,7 +401,7 @@ function disconnect() {
     game.players = gamePlayers;
     game.round = round;
 
-    io.sockets.in(gameId).emit('gameUpdate', games.filter(game => game.gameId === gameId));
+    io.sockets.in(gameId).emit('gameUpdate', games.find(game => game.gameId === gameId));
     io.sockets.in(gameId).emit('playersUpdate', players.filter(player => player.gameId === gameId));
 }
 

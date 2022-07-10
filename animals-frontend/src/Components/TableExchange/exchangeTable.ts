@@ -6,7 +6,15 @@ import horseImage from '../../assets/images/animals/horse.png';
 import smallDogImage from '../../assets/images/animals/small-dog.png';
 import bigDogImage from '../../assets/images/animals/big-dog.png';
 
-const exchangeTable = [
+export interface animalInterface {
+    animal: animalType,
+    image: string,
+    amount: number
+}
+
+type animalType = "rabbit" | "sheep" | "pig" | "cow" | "horse" | "smallDog" | "bigDog";
+
+const exchangeTable: animalInterface[][] = [
     [
         {
             animal: "rabbit",

@@ -1,9 +1,20 @@
 import { useEffect, useState } from 'react';
 import { socket } from '../../connection/socket';
 import { useNavigate } from "react-router-dom";
-const { v4: uuid } = require('uuid');
+import { v4 as uuid } from 'uuid';
 
-function EndGameScreen(props) {
+import playerInterface from '../../Interfaces/playerInterface'
+
+interface endGameScreenPropsInterface {
+    gameId: string,
+    mySocketId: string,
+    players: playerInterface[],
+    reset: () => void,
+    winner: playerInterface,
+    isCreator: boolean
+}
+
+function EndGameScreen(props: endGameScreenPropsInterface) {
 
     const { gameId, mySocketId, players, reset, winner, isCreator } = props;
 
@@ -22,7 +33,8 @@ function EndGameScreen(props) {
         const id = uuid().slice(0, 5).toUpperCase();
         socket.emit('createNextGame', { gameId, newGameRoomId: id })
         socket.emit('createNewGame', id);
-        const name = players.find(player => player.playerId === mySocketId).name;
+        const player = players.find(player => player.playerId === mySocketId)
+        const name = player ? player.name : "";
         const idData = {
             gameId: id,
             name
@@ -33,7 +45,8 @@ function EndGameScreen(props) {
     };
 
     const joinNextGame = () => {
-        const name = players.find(player => player.playerId === mySocketId).name;
+        const player = players.find(player => player.playerId === mySocketId)
+        const name = player ? player.name : "";
         const idData = {
             gameId: newGameId,
             name: name

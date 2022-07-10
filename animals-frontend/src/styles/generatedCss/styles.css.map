@@ -20,7 +20,7 @@
         "../../Components/Exchange/_exchange.scss",
         "../../Components/Exchange/Offer/_offer.scss",
         "../../Components/Exchange/OfferToPlayer/_offer-to-player.scss",
-        "../../Components/OfferRecieved/_offer-recieved.scss",
+        "../../Components/OfferReceived/_offer-received.scss",
         "../../Components/EndGameScreen/_end-game-screen.scss",
         "../../Components/Chat/_chat.scss",
         "../../Components/NotFoundPage/_not-found.scss"

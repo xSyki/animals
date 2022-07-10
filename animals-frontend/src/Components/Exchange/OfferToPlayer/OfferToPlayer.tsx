@@ -1,14 +1,25 @@
 import { useEffect, useState } from 'react';
 import { FaArrowRight, FaCheck } from 'react-icons/fa';
 import { socket } from '../../../connection/socket';
+import playerInterface from '../../../Interfaces/playerInterface';
+import { animalInterface } from '../../TableExchange/exchangeTable';
 
-function OfferToPlayer(props) {
+interface offerToPlayerPropsInterface {
+    offerOne: animalInterface,
+    offerTwo: animalInterface,
+    mySocketId: string,
+    gameId: string,
+    players: playerInterface[],
+    setOfferSent: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-    const { index, offerOne, offerTwo, mySocketId, gameId, players, setOfferSent } = props;
+function OfferToPlayer(props: offerToPlayerPropsInterface) {
 
-    const [selectedPlayer, setSelectedPlayer] = useState();
+    const { offerOne, offerTwo, mySocketId, gameId, players, setOfferSent } = props;
 
-    const exchangeAnimalWithPlayer = (e) => {
+    const [selectedPlayer, setSelectedPlayer] = useState(players[0].playerId);
+
+    const exchangeAnimalWithPlayer = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
         setOfferSent(true);
         socket.emit("exchangeWithPlayer",
@@ -16,17 +27,16 @@ function OfferToPlayer(props) {
                 socketId: mySocketId,
                 toPlayerId: selectedPlayer,
                 gameId: gameId,
-                index: index,
                 offerFor: offerOne,
                 offerWhat: offerTwo
             });
     }
 
-    useEffect(() => {
-        if (players.length) {
-            setSelectedPlayer(players[0].playerId);
-        }
-    }, [])
+    // useEffect(() => {
+    //     if (players.length) {
+    //         setSelectedPlayer(players[0].playerId);
+    //     }
+    // }, [])
 
     return (
         <div className='exchange__offer offer-player' >

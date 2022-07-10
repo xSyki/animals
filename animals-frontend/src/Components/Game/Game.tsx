@@ -7,31 +7,37 @@ import Player from '../Player/Player';
 import Animals from '../Animals/Animals';
 import Dice from '../Dice/Dice';
 import Exchange from '../Exchange/Exchange';
-import OfferRecieved from '../OfferRecieved/OfferRecieved';
+import OfferReceived from '../OfferReceived/OfferReceived';
 import EndGame from '../EndGameScreen/EndGameScreen';
 
 import TableExchange from '../TableExchange/TableExchange';
 import Chat from '../Chat/Chat';
+import { offerReceivedInterface } from '../../Interfaces/offerInterface';
+import gameInterface from '../../Interfaces/gameInterface';
+
+import { defaultGame, defaultDiceRoll, defaultPlayers } from './defaultValues';
+import playerInterface from '../../Interfaces/playerInterface';
+import { diceEnum } from '../../Interfaces/diceInterface';
 
 function Game() {
 
     let { id } = useParams();
 
-    const [players, setPlayers] = useState();
+    const [players, setPlayers] = useState<playerInterface[]>([]);
 
-    const [game, setGame] = useState({})
+    const [game, setGame] = useState<gameInterface>(defaultGame)
 
     const [mySocketId, setMySocketId] = useState('');
 
     const [isCreator, setisCreator] = useState(false);
 
-    const [actualDice, setActualDice] = useState({ firstDice: 1, secoundDice: 1 });
+    const [actualDice, setActualDice] = useState(defaultDiceRoll);
 
     const [isExchanged, setIsExchanged] = useState(false);
 
     const [offerSent, setOfferSent] = useState(false);
 
-    const [offerRecieved, setOfferRecieved] = useState(false);
+    const [offerRecieved, setOfferRecieved] = useState<offerReceivedInterface | undefined>(undefined);
 
     const [isDiced, setIsDiced] = useState(false);
 
@@ -46,8 +52,8 @@ function Game() {
         socket.emit("playerJoinGame", idData);
     }, [id])
 
-    socket.on("createNewGame", game => {
-        setGame(...game);
+    socket.on("createNewGame", (game: gameInterface) => {
+        setGame(game);
     })
 
     socket.on("mySocketId", data => {
@@ -59,8 +65,8 @@ function Game() {
         navigate(`/`);
     })
 
-    socket.on("gameUpdate", game => {
-        setGame(...game);
+    socket.on("gameUpdate", (game: gameInterface) => {
+        setGame(game);
     })
 
     socket.on("playersUpdate", players => {
@@ -87,7 +93,7 @@ function Game() {
         socket.emit("startGame", game.gameId);
     }
 
-    const handleNickNameUpdate = (newName) => {
+    const handleNickNameUpdate = (newName: string) => {
         socket.emit("userNameUpdate", { mySocketId: mySocketId, newName, gameId: game.gameId })
     }
 
@@ -118,36 +124,14 @@ function Game() {
         }
     }
 
-    function copyToClipboard(text) {
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(text);
-        } else {
-            const dummyElement = document.createElement('span');
-            dummyElement.style.whiteSpace = 'pre'
-            dummyElement.textContent = text;
-            document.body.appendChild(dummyElement)
-
-            const selection = window.getSelection();
-            selection.removeAllRanges()
-            const range = document.createRange()
-            range.selectNode(dummyElement)
-            selection.addRange(range)
-
-            document.execCommand('copy');
-
-            selection.removeAllRanges()
-            document.body.removeChild(dummyElement)
-        }
-    }
-
     const reset = () => {
-        setPlayers();
-        setGame({});
+        setPlayers(defaultPlayers);
+        setGame(defaultGame);
         setMySocketId('');
         setisCreator(false);
         setActualDice({ firstDice: 1, secoundDice: 1 });
         setIsExchanged(false);
-        setWinner();
+        setWinner(undefined);
     }
 
     const isMyRound = game.round === mySocketId;
@@ -168,7 +152,7 @@ function Game() {
                         <div className='game__start-options'>
                             <div className='game__code'>
                                 Code: {id}
-                                <button className='game__code-copy-link' onClick={() => copyToClipboard(id)}>
+                                <button className='game__code-copy-link' onClick={() => navigator.clipboard.writeText(id ? id : "")} >
                                     <FaCopy />
                                 </button>
                             </div>
@@ -177,10 +161,10 @@ function Game() {
                     {showDice &&
                         <div className='game__dice'>
                             <div>
-                                <Dice dice={actualDice.firstDice} type={"first"} />
+                                <Dice dice={actualDice.firstDice} type={diceEnum.first} />
                             </div>
                             <div>
-                                <Dice dice={actualDice.secoundDice} type={"secound"} />
+                                <Dice dice={actualDice.secoundDice} type={diceEnum.secound} />
                             </div>
                         </div>
                     }
@@ -200,7 +184,7 @@ function Game() {
                         </>
                     }
                     {offerRecieved &&
-                        <OfferRecieved offerRecieved={offerRecieved} players={players} setOfferRecieved={setOfferRecieved} />
+                        <OfferReceived offerRecieved={offerRecieved} players={players} setOfferRecieved={setOfferRecieved} />
                     }
                     <div className='game__buttons'>
                         {!game.started && isCreator &&

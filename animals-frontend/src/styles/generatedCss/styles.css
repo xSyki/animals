@@ -1001,7 +1001,7 @@ html {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: calc(100%/9);
+    height: calc(11.11%);
     width: 100%;
     margin: unset;
     color: white;
@@ -1094,7 +1094,7 @@ html {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: calc(100%/9);
+    height: calc(11.11%);
     width: 100%;
     margin: unset;
     color: white;
@@ -1187,7 +1187,7 @@ html {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: calc(100%/9);
+    height: calc(11.11%);
     width: 100%;
     margin: unset;
     color: white;
@@ -1280,7 +1280,7 @@ html {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: calc(100%/9);
+    height: calc(11.11%);
     width: 100%;
     margin: unset;
     color: white;
@@ -1403,7 +1403,7 @@ html {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: calc(100%/9);
+    height: calc(11.11%);
     width: 100%;
     margin: unset;
     color: white;
@@ -1515,7 +1515,7 @@ html {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: calc(100%/9);
+    height: calc(11.11%);
     width: 100%;
     margin: unset;
     color: white;
@@ -1627,7 +1627,7 @@ html {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: calc(100%/9);
+    height: calc(11.11%);
     width: 100%;
     margin: unset;
     color: white;
@@ -1739,7 +1739,7 @@ html {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: calc(100%/9);
+    height: calc(11.11%);
     width: 100%;
     margin: unset;
     color: white;
@@ -1851,7 +1851,7 @@ html {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: calc(100%/9);
+    height: calc(11.11%);
     width: 100%;
     margin: unset;
     color: white;
@@ -1971,7 +1971,7 @@ html {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: calc(100%/9);
+    height: calc(11.11%);
     width: 100%;
     margin: unset;
     color: white;
@@ -2091,7 +2091,7 @@ html {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: calc(100%/9);
+    height: calc(11.11%);
     width: 100%;
     margin: unset;
     color: white;
@@ -2211,7 +2211,7 @@ html {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: calc(100%/9);
+    height: calc(11.11%);
     width: 100%;
     margin: unset;
     color: white;
@@ -2331,7 +2331,7 @@ html {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: calc(100%/9);
+    height: calc(11.11%);
     width: 100%;
     margin: unset;
     color: white;
@@ -2451,7 +2451,7 @@ html {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: calc(100%/9);
+    height: calc(11.11%);
     width: 100%;
     margin: unset;
     color: white;
@@ -2571,7 +2571,7 @@ html {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: calc(100%/9);
+    height: calc(11.11%);
     width: 100%;
     margin: unset;
     color: white;
@@ -3050,7 +3050,7 @@ html {
 }
 
 .animals__animal {
-  width: calc(100%/9);
+  width: calc(11.11%);
   margin-top: 5px;
   margin-bottom: 5px;
   height: 80%;

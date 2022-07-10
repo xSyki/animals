@@ -1,39 +1,45 @@
 import { FaArrowRight } from 'react-icons/fa';
 import { socket } from '../../connection/socket';
+import { offerReceivedInterface } from '../../Interfaces/offerInterface';
+import playerInterface from '../../Interfaces/playerInterface';
 
-function OfferRecieved(props) {
+interface offerReceivedPropsInterface {
+    offerRecieved: offerReceivedInterface,
+    players: playerInterface[],
+    setOfferRecieved: React.Dispatch<React.SetStateAction<offerReceivedInterface | undefined>>
+}
+
+function OfferReceived(props: offerReceivedPropsInterface) {
 
     const { offerRecieved, players, setOfferRecieved } = props;
 
-    const { socketId, toPlayerId, gameId, index, offerFor, offerWhat } = offerRecieved;
+    const { socketId, toPlayerId, gameId, offerFor, offerWhat } = offerRecieved;
 
-    const who = players.find(player => player.playerId === socketId);
+    const who = players.find(player => player.playerId === socketId) || { name: "" };
 
-    const to = players.find(player => player.playerId === toPlayerId);
+    const to = players.find(player => player.playerId === toPlayerId) || { name: "" };
 
     const acceptOffer = () => {
-        setOfferRecieved();
+        setOfferRecieved(undefined);
         socket.emit("answerOffer",
             {
                 answer: true,
                 socketId,
                 toPlayerId,
                 gameId,
-                index,
                 offerFor,
                 offerWhat
             });
     }
 
     const denyOffer = () => {
-        setOfferRecieved();
+        setOfferRecieved(undefined);
         socket.emit("answerOffer",
             {
                 answer: false,
                 socketId,
                 toPlayerId,
                 gameId,
-                index,
                 offerFor,
                 offerWhat
             });
@@ -79,4 +85,4 @@ function OfferRecieved(props) {
     )
 }
 
-export default OfferRecieved;
+export default OfferReceived;
