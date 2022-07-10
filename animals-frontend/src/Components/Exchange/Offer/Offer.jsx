@@ -1,7 +1,9 @@
 import { FaArrowRight } from 'react-icons/fa';
-import { socket } from '../../../socket';
+import { socket } from '../../../connection/socket';
 
-function Offer({ index, offerOne, offerTwo, mySocketId, gameId }) {
+function Offer(props) {
+
+    const { index, offerOne, offerTwo, mySocketId, gameId } = props;
 
     const exchangeAnimalWithHerd = (index, offerFor, offerWhat) => {
         socket.emit("exchange",

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { socket } from '../../socket';
+import { socket } from '../../connection/socket';
 // const { v4: uuid } = require('uuid');
 import { v4 as uuid } from 'uuid';
 

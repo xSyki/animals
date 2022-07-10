@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Game from './Game/Game';
 import SplashScreen from './Splash-screen/SplashScreen';
-import NotFound from './NotFound/NotFound';
+import NotFoundPage from './NotFoundPage/NotFoundPage';
 
 function App() {
 
@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<SplashScreen />} />
           <Route path="/game/:id" element={<Game />} />
-          <Route path='*' element={<NotFound />} />
+          <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </div>
     </>

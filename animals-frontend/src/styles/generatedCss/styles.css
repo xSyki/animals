@@ -129,7 +129,7 @@ html * {
   position: relative;
   height: 100vh;
   height: --webkit-fill-available;
-  background-image: url(../assets/images/background.jpg);
+  background-image: url(../../assets/images/background.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -606,7 +606,7 @@ html {
     padding: 20px 20px 30px 20px;
     -webkit-animation: showTable 0.3s;
             animation: showTable 0.3s;
-    background: transparent url(../assets/images/boards/board-wide.png);
+    background: transparent url(../../assets/images/boards/board-wide.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -974,7 +974,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    background: url(../assets/images/boards/single-board-90deg.png);
+    background: url(../../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1067,7 +1067,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    background: url(../assets/images/boards/single-board-90deg.png);
+    background: url(../../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1160,7 +1160,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    background: url(../assets/images/boards/single-board-90deg.png);
+    background: url(../../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1253,7 +1253,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    background: url(../assets/images/boards/single-board-90deg.png);
+    background: url(../../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1376,7 +1376,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    background: url(../assets/images/boards/single-board-90deg.png);
+    background: url(../../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1488,7 +1488,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    background: url(../assets/images/boards/single-board-90deg.png);
+    background: url(../../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1600,7 +1600,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    background: url(../assets/images/boards/single-board-90deg.png);
+    background: url(../../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1712,7 +1712,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    background: url(../assets/images/boards/single-board-90deg.png);
+    background: url(../../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1824,7 +1824,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    background: url(../assets/images/boards/single-board-90deg.png);
+    background: url(../../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1944,7 +1944,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    background: url(../assets/images/boards/single-board-90deg.png);
+    background: url(../../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -2064,7 +2064,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    background: url(../assets/images/boards/single-board-90deg.png);
+    background: url(../../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -2184,7 +2184,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    background: url(../assets/images/boards/single-board-90deg.png);
+    background: url(../../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -2304,7 +2304,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    background: url(../assets/images/boards/single-board-90deg.png);
+    background: url(../../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -2424,7 +2424,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    background: url(../assets/images/boards/single-board-90deg.png);
+    background: url(../../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -2544,7 +2544,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    background: url(../assets/images/boards/single-board-90deg.png);
+    background: url(../../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -2635,7 +2635,7 @@ html {
 .dice .side {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  background: transparent url(../assets/images/dice.png) 0 0 no-repeat;
+  background: transparent url(../../assets/images/dice.png) 0 0 no-repeat;
 }
 
 .dice .number .animal-img {
@@ -3030,7 +3030,7 @@ html {
       -ms-flex-align: center;
           align-items: center;
   max-width: 600px;
-  background: url(../assets/images/boards/single-board.png);
+  background: url(../../assets/images/boards/single-board.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -3346,7 +3346,7 @@ html {
   height: 7vh;
   justify-content: center;
   align-items: center;
-  background: transparent url(../assets/images/boards/single-board.png);
+  background: transparent url(../../assets/images/boards/single-board.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -3450,7 +3450,7 @@ html {
   height: 7vh;
   justify-content: center;
   align-items: center;
-  background: transparent url(../assets/images/boards/single-board.png);
+  background: transparent url(../../assets/images/boards/single-board.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -3585,7 +3585,7 @@ html {
   color: white;
   font-size: 2rem;
   gap: 20px;
-  background: transparent url(../assets/images/boards/board-16-9.png);
+  background: transparent url(../../assets/images/boards/board-16-9.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -3756,7 +3756,7 @@ html {
   max-width: 400px;
   height: 70vh;
   max-height: 400px;
-  background: transparent url(../assets/images/boards/board-16-9.png);
+  background: transparent url(../../assets/images/boards/board-16-9.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;

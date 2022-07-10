@@ -1,7 +1,9 @@
 import { FaArrowRight } from 'react-icons/fa';
-import { socket } from '../../socket';
+import { socket } from '../../connection/socket';
 
-function OfferRecieved({ offerRecieved, players, setOfferRecieved }) {
+function OfferRecieved(props) {
+
+    const { offerRecieved, players, setOfferRecieved } = props;
 
     const { socketId, toPlayerId, gameId, index, offerFor, offerWhat } = offerRecieved;
 

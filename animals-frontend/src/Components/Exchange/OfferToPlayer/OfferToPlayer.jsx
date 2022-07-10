@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { FaArrowRight, FaCheck } from 'react-icons/fa';
-import { socket } from '../../../socket';
+import { socket } from '../../../connection/socket';
 
-function OfferToPlayer({ index, offerOne, offerTwo, mySocketId, gameId, players, setOfferSent }) {
+function OfferToPlayer(props) {
+
+    const { index, offerOne, offerTwo, mySocketId, gameId, players, setOfferSent } = props;
 
     const [selectedPlayer, setSelectedPlayer] = useState();
 
@@ -47,6 +49,7 @@ function OfferToPlayer({ index, offerOne, offerTwo, mySocketId, gameId, players,
                                 </option>
                             )
                         }
+                        return null;
                     })}
                 </select>
                 <button

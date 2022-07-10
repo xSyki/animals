@@ -1,10 +1,10 @@
-function NotFound() {
+function NotFoundPage() {
 
     return (
-        <div className='not-found' >
+        <div className='not-found'>
             <h1 className="not-found__title">PAGE NOT FOUND</h1>
         </div>
     )
 }
 
-export default NotFound;
+export default NotFoundPage;

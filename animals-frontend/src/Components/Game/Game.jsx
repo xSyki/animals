@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
+import { useParams, useNavigate } from "react-router-dom";
+import { socket } from '../../connection/socket';
 import { FaCopy } from 'react-icons/fa';
-import TableExchange from '../TableExchange/TableExchange';
+
 import Player from '../Player/Player';
 import Animals from '../Animals/Animals';
-import { useParams, useNavigate } from "react-router-dom";
-import { socket } from '../../socket';
 import Dice from '../Dice/Dice';
 import Exchange from '../Exchange/Exchange';
-import EndGame from '../EndGame/EndGame';
 import OfferRecieved from '../OfferRecieved/OfferRecieved';
+import EndGame from '../EndGameScreen/EndGameScreen';
+
+import TableExchange from '../TableExchange/TableExchange';
 import Chat from '../Chat/Chat';
 
 function Game() {

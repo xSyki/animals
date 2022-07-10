@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { FaRegPaperPlane, FaPlus } from 'react-icons/fa';
-import { socket } from "../../socket";
+import { socket } from "../../connection/socket";
 
-function Chat({ mySocketId, gameId }) {
+function Chat(props) {
+
+    const { mySocketId, gameId } = props;
 
     const [isChat, setIsChat] = useState(false);
     const [messages, setMessages] = useState([]);

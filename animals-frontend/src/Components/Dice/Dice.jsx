@@ -4,17 +4,17 @@ import { firstDiceType, secoundDiceType } from './diceTypes';
 
 function Dice(props) {
 
-    const { dice } = props;
+    const { dice, type } = props;
 
     const [actualDiceRoll, setActualDiceRoll] = useState(dice);
 
-    const actualDice = props.type === "first" ? firstDiceType : secoundDiceType;
+    const actualDice = type === "first" ? firstDiceType : secoundDiceType;
 
     useEffect(() => {
         setActualDiceRoll(dice);
     }, [dice]);
 
-    const className = props.type === "first" ? "side-one" : "side-two";
+    const className = type === "first" ? "side-one" : "side-two";
 
     console.log(actualDice);
 

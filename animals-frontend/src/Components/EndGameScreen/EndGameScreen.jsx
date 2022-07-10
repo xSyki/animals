@@ -1,45 +1,47 @@
 import { useEffect, useState } from 'react';
-import { socket } from '../../socket';
+import { socket } from '../../connection/socket';
 import { useNavigate } from "react-router-dom";
 const { v4: uuid } = require('uuid');
 
-function EndGame(props) {
+function EndGameScreen(props) {
+
+    const { gameId, mySocketId, players, reset, winner, isCreator } = props;
 
     const [newGameId, setNewGameId] = useState();
     let navigate = useNavigate();
 
-    const createNextGame = () => {
-        const id = uuid().slice(0, 5).toUpperCase();
-        socket.emit('createNextGame', { gameId: props.gameId, newGameRoomId: id })
-        socket.emit('createNewGame', id);
-        const name = props.players.find(player => player.playerId === props.mySocketId).name;
-        const idData = {
-            gameId: id,
-            name
-        }
-        socket.emit("playerJoinGame", idData);
-        props.reset();
-        navigate(`/game/${id}`);
-    };
+    useEffect(() => {
+        socket.emit('endGame', { gameId, mySocketId: mySocketId });
+    }, []);
 
     socket.on("nextGameCreated", id => {
         setNewGameId(id);
     });
 
+    const createNextGame = () => {
+        const id = uuid().slice(0, 5).toUpperCase();
+        socket.emit('createNextGame', { gameId, newGameRoomId: id })
+        socket.emit('createNewGame', id);
+        const name = players.find(player => player.playerId === mySocketId).name;
+        const idData = {
+            gameId: id,
+            name
+        }
+        socket.emit("playerJoinGame", idData);
+        reset();
+        navigate(`/game/${id}`);
+    };
+
     const joinNextGame = () => {
-        const name = props.players.find(player => player.playerId === props.mySocketId).name;
+        const name = players.find(player => player.playerId === mySocketId).name;
         const idData = {
             gameId: newGameId,
             name: name
         }
         socket.emit("playerJoinGame", idData);
-        props.reset();
+        reset();
         navigate(`/game/${newGameId}`);
     };
-
-    useEffect(() => {
-        socket.emit('endGame', { gameId: props.gameId, mySocketId: props.mySocketId });
-    }, []);
 
     return (
         <>
@@ -50,9 +52,9 @@ function EndGame(props) {
                             Winner:
                         </h2>
                         <h1 className='end-screen__winner-name'>
-                            {props.winner.name}
+                            {winner.name}
                         </h1>
-                        {props.isCreator ?
+                        {isCreator ?
                             <button onClick={createNextGame} className='end-screen__create-game-btn'>
                                 Create next game!
                             </button>
@@ -67,4 +69,4 @@ function EndGame(props) {
     )
 }
 
-export default EndGame;
+export default EndGameScreen;
