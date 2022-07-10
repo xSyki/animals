@@ -51,12 +51,10 @@
             width: 100%;
             flex-direction: column;
 
-            &::before {
-                background: url(../assets/images/boards/single-board-90deg.png);
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-            }
+            background: url(../assets/images/boards/single-board-90deg.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
 
             &__animal {
                 display: flex;

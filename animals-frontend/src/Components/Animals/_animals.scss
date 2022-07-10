@@ -8,17 +8,10 @@
     align-items: center;
     max-width: 600px;
 
-    &::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background: url(../assets/images/boards/single-board.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-    }
+    background: url(../assets/images/boards/single-board.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 
     &__animal {
         width: calc(100%/9);

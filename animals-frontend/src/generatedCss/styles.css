@@ -129,18 +129,10 @@ html * {
   position: relative;
   height: 100vh;
   height: --webkit-fill-available;
-}
-
-.app__bg {
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  height: --webkit-fill-available;
   background-image: url(../assets/images/background.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  z-index: -99;
 }
 
 html {
@@ -982,9 +974,6 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-  .game__players-4.game__my-index-0 .player__1 .animals::before,
-  .game__players-4.game__my-index-0 .player__3 .animals::before {
     background: url(../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -1078,9 +1067,6 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-  .game__players-4.game__my-index-1 .player__2 .animals::before,
-  .game__players-4.game__my-index-1 .player__0 .animals::before {
     background: url(../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -1174,9 +1160,6 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-  .game__players-4.game__my-index-2 .player__3 .animals::before,
-  .game__players-4.game__my-index-2 .player__1 .animals::before {
     background: url(../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -1270,9 +1253,6 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-  .game__players-4.game__my-index-3 .player__0 .animals::before,
-  .game__players-4.game__my-index-3 .player__2 .animals::before {
     background: url(../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -1396,10 +1376,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-  .game__players-5.game__my-index-0 .player__1 .animals::before,
-  .game__players-5.game__my-index-0 .player__4 .animals::before {
-    background: url(https://syki.pl/wp-content/uploads/2022/03/single-board-90deg.png);
+    background: url(../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1511,10 +1488,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-  .game__players-5.game__my-index-1 .player__2 .animals::before,
-  .game__players-5.game__my-index-1 .player__0 .animals::before {
-    background: url(https://syki.pl/wp-content/uploads/2022/03/single-board-90deg.png);
+    background: url(../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1626,10 +1600,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-  .game__players-5.game__my-index-2 .player__3 .animals::before,
-  .game__players-5.game__my-index-2 .player__1 .animals::before {
-    background: url(https://syki.pl/wp-content/uploads/2022/03/single-board-90deg.png);
+    background: url(../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1741,10 +1712,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-  .game__players-5.game__my-index-3 .player__4 .animals::before,
-  .game__players-5.game__my-index-3 .player__2 .animals::before {
-    background: url(https://syki.pl/wp-content/uploads/2022/03/single-board-90deg.png);
+    background: url(../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1856,10 +1824,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-  .game__players-5.game__my-index-4 .player__0 .animals::before,
-  .game__players-5.game__my-index-4 .player__3 .animals::before {
-    background: url(https://syki.pl/wp-content/uploads/2022/03/single-board-90deg.png);
+    background: url(../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1979,10 +1944,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-  .game__players-6.game__my-index-0 .player__1 .animals::before,
-  .game__players-6.game__my-index-0 .player__4 .animals::before {
-    background: url(https://syki.pl/wp-content/uploads/2022/03/single-board-90deg.png);
+    background: url(../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -2102,10 +2064,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-  .game__players-6.game__my-index-1 .player__2 .animals::before,
-  .game__players-6.game__my-index-1 .player__5 .animals::before {
-    background: url(https://syki.pl/wp-content/uploads/2022/03/single-board-90deg.png);
+    background: url(../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -2225,10 +2184,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-  .game__players-6.game__my-index-2 .player__3 .animals::before,
-  .game__players-6.game__my-index-2 .player__0 .animals::before {
-    background: url(https://syki.pl/wp-content/uploads/2022/03/single-board-90deg.png);
+    background: url(../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -2348,10 +2304,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-  .game__players-6.game__my-index-3 .player__4 .animals::before,
-  .game__players-6.game__my-index-3 .player__1 .animals::before {
-    background: url(https://syki.pl/wp-content/uploads/2022/03/single-board-90deg.png);
+    background: url(../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -2471,10 +2424,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-  .game__players-6.game__my-index-4 .player__5 .animals::before,
-  .game__players-6.game__my-index-4 .player__2 .animals::before {
-    background: url(https://syki.pl/wp-content/uploads/2022/03/single-board-90deg.png);
+    background: url(../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -2594,10 +2544,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-  .game__players-6.game__my-index-5 .player__0 .animals::before,
-  .game__players-6.game__my-index-5 .player__3 .animals::before {
-    background: url(https://syki.pl/wp-content/uploads/2022/03/single-board-90deg.png);
+    background: url(../assets/images/boards/single-board-90deg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -3083,14 +3030,6 @@ html {
       -ms-flex-align: center;
           align-items: center;
   max-width: 600px;
-}
-
-.animals::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
   background: url(../assets/images/boards/single-board.png);
   background-repeat: no-repeat;
   background-size: cover;

@@ -213,13 +213,13 @@ function answerOffer({answer, socketId, toPlayerId, gameId, index, offerFor, off
 }
 
 function dice({gameId, socketId}) {
-    const firstDice = getRandomInt(1, 12);
-    const secoundDice = getRandomInt(1, 12);
+    const firstDiceNumber = getRandomInt(1, 12);
+    const secoundDiceNumber = getRandomInt(1, 12);
 
-    io.sockets.in(gameId).emit('recieveDice', {firstDice, secoundDice});
+    io.sockets.in(gameId).emit('recieveDice', {firstDice: firstDiceNumber, secoundDice: secoundDiceNumber});
 
-    const firstDiceAnimal = firstDice[firstDice-1];
-    const secoundDiceAnimal = secoundDice[secoundDice-1];
+    const firstDiceAnimal = firstDice[firstDiceNumber-1];
+    const secoundDiceAnimal = secoundDice[secoundDiceNumber-1];
 
     const player = players.find(player => player.playerId === socketId);
     const game = games.find(game => game.gameId === gameId);

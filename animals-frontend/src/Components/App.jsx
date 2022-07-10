@@ -8,7 +8,6 @@ function App() {
 
   return (
     <>
-      <div className='app__bg'></div>
       <div className='app'>
         <Routes>
           <Route path="/" element={<SplashScreen />} />

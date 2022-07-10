@@ -1,10 +1,4 @@
 @mixin players-5($player-0, $player-1, $player-2, $player-3, $player-4) {
-
-    // grid-template-areas:
-    // "player-2 player-2 player-3 player-3"
-    // "player-1 board board player-4"
-    // "player-0 player-0 player-0 player-0";
-
     display: grid;
     grid-template-columns: 10% 40% 40% 10%;
     grid-template-rows: 10% 80% 10%;
@@ -76,12 +70,10 @@
             width: 100%;
             flex-direction: column;
 
-            &::before {
-                background: url(https://syki.pl/wp-content/uploads/2022/03/single-board-90deg.png);
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-            }
+            background: url(../assets/images/boards/single-board-90deg.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
 
             &__animal {
                 display: flex;
