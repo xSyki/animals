@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaTable, FaArrowRight, FaPlus } from 'react-icons/fa';
-import exchangeTable from "../../exchangeTable";
+import exchangeTable from "./exchangeTable";
 
 function TableExchange() {
 

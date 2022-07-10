@@ -1,4 +1,20 @@
-import animals from "../../animalsImages";
+import rabbitImage from '../../assets/images/animals/rabbit.png';
+import sheepImage from '../../assets/images/animals/sheep.png';
+import pigImage from '../../assets/images/animals/pig.png';
+import cowImage from '../../assets/images/animals/cow.png';
+import horseImage from '../../assets/images/animals/horse.png';
+import smallDogImage from '../../assets/images/animals/small-dog.png';
+import bigDogImage from '../../assets/images/animals/big-dog.png';
+
+const animals = {
+    rabbit: rabbitImage,
+    sheep: sheepImage,
+    pig: pigImage,
+    cow: cowImage,
+    horse: horseImage,
+    smallDog: smallDogImage,
+    bigDog: bigDogImage
+}
 
 function Animals(props) {
 

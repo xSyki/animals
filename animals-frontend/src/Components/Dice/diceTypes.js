@@ -1,15 +1,10 @@
-import animals from "../../animalsImages";
-
+import rabbitImage from '../../assets/images/animals/rabbit.png';
+import sheepImage from '../../assets/images/animals/sheep.png';
+import pigImage from '../../assets/images/animals/pig.png';
+import cowImage from '../../assets/images/animals/cow.png';
+import horseImage from '../../assets/images/animals/horse.png';
 import novImage from "../../assets/images/animals/fox.png";
 import wolfImage from "../../assets/images/animals/wolf.png";
-
-// const rabbitImage = animals.rabbit;
-// const sheepImage = animals.sheep;
-// const pigImage = animals.pig;
-// const cowImage = animals.cow;
-// const horseImage = animals.horse;
-
-const { rabbit: rabbitImage, sheep: sheepImage, pig: pigImage, cow: cowImage, horse: horseImage } = animals;
 
 const rabbit = {
     animal: "rabbit",

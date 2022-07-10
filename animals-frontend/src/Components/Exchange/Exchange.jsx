@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import exchangeTable from '../../exchangeTable';
+import exchangeTable from '../TableExchange/exchangeTable';
 import Offer from './Offer/Offer';
 import OfferToPlayer from './OfferToPlayer/OfferToPlayer';
 

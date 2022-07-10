@@ -1,12 +1,10 @@
-import animals from "./animalsImages";
-
-const rabbitImage = animals.rabbit;
-const sheepImage = animals.sheep;
-const pigImage = animals.pig;
-const cowImage = animals.cow;
-const horseImage = animals.horse;
-const smallDogImage = animals.smallDog;
-const bigDogImage = animals.bigDog;
+import rabbitImage from '../../assets/images/animals/rabbit.png';
+import sheepImage from '../../assets/images/animals/sheep.png';
+import pigImage from '../../assets/images/animals/pig.png';
+import cowImage from '../../assets/images/animals/cow.png';
+import horseImage from '../../assets/images/animals/horse.png';
+import smallDogImage from '../../assets/images/animals/small-dog.png';
+import bigDogImage from '../../assets/images/animals/big-dog.png';
 
 const exchangeTable = [
     [
