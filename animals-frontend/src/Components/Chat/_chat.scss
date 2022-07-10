@@ -87,7 +87,14 @@
             border: none;
             color: var(--text);
             font-size: 1.2rem;
-            padding: 10px
+            padding: 10px;
+
+            border: none;
+            outline: none;
+            &:active{
+                border: none;
+                outline: none;
+            }
         }
 
         &__send-btn {

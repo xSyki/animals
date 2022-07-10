@@ -47,6 +47,13 @@
         &::placeholder {
             color: rgb(230, 230, 230);
         }
+
+        border: none;
+        outline: none;
+        &:active{
+            border: none;
+            outline: none;
+        }
     }
 
     &__join-button {
