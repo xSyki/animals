@@ -15,7 +15,11 @@ import Chat from "../Chat/Chat";
 import { OfferReceivedInterface } from "../../Interfaces/OfferInterface";
 import GameInterface from "../../Interfaces/GameInterface";
 
-import { defaultGame, defaultDiceRoll, defaultPlayers } from "./defaultGameValues";
+import {
+  defaultGame,
+  defaultDiceRoll,
+  defaultPlayers,
+} from "./defaultGameValues";
 import PlayerInterface from "../../Interfaces/PlayerInterface";
 import DiceRollInterface, { DiceEnum } from "../../Interfaces/DiceInterface";
 
@@ -172,8 +176,7 @@ function Game() {
         {!game.started && (
           <div className="game__start-options">
             <div className="game__code">
-              Code:
-              {id}
+              Code: {id}
               <button
                 type="submit"
                 className="game__code-copy-link"
@@ -223,7 +226,7 @@ function Game() {
               Start Game
             </button>
           )}
-          {isMyRound && isExchanged && !isDiced && (
+          {game.started && isMyRound && isExchanged && !isDiced && (
             <button type="submit" onClick={handleDice} className="game__button">
               Dice
             </button>

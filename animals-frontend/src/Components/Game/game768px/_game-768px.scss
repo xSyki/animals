@@ -20,6 +20,12 @@
       justify-self: flex-end;
     }
 
+    &__players-0 {
+      grid-template-rows: 100%;
+      grid-template-areas:
+        "board";
+    }
+
     &__players-1 {
       padding: 50px;
       grid-template-rows: 90% 10%;
