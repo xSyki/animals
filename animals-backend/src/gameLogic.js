@@ -7,9 +7,9 @@ var players = [];
 
 var messages = {};
 
-const exchangeTable = require('./exchangeTable');
+const exchangeTable = require('./utils/exchangeTable');
 
-const dices = require('./dices');
+const dices = require('./utils/dices');
 const {firstDice, secondDice} = dices;
 
 const initializeGame = (sio, socket) => {
@@ -177,9 +177,7 @@ function exchange({gameId, socketId, index, offerFor, offerWhat}) {
     io.sockets.in(gameId).emit('playersUpdate', players.filter(player => player.gameId === gameId));
     io.sockets.in(gameId).emit('gameUpdate', games.find(game => game.gameId === gameId));
 
-    if(checkIsWinner(newPlayerHerd)) {
-        io.sockets.in(gameId).emit('winner', players.find(player => player.playerId === socketId));
-    }
+    checkIsWinner(newPlayerHerd, socketId, gameId);
 }
 
 function exchangeAnimalWithPlayer({socketId, toPlayerId, gameId, offerFor, offerWhat}) {
@@ -287,16 +285,12 @@ function dice({gameId, socketId}) {
     io.sockets.in(gameId).emit('playersUpdate', players.filter(player => player.gameId === gameId));
     io.sockets.in(gameId).emit('gameUpdate', games.find(game => game.gameId === gameId));
 
-    if(checkIsWinner(newHerd)) {
-        io.sockets.in(gameId).emit('winner', players.find(player => player.playerId === socketId));
-    }
+    checkIsWinner(newHerd, socketId, gameId);
 }
 
-function checkIsWinner(newHerd) {
+function checkIsWinner(newHerd, socketId, gameId) {
     if(newHerd.rabbit >= 1 && newHerd.pig >= 1 && newHerd.sheep >= 1 && newHerd.cow >= 1 && newHerd.horse >= 1) {
-        return true;
-    } else {
-        return false;
+        io.sockets.in(gameId).emit('winner', players.find(player => player.playerId === socketId));
     }
 }
 

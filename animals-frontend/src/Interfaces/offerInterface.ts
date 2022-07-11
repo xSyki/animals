@@ -1,4 +1,4 @@
-import { AnimalInterface } from "../Components/TableExchange/exchangeTable";
+import { AnimalInterface } from "../components/TableExchange/exchangeTable";
 
 export interface OfferReceivedInterface {
   socketId: string;
