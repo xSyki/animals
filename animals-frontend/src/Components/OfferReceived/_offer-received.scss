@@ -1,72 +1,72 @@
-.offer-recieved {
-    height: 100%;
-    width: 100%;
-    min-width: 450px;
-    max-width: 600px;
+.offer-received {
+  height: 100%;
+  width: 100%;
+  min-width: 450px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+  gap: 20px;
+
+  background: transparent url(../../assets/images/boards/board-16-9.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  &__players {
     display: flex;
-    flex-direction: column;
-    justify-self: center;
-    align-self: center;
+    flex-direction: row;
+  }
+
+  &__arrow {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  &__offer {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__what {
+    display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 3rem;
     color: white;
-    font-size: 2rem;
-    gap: 20px;
+  }
 
-    background: transparent url(../../assets/images/boards/board-16-9.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
+  &__img {
+    max-height: 50px;
+    max-width: 50px;
+  }
 
-    &__players {
-        display: flex;
-        flex-direction: row;
-    }
+  &__for {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: white;
+  }
 
-    &__arrow {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    gap: 50px;
+  }
 
-    &__offer {
-        display: flex;
-        flex-direction: row;
-    }
+  &__deny-btn {
+    @include button;
+  }
 
-    &__what {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 3rem;
-        color: white;
-    }
-
-    &__img {
-        max-height: 50px;
-        max-width: 50px;
-    }
-
-    &__for {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 3rem;
-        color: white;
-    }
-
-    &__buttons {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        width: 100%;
-        gap: 50px
-    }
-
-    &__deny-btn {
-        @include button;
-    }
-
-    &__accept-btn {
-        @include button;
-    }
+  &__accept-btn {
+    @include button;
+  }
 }

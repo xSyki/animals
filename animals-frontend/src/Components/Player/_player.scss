@@ -1,51 +1,51 @@
 .player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 12vh;
+  margin: 0px 10px 0px 10px;
+
+  &__profile {
+    height: 4vh;
+    color: white;
+    font-size: 1.5rem;
+  }
+
+  &__nickname {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    height: 12vh;
-    margin: 0px 10px 0px 10px;
+    justify-content: center;
 
-    &__profile {
-        height: 4vh;
-        color: white;
-        font-size: 1.5rem;
+    &.active {
+      color: var(--green-addon);
     }
+  }
 
-    &__nickname {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+  &__name-form {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid white;
+    border-radius: 3rem;
+  }
 
-        &.active {
-            color: var(--green-addon);
-        }
+  &__name-input {
+    width: 150px;
+    color: white;
+    font-size: 1.5rem;
+    background-color: transparent;
+    text-align: center;
+
+    border: none;
+    outline: none;
+    &:active {
+      border: none;
+      outline: none;
     }
+  }
 
-    &__name-form {
-        display: flex;
-        flex-direction: row;
-        border: 2px solid white;
-        border-radius: 3rem;
-    }
-
-    &__name-input {
-        width: 150px;
-        color: white;
-        font-size: 1.5rem;
-        background-color: transparent;
-        text-align: center;
-
-        border: none;
-        outline: none;
-        &:active{
-            border: none;
-            outline: none;
-        }
-    }
-
-    &__input-submit {
-        @include button;
-        padding: 2px 5px 2px 5px;
-        text-transform: uppercase;
-    }
+  &__input-submit {
+    @include button;
+    padding: 2px 5px 2px 5px;
+    text-transform: uppercase;
+  }
 }

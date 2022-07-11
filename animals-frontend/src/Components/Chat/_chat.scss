@@ -1,158 +1,160 @@
 .chat {
-    display: none;
+  display: none;
 
-    &__show-btn {
-        display: none;
-    }
+  &__show-btn {
+    display: none;
+  }
 }
 
 @media (min-width: 768px) {
-    .chat {
-        position: fixed;
-        bottom: 0%;
-        left: 0%;
-        margin: 20px;
+  .chat {
+    position: fixed;
+    bottom: 0%;
+    left: 0%;
+    margin: 20px;
 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-        animation: showChat 0.3s;
-        height: 50vh;
-        width: 300px;
-        background: linear-gradient(to bottom, #e6a827, #f48c24);
-        border: 2px solid white;
+    animation: showChat 0.3s;
+    height: 50vh;
+    width: 300px;
+    background: linear-gradient(to bottom, #e6a827, #f48c24);
+    border: 2px solid white;
+    border-radius: 3rem;
+
+    -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+
+    &__header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      color: white;
+      border-bottom: 2px solid white;
+      padding: 5px 0px 5px 0px;
+    }
+
+    &__messages {
+      flex-grow: 1;
+      overflow-y: scroll;
+      width: 99%;
+
+      padding: 20px 20px 0px 20px;
+
+      &::-webkit-scrollbar {
+        background: transparent;
+        width: 10px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: rgba(255, 0, 0, 0);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: white;
         border-radius: 3rem;
+      }
 
-        -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
-        -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
-        box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
-
-        &__header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2rem;
-            color: white;
-            border-bottom: 2px solid white;
-            padding: 5px 0px 5px 0px;
-        }
-
-        &__messages {
-            flex-grow: 1;
-            overflow-y: scroll;
-            width: 99%;
-
-            padding: 20px 20px 0px 20px;
-
-            &::-webkit-scrollbar {
-                background: transparent;
-                width: 10px;
-            }
-
-            &::-webkit-scrollbar-track {
-                background: rgba(255, 0, 0, 0);
-            }
-
-            &::-webkit-scrollbar-thumb {
-                background: white;
-                border-radius: 3rem;
-            }
-
-            &::-webkit-scrollbar-thumb:hover {
-                background: #ececec;
-            }
-        }
-
-        &__form {
-            display: flex;
-            flex-direction: row;
-            gap: 5px;
-            justify-content: center;
-            align-items: center;
-
-            align-self: flex-end;
-            width: 100%;
-            display: flex;
-
-            padding: 5px 20px 10px 20px;
-        }
-
-        &__input {
-            flex-grow: 1;
-            border-radius: 3rem;
-            background-color: transparent;
-            text-shadow: 0 2px 2px rgba(0, 0, 0, 0.20);
-            box-shadow: -1px 1px 0 #b2d4ec, -1px 1px 0 #b2d4ec inset, 0 3px 2px rgba(0, 0, 0, 0.20), 0 3px 4px rgba(0, 0, 0, 0.20) inset, 0 6px 6px rgba(0, 0, 0, 0.30);
-            border: none;
-            color: var(--text);
-            font-size: 1.2rem;
-            padding: 10px;
-
-            border: none;
-            outline: none;
-            &:active{
-                border: none;
-                outline: none;
-            }
-        }
-
-        &__send-btn {
-            @include button;
-            padding: 5px;
-        }
-
-        &__close-btn {
-            @include button;
-            position: absolute;
-            top: 0%;
-            right: 0%;
-            margin: 0px;
-            padding: 10px;
-            transform: translate(25%, -25%);
-        }
-
-        &__close-icon {
-            transform: rotate(45deg);
-        }
-
-        &__show-btn {
-            @include button;
-            text-align: center;
-            position: fixed;
-            bottom: 0%;
-            left: 0%;
-            margin: 20px;
-            padding: 20px;
-        }
+      &::-webkit-scrollbar-thumb:hover {
+        background: #ececec;
+      }
     }
 
-    .message {
-        padding-bottom: 5px;
-        margin-bottom: 5px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    &__form {
+      display: flex;
+      flex-direction: row;
+      gap: 5px;
+      justify-content: center;
+      align-items: center;
 
-        color: white;
-        font-size: 1.2rem;
+      align-self: flex-end;
+      width: 100%;
+      display: flex;
 
-        &__author {
-            display: inline;
-            font-weight: bold;
-        }
-
-        &__content {
-            display: inline;
-            word-wrap: break-word;
-        }
+      padding: 5px 20px 10px 20px;
     }
+
+    &__input {
+      flex-grow: 1;
+      border-radius: 3rem;
+      background-color: transparent;
+      text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+      box-shadow: -1px 1px 0 #b2d4ec, -1px 1px 0 #b2d4ec inset,
+        0 3px 2px rgba(0, 0, 0, 0.2), 0 3px 4px rgba(0, 0, 0, 0.2) inset,
+        0 6px 6px rgba(0, 0, 0, 0.3);
+      border: none;
+      color: var(--text);
+      font-size: 1.2rem;
+      padding: 10px;
+
+      border: none;
+      outline: none;
+      &:active {
+        border: none;
+        outline: none;
+      }
+    }
+
+    &__send-btn {
+      @include button;
+      padding: 5px;
+    }
+
+    &__close-btn {
+      @include button;
+      position: absolute;
+      top: 0%;
+      right: 0%;
+      margin: 0px;
+      padding: 10px;
+      transform: translate(25%, -25%);
+    }
+
+    &__close-icon {
+      transform: rotate(45deg);
+    }
+
+    &__show-btn {
+      @include button;
+      text-align: center;
+      position: fixed;
+      bottom: 0%;
+      left: 0%;
+      margin: 20px;
+      padding: 20px;
+    }
+  }
+
+  .message {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+    color: white;
+    font-size: 1.2rem;
+
+    &__author {
+      display: inline;
+      font-weight: bold;
+    }
+
+    &__content {
+      display: inline;
+      word-wrap: break-word;
+    }
+  }
 }
 
 @keyframes showChat {
-    from {
-        transform: translate(-100%, 100%);
-    }
+  from {
+    transform: translate(-100%, 100%);
+  }
 
-    to {
-        transform: translate(0%, 0%);
-    }
+  to {
+    transform: translate(0%, 0%);
+  }
 }

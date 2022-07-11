@@ -1,368 +1,455 @@
 @media (min-width: 768px) {
-    .game {
-        display: grid;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        max-width: 1920px;
-
-        &__board {
-            height: 100%;
-            padding: 50px;
-
-            .game__code {
-                margin-top: unset;
-            }
-        }
-
-        &__herd {
-            margin-top: 20px;
-            justify-self: flex-end;
-        }
-
-        &__players-1 {
-            padding: 50px;
-            grid-template-rows: 90% 10%;
-            grid-template-areas:
-                "board"
-                "player-0";
-
-            .game__board {
-                padding: 0px 50px 50px 50px;
-            }
-
-            .game__buttons {
-                margin-bottom: 30px;
-            }
-
-            .player__0 {
-                align-self: flex-end;
-
-                width: 100%;
-                height: 17vh;
-
-                .animals {
-                    height: 100%;
-                }
-            }
-        }
-
-        &__players-2 {
-            padding: 50px;
-
-            &.game__my-index-0 {
-                grid-template-rows: 10% 80% 10%;
-                grid-template-areas:
-                    "player-1"
-                    "board"
-                    "player-0";
-
-                .player__0,
-                .player__1 {
-                    width: 100%;
-                    height: 17vh;
-
-                    .animals {
-                        height: 100%;
-                    }
-                }
-            }
-
-            &.game__my-index-1 {
-                grid-template-rows: 10% 80% 10%;
-
-                grid-template-areas:
-                    "player-0"
-                    "board"
-                    "player-1";
-
-                .player__0,
-                .player__1 {
-                    width: 100%;
-                    height: 17vh;
-
-                    .animals {
-                        height: 100%;
-                    }
-                }
-            }
-        }
-
-        &__players-3 {
-            grid-template-rows: 10% 80% 10%;
-            padding: 50px;
-
-            &.game__my-index-0 {
-                grid-template-areas:
-                    "player-1 player-2"
-                    "board board"
-                    "player-0 player-0";
-
-                .player__1,
-                .player__2 {
-                    width: 100%;
-                    height: 17vh;
-
-                    .animals {
-                        height: 100%;
-                    }
-                }
-
-                .player__0 {
-                    width: 100%;
-                    height: 17vh;
-
-                    .animals {
-                        height: 100%;
-                    }
-                }
-            }
-
-            &.game__my-index-1 {
-                grid-template-areas:
-                    "player-2 player-0"
-                    "board board"
-                    "player-1 player-1";
-
-                .player__0,
-                .player__2 {
-                    width: 100%;
-                    height: 17vh;
-
-                    .animals {
-                        height: 100%;
-                    }
-                }
-
-                .player__1 {
-                    width: 100%;
-                    height: 17vh;
-
-                    .animals {
-                        height: 100%;
-                    }
-                }
-            }
-
-            &.game__my-index-2 {
-                grid-template-areas:
-                    "player-0 player-1"
-                    "board board"
-                    "player-2 player-2";
-
-                .player__0,
-                .player__1 {
-                    width: 100%;
-                    height: 17vh;
-
-                    .animals {
-                        height: 100%;
-                    }
-                }
-
-                .player__2 {
-                    width: 100%;
-                    height: 17vh;
-
-                    .animals {
-                        height: 100%;
-                    }
-                }
-            }
-        }
-
-        &__players-4 {
-            .game__board {
-                height: 100%;
-                padding: 80px;
-            }
-
-            &.game__my-index-0 {
-                grid-template-areas:
-                    "player-2 player-2 player-2"
-                    "player-1 board player-3"
-                    "player-0 player-0 player-0";
-
-                @include players-4($player-0: player__0, $player-1: player__1, $player-2: player__2, $player-3: player__3);
-            }
-
-            &.game__my-index-1 {
-                grid-template-areas:
-                    "player-3 player-3 player-3"
-                    "player-2 board player-0"
-                    "player-1 player-1 player-1";
-
-                @include players-4($player-0: player__1, $player-1: player__2, $player-2: player__3, $player-3: player__0);
-            }
-
-            &.game__my-index-2 {
-
-                grid-template-areas:
-                    "player-0 player-0 player-0"
-                    "player-3 board player-1"
-                    "player-2 player-2 player-2";
-
-                @include players-4($player-0: player__2, $player-1: player__3, $player-2: player__0, $player-3: player__1);
-            }
-
-            &.game__my-index-3 {
-                grid-template-areas:
-                    "player-1 player-1 player-1"
-                    "player-0 board player-2"
-                    "player-3 player-3 player-3";
-
-                @include players-4($player-0: player__3, $player-1: player__0, $player-2: player__1, $player-3: player__2);
-            }
-        }
-
-        &__players-5 {
-            .game__board {
-                height: 100%;
-                padding: 80px;
-            }
-
-            .exchange {
-                height: 40vh;
-                justify-content: center;
-                overflow: auto;
-            }
-
-            &.game__my-index-0 {
-                grid-template-areas:
-                    "player-2 player-2 player-3 player-3"
-                    "player-1 board board player-4"
-                    "player-1 player-0 player-0 player-4";
-
-                @include players-5($player-0: player__0, $player-1: player__1, $player-2: player__2, $player-3: player__3, $player-4: player__4);
-            }
-
-            &.game__my-index-1 {
-                grid-template-areas:
-                    "player-3 player-3 player-4 player-4"
-                    "player-2 board board player-0"
-                    "player-2 player-1 player-1 player-0";
-
-                @include players-5($player-0: player__1, $player-1: player__2, $player-2: player__3, $player-3: player__4, $player-4: player__0);
-            }
-
-            &.game__my-index-2 {
-                grid-template-areas:
-                    "player-4 player-4 player-0 player-0"
-                    "player-3 board board player-1"
-                    "player-3 player-2 player-2 player-1";
-                @include players-5($player-0: player__2, $player-1: player__3, $player-2: player__4, $player-3: player__0, $player-4: player__1);
-
-            }
-
-            &.game__my-index-3 {
-                grid-template-areas:
-                    "player-0 player-0 player-1 player-1"
-                    "player-4 board board player-2"
-                    "player-4 player-3 player-3 player-2";
-
-                @include players-5($player-0: player__3, $player-1: player__4, $player-2: player__0, $player-3: player__1, $player-4: player__2);
-            }
-
-            &.game__my-index-4 {
-                grid-template-areas:
-                    "player-1 player-1 player-2 player-2"
-                    "player-0 board board player-3"
-                    "player-0 player-4 player-4 player-3";
-                @include players-5($player-0: player__4, $player-1: player__0, $player-2: player__1, $player-3: player__2, $player-4: player__3);
-
-            }
-        }
-
-        &__players-6 {
-            &.game__my-index-0 {
-                grid-template-areas:
-                    "player-2 player-2 player-3 player-3"
-                    "player-1 board board player-4"
-                    "player-0 player-0 player-5 player-5";
-
-                @include players-6($player-0: player__0, $player-1: player__1, $player-2: player__2, $player-3: player__3, $player-4: player__4, $player-5: player__5);
-
-            }
-
-            &.game__my-index-1 {
-                grid-template-areas:
-                    "player-3 player-3 player-4 player-4"
-                    "player-2 board board player-5"
-                    "player-1 player-1 player-0 player-0";
-
-                @include players-6($player-0: player__1, $player-1: player__2, $player-2: player__3, $player-3: player__4, $player-4: player__5, $player-5: player__0);
-            }
-
-            &.game__my-index-2 {
-                grid-template-areas:
-                    "player-4 player-4 player-5 player-5"
-                    "player-3 board board player-0"
-                    "player-2 player-2 player-1 player-1";
-
-                @include players-6($player-0: player__2, $player-1: player__3, $player-2: player__4, $player-3: player__5, $player-4: player__0, $player-5: player__1);
-            }
-
-            &.game__my-index-3 {
-                grid-template-areas:
-                    "player-5 player-5 player-0 player-0"
-                    "player-4 board board player-1"
-                    "player-3 player-3 player-2 player-2";
-
-                @include players-6($player-0: player__3, $player-1: player__4, $player-2: player__5, $player-3: player__0, $player-4: player__1, $player-5: player__2);
-            }
-
-            &.game__my-index-4 {
-                grid-template-areas:
-                    "player-0 player-0 player-1 player-1"
-                    "player-5 board board player-2"
-                    "player-4 player-4 player-3 player3";
-
-                @include players-6($player-0: player__4, $player-1: player__5, $player-2: player__0, $player-3: player__1, $player-4: player__2, $player-5: player__3);
-            }
-
-            &.game__my-index-5 {
-                grid-template-areas:
-                    "player-1 player-1 player-2 player-2"
-                    "player-0 board board player-3"
-                    "player-5 player-5 player-4 player4";
-
-                @include players-6($player-0: player__5, $player-1: player__0, $player-2: player__1, $player-3: player__2, $player-4: player__3, $player-5: player__4);
-            }
-        }
-
-        &__board {
-            grid-area: board;
-        }
-
-        .player {
-            &.player__0 {
-                grid-area: player-0;
-            }
-
-            &.player__1 {
-                grid-area: player-1;
-            }
-
-            &.player__2 {
-                grid-area: player-2;
-            }
-
-            &.player__3 {
-                grid-area: player-3;
-            }
-
-            &.player__4 {
-                grid-area: player-4;
-            }
-
-            &.player__5 {
-                grid-area: player-5;
-            }
-
-            &.player__me {
-                grid-area: me;
-            }
-        }
-
+  .game {
+    display: grid;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    max-width: 1920px;
+
+    &__board {
+      height: 100%;
+      padding: 50px;
+
+      .game__code {
+        margin-top: unset;
+      }
     }
+
+    &__herd {
+      margin-top: 20px;
+      justify-self: flex-end;
+    }
+
+    &__players-1 {
+      padding: 50px;
+      grid-template-rows: 90% 10%;
+      grid-template-areas:
+        "board"
+        "player-0";
+
+      .game__board {
+        padding: 0px 50px 50px 50px;
+      }
+
+      .game__buttons {
+        margin-bottom: 30px;
+      }
+
+      .player__0 {
+        align-self: flex-end;
+
+        width: 100%;
+        height: 17vh;
+
+        .animals {
+          height: 100%;
+        }
+      }
+    }
+
+    &__players-2 {
+      padding: 50px;
+
+      &.game__my-index-0 {
+        grid-template-rows: 10% 80% 10%;
+        grid-template-areas:
+          "player-1"
+          "board"
+          "player-0";
+
+        .player__0,
+        .player__1 {
+          width: 100%;
+          height: 17vh;
+
+          .animals {
+            height: 100%;
+          }
+        }
+      }
+
+      &.game__my-index-1 {
+        grid-template-rows: 10% 80% 10%;
+
+        grid-template-areas:
+          "player-0"
+          "board"
+          "player-1";
+
+        .player__0,
+        .player__1 {
+          width: 100%;
+          height: 17vh;
+
+          .animals {
+            height: 100%;
+          }
+        }
+      }
+    }
+
+    &__players-3 {
+      grid-template-rows: 10% 80% 10%;
+      padding: 50px;
+
+      &.game__my-index-0 {
+        grid-template-areas:
+          "player-1 player-2"
+          "board board"
+          "player-0 player-0";
+
+        .player__1,
+        .player__2 {
+          width: 100%;
+          height: 17vh;
+
+          .animals {
+            height: 100%;
+          }
+        }
+
+        .player__0 {
+          width: 100%;
+          height: 17vh;
+
+          .animals {
+            height: 100%;
+          }
+        }
+      }
+
+      &.game__my-index-1 {
+        grid-template-areas:
+          "player-2 player-0"
+          "board board"
+          "player-1 player-1";
+
+        .player__0,
+        .player__2 {
+          width: 100%;
+          height: 17vh;
+
+          .animals {
+            height: 100%;
+          }
+        }
+
+        .player__1 {
+          width: 100%;
+          height: 17vh;
+
+          .animals {
+            height: 100%;
+          }
+        }
+      }
+
+      &.game__my-index-2 {
+        grid-template-areas:
+          "player-0 player-1"
+          "board board"
+          "player-2 player-2";
+
+        .player__0,
+        .player__1 {
+          width: 100%;
+          height: 17vh;
+
+          .animals {
+            height: 100%;
+          }
+        }
+
+        .player__2 {
+          width: 100%;
+          height: 17vh;
+
+          .animals {
+            height: 100%;
+          }
+        }
+      }
+    }
+
+    &__players-4 {
+      .game__board {
+        height: 100%;
+        padding: 80px;
+      }
+
+      &.game__my-index-0 {
+        grid-template-areas:
+          "player-2 player-2 player-2"
+          "player-1 board player-3"
+          "player-0 player-0 player-0";
+
+        @include players-4(
+          $player-0: player__0,
+          $player-1: player__1,
+          $player-2: player__2,
+          $player-3: player__3
+        );
+      }
+
+      &.game__my-index-1 {
+        grid-template-areas:
+          "player-3 player-3 player-3"
+          "player-2 board player-0"
+          "player-1 player-1 player-1";
+
+        @include players-4(
+          $player-0: player__1,
+          $player-1: player__2,
+          $player-2: player__3,
+          $player-3: player__0
+        );
+      }
+
+      &.game__my-index-2 {
+        grid-template-areas:
+          "player-0 player-0 player-0"
+          "player-3 board player-1"
+          "player-2 player-2 player-2";
+
+        @include players-4(
+          $player-0: player__2,
+          $player-1: player__3,
+          $player-2: player__0,
+          $player-3: player__1
+        );
+      }
+
+      &.game__my-index-3 {
+        grid-template-areas:
+          "player-1 player-1 player-1"
+          "player-0 board player-2"
+          "player-3 player-3 player-3";
+
+        @include players-4(
+          $player-0: player__3,
+          $player-1: player__0,
+          $player-2: player__1,
+          $player-3: player__2
+        );
+      }
+    }
+
+    &__players-5 {
+      .game__board {
+        height: 100%;
+        padding: 80px;
+      }
+
+      .exchange {
+        height: 40vh;
+        justify-content: center;
+        overflow: auto;
+      }
+
+      &.game__my-index-0 {
+        grid-template-areas:
+          "player-2 player-2 player-3 player-3"
+          "player-1 board board player-4"
+          "player-1 player-0 player-0 player-4";
+
+        @include players-5(
+          $player-0: player__0,
+          $player-1: player__1,
+          $player-2: player__2,
+          $player-3: player__3,
+          $player-4: player__4
+        );
+      }
+
+      &.game__my-index-1 {
+        grid-template-areas:
+          "player-3 player-3 player-4 player-4"
+          "player-2 board board player-0"
+          "player-2 player-1 player-1 player-0";
+
+        @include players-5(
+          $player-0: player__1,
+          $player-1: player__2,
+          $player-2: player__3,
+          $player-3: player__4,
+          $player-4: player__0
+        );
+      }
+
+      &.game__my-index-2 {
+        grid-template-areas:
+          "player-4 player-4 player-0 player-0"
+          "player-3 board board player-1"
+          "player-3 player-2 player-2 player-1";
+        @include players-5(
+          $player-0: player__2,
+          $player-1: player__3,
+          $player-2: player__4,
+          $player-3: player__0,
+          $player-4: player__1
+        );
+      }
+
+      &.game__my-index-3 {
+        grid-template-areas:
+          "player-0 player-0 player-1 player-1"
+          "player-4 board board player-2"
+          "player-4 player-3 player-3 player-2";
+
+        @include players-5(
+          $player-0: player__3,
+          $player-1: player__4,
+          $player-2: player__0,
+          $player-3: player__1,
+          $player-4: player__2
+        );
+      }
+
+      &.game__my-index-4 {
+        grid-template-areas:
+          "player-1 player-1 player-2 player-2"
+          "player-0 board board player-3"
+          "player-0 player-4 player-4 player-3";
+        @include players-5(
+          $player-0: player__4,
+          $player-1: player__0,
+          $player-2: player__1,
+          $player-3: player__2,
+          $player-4: player__3
+        );
+      }
+    }
+
+    &__players-6 {
+      &.game__my-index-0 {
+        grid-template-areas:
+          "player-2 player-2 player-3 player-3"
+          "player-1 board board player-4"
+          "player-0 player-0 player-5 player-5";
+
+        @include players-6(
+          $player-0: player__0,
+          $player-1: player__1,
+          $player-2: player__2,
+          $player-3: player__3,
+          $player-4: player__4,
+          $player-5: player__5
+        );
+      }
+
+      &.game__my-index-1 {
+        grid-template-areas:
+          "player-3 player-3 player-4 player-4"
+          "player-2 board board player-5"
+          "player-1 player-1 player-0 player-0";
+
+        @include players-6(
+          $player-0: player__1,
+          $player-1: player__2,
+          $player-2: player__3,
+          $player-3: player__4,
+          $player-4: player__5,
+          $player-5: player__0
+        );
+      }
+
+      &.game__my-index-2 {
+        grid-template-areas:
+          "player-4 player-4 player-5 player-5"
+          "player-3 board board player-0"
+          "player-2 player-2 player-1 player-1";
+
+        @include players-6(
+          $player-0: player__2,
+          $player-1: player__3,
+          $player-2: player__4,
+          $player-3: player__5,
+          $player-4: player__0,
+          $player-5: player__1
+        );
+      }
+
+      &.game__my-index-3 {
+        grid-template-areas:
+          "player-5 player-5 player-0 player-0"
+          "player-4 board board player-1"
+          "player-3 player-3 player-2 player-2";
+
+        @include players-6(
+          $player-0: player__3,
+          $player-1: player__4,
+          $player-2: player__5,
+          $player-3: player__0,
+          $player-4: player__1,
+          $player-5: player__2
+        );
+      }
+
+      &.game__my-index-4 {
+        grid-template-areas:
+          "player-0 player-0 player-1 player-1"
+          "player-5 board board player-2"
+          "player-4 player-4 player-3 player3";
+
+        @include players-6(
+          $player-0: player__4,
+          $player-1: player__5,
+          $player-2: player__0,
+          $player-3: player__1,
+          $player-4: player__2,
+          $player-5: player__3
+        );
+      }
+
+      &.game__my-index-5 {
+        grid-template-areas:
+          "player-1 player-1 player-2 player-2"
+          "player-0 board board player-3"
+          "player-5 player-5 player-4 player4";
+
+        @include players-6(
+          $player-0: player__5,
+          $player-1: player__0,
+          $player-2: player__1,
+          $player-3: player__2,
+          $player-4: player__3,
+          $player-5: player__4
+        );
+      }
+    }
+
+    &__board {
+      grid-area: board;
+    }
+
+    .player {
+      &.player__0 {
+        grid-area: player-0;
+      }
+
+      &.player__1 {
+        grid-area: player-1;
+      }
+
+      &.player__2 {
+        grid-area: player-2;
+      }
+
+      &.player__3 {
+        grid-area: player-3;
+      }
+
+      &.player__4 {
+        grid-area: player-4;
+      }
+
+      &.player__5 {
+        grid-area: player-5;
+      }
+
+      &.player__me {
+        grid-area: me;
+      }
+    }
+  }
 }

@@ -13,7 +13,7 @@ const firstDice = [
     "wolf"
 ]
 
-const secoundDice = [
+const secondDice = [
     "rabbit",
     "sheep",
     "rabbit",
@@ -30,5 +30,5 @@ const secoundDice = [
 
 module.exports = {
     firstDice,
-    secoundDice
+    secondDice
 };

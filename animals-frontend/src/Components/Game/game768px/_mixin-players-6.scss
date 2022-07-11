@@ -1,105 +1,111 @@
-@mixin players-6($player-0, $player-1, $player-2, $player-3, $player-4, $player-5) {
+@mixin players-6(
+  $player-0,
+  $player-1,
+  $player-2,
+  $player-3,
+  $player-4,
+  $player-5
+) {
+  display: grid;
+  grid-template-columns: 10% 40% 40% 10%;
+  grid-template-rows: 10% 80% 10%;
 
-    display: grid;
-    grid-template-columns: 10% 40% 40% 10%;
-    grid-template-rows: 10% 80% 10%;
+  .game__herd {
+    width: 100%;
+    height: 15vh;
 
-    .game__herd {
-        width: 100%;
-        height: 15vh;
-
-        .animals {
-            height: 100%;
-        }
+    .animals {
+      height: 100%;
     }
+  }
 
-    .#{$player-0} {
-        align-self: flex-end;
-        justify-self: center;
+  .#{$player-0} {
+    align-self: flex-end;
+    justify-self: center;
+  }
+
+  .#{$player-1} {
+    justify-self: flex-start;
+    margin-left: 20px;
+  }
+
+  .#{$player-2} {
+    align-self: flex-start;
+    justify-self: center;
+  }
+
+  .#{$player-3} {
+    align-self: flex-start;
+    justify-self: center;
+  }
+
+  .#{$player-4} {
+    justify-self: flex-end;
+    margin-right: 20px;
+  }
+
+  .#{$player-5} {
+    align-self: flex-end;
+    justify-self: center;
+  }
+
+  .#{$player-0},
+  .#{$player-5} {
+    width: 100%;
+    height: 17vh;
+
+    .animals {
+      height: 100%;
     }
+  }
 
-    .#{$player-1} {
-        justify-self: flex-start;
-        margin-left: 20px;
+  .#{$player-2},
+  .#{$player-3} {
+    width: 100%;
+    height: 17vh;
+
+    .animals {
+      height: 100%;
     }
+  }
 
-    .#{$player-2} {
-        align-self: flex-start;
-        justify-self: center;
-    }
+  .#{$player-1},
+  .#{$player-4} {
+    height: 80%;
+    width: 8vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    .#{$player-3} {
-        align-self: flex-start;
-        justify-self: center;
-    }
+    .animals {
+      height: 100%;
+      width: 100%;
+      flex-direction: column;
 
-    .#{$player-4} {
-        justify-self: flex-end;
-        margin-right: 20px;
-    }
+      background: url(../../assets/images/boards/single-board-90deg.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
 
-    .#{$player-5} {
-        align-self: flex-end;
-        justify-self: center;
-    }
-
-    .#{$player-0},
-    .#{$player-5} {
-        width: 100%;
-        height: 17vh;
-
-        .animals {
-            height: 100%;
-        }
-    }
-
-    .#{$player-2},
-    .#{$player-3} {
-        width: 100%;
-        height: 17vh;
-
-        .animals {
-            height: 100%;
-        }
-    }
-
-    .#{$player-1},
-    .#{$player-4} {
-        height: 80%;
-        width: 8vw;
+      &__animal {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
 
-        .animals {
-            height: 100%;
-            width: 100%;
-            flex-direction: column;
+        height: calc(11.11%);
+        width: 100%;
 
-            background: url(../../assets/images/boards/single-board-90deg.png);
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
+        margin: unset;
 
-            &__animal {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
+        color: white;
+        font-size: 1rem;
 
-                height: calc(11.11%);
-                width: 100%;
-
-                margin: unset;
-
-                color: white;
-                font-size: 1rem;
-
-                &__photo {
-                    max-height: 70%;
-                    max-width: 80%;
-                }
-            }
+        &__photo {
+          max-height: 70%;
+          max-width: 80%;
         }
+      }
     }
+  }
 }

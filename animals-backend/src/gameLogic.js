@@ -10,7 +10,7 @@ var messages = {};
 const exchangeTable = require('./exchangeTable');
 
 const dices = require('./dices');
-const {firstDice, secoundDice} = dices;
+const {firstDice, secondDice} = dices;
 
 const initializeGame = (sio, socket) => {
     io = sio;
@@ -107,7 +107,7 @@ function playerJoinsGame(idData) {
         sheep: 0,
         pig: 0,
         cow: 0,
-        horse: 1,
+        horse: 0,
         smallDog: 0,
         bigDog: 0
     }
@@ -214,12 +214,12 @@ function answerOffer({answer, socketId, toPlayerId, gameId, offerFor, offerWhat}
 
 function dice({gameId, socketId}) {
     const firstDiceNumber = getRandomInt(1, 12);
-    const secoundDiceNumber = getRandomInt(1, 12);
+    const secondDiceNumber = getRandomInt(1, 12);
 
-    io.sockets.in(gameId).emit('recieveDice', {firstDice: firstDiceNumber, secoundDice: secoundDiceNumber});
+    io.sockets.in(gameId).emit('receiveDice', {firstDice: firstDiceNumber, secondDice: secondDiceNumber});
 
     const firstDiceAnimal = firstDice[firstDiceNumber-1];
-    const secoundDiceAnimal = secoundDice[secoundDiceNumber-1];
+    const secondDiceAnimal = secondDice[secondDiceNumber-1];
 
     const player = players.find(player => player.playerId === socketId);
     const game = games.find(game => game.gameId === gameId);
@@ -245,7 +245,7 @@ function dice({gameId, socketId}) {
         }
     }
 
-    if(secoundDiceAnimal === "nov") {
+    if(secondDiceAnimal === "nov") {
         if(newHerd.smallDog >= 1) {
             newHerd.smallDog--;
             newGameHerd.smallDog++;
@@ -255,7 +255,7 @@ function dice({gameId, socketId}) {
         }
     }
 
-    if(firstDiceAnimal === secoundDiceAnimal) {
+    if(firstDiceAnimal === secondDiceAnimal) {
         if(newGameHerd[firstDiceAnimal] >= Math.floor(newHerd[firstDiceAnimal]/2) + 1) {
             newGameHerd[firstDiceAnimal] -= Math.floor(newHerd[firstDiceAnimal]/2) + 1;
             newHerd[firstDiceAnimal] +=   Math.floor(newHerd[firstDiceAnimal]/2) + 1;
@@ -273,13 +273,13 @@ function dice({gameId, socketId}) {
                 newGameHerd[firstDiceAnimal] = 0;
             }
         }
-        if(newHerd[secoundDiceAnimal] >= 1) {
-            if(newGameHerd[secoundDiceAnimal] >= Math.floor((newHerd[secoundDiceAnimal]+1)/2)) {
-                newGameHerd[secoundDiceAnimal] -= Math.floor((newHerd[secoundDiceAnimal]+1)/2);
-                newHerd[secoundDiceAnimal] += Math.floor((newHerd[secoundDiceAnimal]+1)/2);
+        if(newHerd[secondDiceAnimal] >= 1) {
+            if(newGameHerd[secondDiceAnimal] >= Math.floor((newHerd[secondDiceAnimal]+1)/2)) {
+                newGameHerd[secondDiceAnimal] -= Math.floor((newHerd[secondDiceAnimal]+1)/2);
+                newHerd[secondDiceAnimal] += Math.floor((newHerd[secondDiceAnimal]+1)/2);
             } else {
-                newHerd[secoundDiceAnimal] += newGameHerd[secoundDiceAnimal];
-                newGameHerd[secoundDiceAnimal] = 0;
+                newHerd[secondDiceAnimal] += newGameHerd[secondDiceAnimal];
+                newGameHerd[secondDiceAnimal] = 0;
             }
         }
     }

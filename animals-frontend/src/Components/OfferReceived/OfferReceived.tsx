@@ -1,88 +1,97 @@
-import { FaArrowRight } from 'react-icons/fa';
-import { socket } from '../../connection/socket';
-import { offerReceivedInterface } from '../../Interfaces/offerInterface';
-import playerInterface from '../../Interfaces/playerInterface';
+import { FaArrowRight } from "react-icons/fa";
+import socket from "../../connection/socket";
+import OfferReceivedType, {
+  OfferReceivedInterface,
+} from "../../Interfaces/OfferInterface";
+import playerInterface from "../../Interfaces/PlayerInterface";
 
-interface offerReceivedPropsInterface {
-    offerRecieved: offerReceivedInterface,
-    players: playerInterface[],
-    setOfferRecieved: React.Dispatch<React.SetStateAction<offerReceivedInterface | undefined>>
+interface OfferReceivedPropsInterface {
+  offerReceived: OfferReceivedInterface;
+  players: playerInterface[];
+  setOfferReceived: React.Dispatch<React.SetStateAction<OfferReceivedType>>;
 }
 
-function OfferReceived(props: offerReceivedPropsInterface) {
+function OfferReceived(props: OfferReceivedPropsInterface) {
+  const { offerReceived, players, setOfferReceived } = props;
 
-    const { offerRecieved, players, setOfferRecieved } = props;
+  const { socketId, toPlayerId, gameId, offerFor, offerWhat } = offerReceived;
 
-    const { socketId, toPlayerId, gameId, offerFor, offerWhat } = offerRecieved;
+  const who = players.find((player) => player.playerId === socketId) || {
+    name: "",
+  };
 
-    const who = players.find(player => player.playerId === socketId) || { name: "" };
+  const to = players.find((player) => player.playerId === toPlayerId) || {
+    name: "",
+  };
 
-    const to = players.find(player => player.playerId === toPlayerId) || { name: "" };
+  const acceptOffer = () => {
+    setOfferReceived(undefined);
+    socket.emit("answerOffer", {
+      answer: true,
+      socketId,
+      toPlayerId,
+      gameId,
+      offerFor,
+      offerWhat,
+    });
+  };
 
-    const acceptOffer = () => {
-        setOfferRecieved(undefined);
-        socket.emit("answerOffer",
-            {
-                answer: true,
-                socketId,
-                toPlayerId,
-                gameId,
-                offerFor,
-                offerWhat
-            });
-    }
+  const denyOffer = () => {
+    setOfferReceived(undefined);
+    socket.emit("answerOffer", {
+      answer: false,
+      socketId,
+      toPlayerId,
+      gameId,
+      offerFor,
+      offerWhat,
+    });
+  };
 
-    const denyOffer = () => {
-        setOfferRecieved(undefined);
-        socket.emit("answerOffer",
-            {
-                answer: false,
-                socketId,
-                toPlayerId,
-                gameId,
-                offerFor,
-                offerWhat
-            });
-    }
-
-    return (
-        <div className='offer-recieved' >
-            <div className='offer-recieved__players'>
-                <div className='offer-recieved__who'>
-                    {who.name}
-                </div>
-                <FaArrowRight className='offer-recieved__arrow' />
-                <div className='offer-recieved__to'>
-                    {to.name}
-                </div>
-            </div>
-            <div className='offer-recieved__offer'>
-                <div className='offer-recieved__what'>
-                    {offerFor.amount}
-                    <img src={offerFor.image} className='offer-recieved__img' alt={offerFor.animal} />
-                </div>
-                <FaArrowRight className='offer-recieved__arrow' />
-                <div className='offer-recieved__for'>
-                    {offerWhat.amount}
-                    <img src={offerWhat.image} className='offer-recieved__img' alt={offerWhat.animal} />
-                </div>
-            </div>
-            <div className='offer-recieved__buttons'>
-                <button
-                    onClick={denyOffer}
-                    className="offer-recieved__deny-btn"
-                >
-                    Deny
-                </button>
-                <button
-                    onClick={acceptOffer}
-                    className="offer-recieved__accept-btn"
-                >
-                    Accept
-                </button>
-            </div>
+  return (
+    <div className="offer-received">
+      <div className="offer-received__players">
+        <div className="offer-received__who">{who.name}</div>
+        <FaArrowRight className="offer-received__arrow" />
+        <div className="offer-received__to">{to.name}</div>
+      </div>
+      <div className="offer-received__offer">
+        <div className="offer-received__what">
+          {offerFor.amount}
+          <img
+            src={offerFor.image}
+            className="offer-received__img"
+            alt={offerFor.animal}
+          />
         </div>
-    )
+        <FaArrowRight className="offer-received__arrow" />
+        <div className="offer-received__for">
+          {offerWhat.amount}
+          <img
+            src={offerWhat.image}
+            className="offer-received__img"
+            alt={offerWhat.animal}
+          />
+        </div>
+      </div>
+      <div className="offer-received__buttons">
+        <button
+          type="submit"
+          onClick={denyOffer}
+          className="offer-received__deny-btn"
+        >
+          Deny
+        </button>
+        <button
+          type="submit"
+          onClick={acceptOffer}
+          className="offer-received__accept-btn"
+        >
+          Accept
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default OfferReceived;

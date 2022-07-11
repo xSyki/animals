@@ -1,68 +1,67 @@
 .offer-player {
-    margin-top: 10px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px 50px 10px 50px;
+  height: 7vh;
+  justify-content: center;
+  align-items: center;
+  background: transparent url(../../assets/images/boards/single-board.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  max-width: 600px;
+
+  &__what {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    padding: 10px 50px 10px 50px;
-    height: 7vh;
+    font-size: 3rem;
+    color: white;
+  }
+
+  &__arrow {
+    margin: 0px 5px 0px 5px;
+    font-size: 3rem;
+    color: white;
+  }
+
+  &__for {
+    display: flex;
     justify-content: center;
     align-items: center;
-    background: transparent url(../../assets/images/boards/single-board.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    max-width: 600px;
+    font-size: 3rem;
+    color: white;
+  }
 
+  &__img {
+    max-height: 50px;
+    max-width: 50px;
+  }
 
-    &__what {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 3rem;
-        color: white;
-    }
+  &__player-offer {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
 
-    &__arrow {
-        margin: 0px 5px 0px 5px;
-        font-size: 3rem;
-        color: white;
-    }
+  &__select {
+    background: linear-gradient(to bottom, #e6a827, #f48c24);
+    border: 2px solid white;
+    border-radius: 3rem;
+    color: white;
+    height: 5vh;
+    font-size: 1rem;
+    text-align: center;
+  }
 
-    &__for {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 3rem;
-        color: white;
-    }
-
-    &__img {
-        max-height: 50px;
-        max-width: 50px;
-    }
-
-    &__player-offer {
-        padding-left: 10px;
-        display: flex;
-        flex-direction: row;
-        height: 100%;
-    }
-
-    &__select {
-        background: linear-gradient(to bottom, #e6a827, #f48c24);
-        border: 2px solid white;
-        border-radius: 3rem;
-        color: white;
-        height: 5vh;
-        font-size: 1rem;
-        text-align: center
-    }
-
-    &__player-submit-btn {
-        @include button;
-        height: 5vh;
-        margin-left: 10px;
-        padding: 5px 5px 5px 5px;
-    }
+  &__player-submit-btn {
+    @include button;
+    height: 5vh;
+    margin-left: 10px;
+    padding: 5px 5px 5px 5px;
+  }
 }

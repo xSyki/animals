@@ -1,233 +1,265 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { socket } from '../../connection/socket';
-import { FaCopy } from 'react-icons/fa';
+import { FaCopy } from "react-icons/fa";
+import socket from "../../connection/socket";
 
-import Player from '../Player/Player';
-import Animals from '../Animals/Animals';
-import Dice from '../Dice/Dice';
-import Exchange from '../Exchange/Exchange';
-import OfferReceived from '../OfferReceived/OfferReceived';
-import EndGame from '../EndGameScreen/EndGameScreen';
+import Player from "../Player/Player";
+import Animals from "../Animals/Animals";
+import Dice from "../Dice/Dice";
+import Exchange from "../Exchange/Exchange";
+import OfferReceived from "../OfferReceived/OfferReceived";
+import EndGame from "../EndGameScreen/EndGameScreen";
 
-import TableExchange from '../TableExchange/TableExchange';
-import Chat from '../Chat/Chat';
-import { offerReceivedInterface } from '../../Interfaces/offerInterface';
-import gameInterface from '../../Interfaces/gameInterface';
+import TableExchange from "../TableExchange/TableExchange";
+import Chat from "../Chat/Chat";
+import { OfferReceivedInterface } from "../../Interfaces/OfferInterface";
+import GameInterface from "../../Interfaces/GameInterface";
 
-import { defaultGame, defaultDiceRoll, defaultPlayers } from './defaultValues';
-import playerInterface from '../../Interfaces/playerInterface';
-import { diceEnum } from '../../Interfaces/diceInterface';
+import { defaultGame, defaultDiceRoll, defaultPlayers } from "./defaultGameValues";
+import PlayerInterface from "../../Interfaces/PlayerInterface";
+import DiceRollInterface, { DiceEnum } from "../../Interfaces/DiceInterface";
 
 function Game() {
+  const { id } = useParams();
 
-    let { id } = useParams();
+  const [players, setPlayers] = useState<PlayerInterface[]>([]);
 
-    const [players, setPlayers] = useState<playerInterface[]>([]);
+  const [game, setGame] = useState<GameInterface>(defaultGame);
 
-    const [game, setGame] = useState<gameInterface>(defaultGame)
+  const [mySocketId, setMySocketId] = useState("");
 
-    const [mySocketId, setMySocketId] = useState('');
+  const [isCreator, setisCreator] = useState(false);
 
-    const [isCreator, setisCreator] = useState(false);
+  const [actualDice, setActualDice] =
+    useState<DiceRollInterface>(defaultDiceRoll);
 
-    const [actualDice, setActualDice] = useState(defaultDiceRoll);
+  const [isExchanged, setIsExchanged] = useState(false);
 
-    const [isExchanged, setIsExchanged] = useState(false);
+  const [offerSent, setOfferSent] = useState(false);
 
-    const [offerSent, setOfferSent] = useState(false);
+  const [offerReceived, setOfferReceived] = useState<
+    OfferReceivedInterface | undefined
+  >(undefined);
 
-    const [offerRecieved, setOfferRecieved] = useState<offerReceivedInterface | undefined>(undefined);
+  const [isDiced, setIsDiced] = useState(false);
 
-    const [isDiced, setIsDiced] = useState(false);
+  const [winner, setWinner] = useState<PlayerInterface | undefined>();
 
-    const [winner, setWinner] = useState();
+  const navigate = useNavigate();
 
-    let navigate = useNavigate();
+  useEffect(() => {
+    const idData = {
+      gameId: id,
+    };
+    socket.emit("playerJoinGame", idData);
+  }, [id]);
 
-    useEffect(() => {
-        const idData = {
-            gameId: id,
-        }
-        socket.emit("playerJoinGame", idData);
-    }, [id])
+  socket.on("createNewGame", (createdGame: GameInterface) => {
+    setGame(createdGame);
+  });
 
-    socket.on("createNewGame", (game: gameInterface) => {
-        setGame(game);
-    })
+  socket.on("mySocketId", (data) => {
+    setMySocketId(data.mySocketId);
+    setisCreator(data.creator);
+  });
 
-    socket.on("mySocketId", data => {
-        setMySocketId(data.mySocketId);
-        setisCreator(data.creator);
-    })
+  socket.on("gameDoesntExist", () => {
+    navigate(`/`);
+  });
 
-    socket.on("gameDoesntExist", () => {
-        navigate(`/`);
-    })
+  socket.on("gameUpdate", (gameUpdated: GameInterface) => {
+    setGame(gameUpdated);
+  });
 
-    socket.on("gameUpdate", (game: gameInterface) => {
-        setGame(game);
-    })
+  socket.on("playersUpdate", (playersUpdated: PlayerInterface[]) => {
+    setPlayers(playersUpdated);
+  });
 
-    socket.on("playersUpdate", players => {
-        setPlayers(players);
-    })
+  socket.on("receiveDice", (diceRollUpdated: DiceRollInterface) => {
+    setActualDice(diceRollUpdated);
+  });
 
-    socket.on('recieveDice', data => {
-        setActualDice(data);
-    })
-
-    socket.on("acceptExchange", (data) => {
-        setOfferRecieved(data);
-    })
-
-    socket.on("endExchangeWithPlayer", (answer) => {
-        setOfferSent(false);
-    })
-
-    socket.on("winner", winner => {
-        setWinner(winner);
-    })
-
-    const handleStartGame = () => {
-        socket.emit("startGame", game.gameId);
+  socket.on(
+    "acceptExchange",
+    (offerReceivedUpdated: OfferReceivedInterface) => {
+      setOfferReceived(offerReceivedUpdated);
     }
+  );
 
-    const handleNickNameUpdate = (newName: string) => {
-        socket.emit("userNameUpdate", { mySocketId: mySocketId, newName, gameId: game.gameId })
-    }
+  socket.on("endExchangeWithPlayer", () => {
+    setOfferSent(false);
+  });
 
-    const handleDice = () => {
-        socket.emit("dice", { gameId: game.gameId, socketId: mySocketId });
-        setIsDiced(true);
+  socket.on("winner", (winnerUpdated: PlayerInterface) => {
+    setWinner(winnerUpdated);
+    socket.emit("endGame", { gameId: game.gameId, mySocketId });
+  });
 
-        const timer = setTimeout(() => {
-            socket.emit("endRound", { socketId: mySocketId, gameId: game.gameId });
-        }, 1600)
+  const handleStartGame = () => {
+    socket.emit("startGame", game.gameId);
+  };
 
-        const timer2 = setTimeout(() => {
-            setIsDiced(false);
-            setIsExchanged(false);
-        }, 2000)
+  const handleNickNameUpdate = (newName: string) => {
+    socket.emit("userNameUpdate", {
+      mySocketId,
+      newName,
+      gameId: game.gameId,
+    });
+  };
 
-        return () => {
-            clearTimeout(timer);
-            clearTimeout(timer2);
-        };
-    }
+  const handleDice = () => {
+    socket.emit("dice", { gameId: game.gameId, socketId: mySocketId });
+    setIsDiced(true);
 
-    const renderPlayers = () => {
-        if (players) {
-            return players.map(player => {
-                return <Player gameRound={game.round} key={player.playerId} player={player} players={players} mySocketId={mySocketId} updateNickName={handleNickNameUpdate} isStarted={game.started} />
-            })
-        }
-    }
+    const timer = setTimeout(() => {
+      socket.emit("endRound", { socketId: mySocketId, gameId: game.gameId });
+    }, 1600);
 
-    const reset = () => {
-        setPlayers(defaultPlayers);
-        setGame(defaultGame);
-        setMySocketId('');
-        setisCreator(false);
-        setActualDice({ firstDice: 1, secoundDice: 1 });
-        setIsExchanged(false);
-        setWinner(undefined);
-    }
+    const timer2 = setTimeout(() => {
+      setIsDiced(false);
+      setIsExchanged(false);
+    }, 2000);
 
-    const isMyRound = game.round === mySocketId;
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(timer2);
+    };
+  };
 
-    const isAfterExchanged = game.started && isMyRound && isExchanged;
+  function renderPlayers() {
+    return players.map((player) => (
+      <Player
+        gameRound={game.round}
+        key={player.playerId}
+        player={player}
+        players={players}
+        mySocketId={mySocketId}
+        updateNickName={handleNickNameUpdate}
+        isStarted={game.started}
+      />
+    ));
+  }
 
-    const isNotMyTurn = game.started && !isMyRound && !offerRecieved;
+  const reset = () => {
+    setPlayers(defaultPlayers);
+    setGame(defaultGame);
+    setMySocketId("");
+    setisCreator(false);
+    setActualDice({ firstDice: 1, secondDice: 1 });
+    setIsExchanged(false);
+    setWinner(undefined);
+  };
 
-    const showDice = isAfterExchanged || isNotMyTurn;
+  const isMyRound = game.round === mySocketId;
 
-    const showExchange = isMyRound && !isExchanged && !offerRecieved;
+  const isAfterExchanged = game.started && isMyRound && isExchanged;
 
-    return (
-        <>
-            <div className={`game ${players ? `game__players-${players.length}` : ""} ${players ? `game__my-index-${players.findIndex(playerA => playerA.playerId === mySocketId)}` : ""}`}>
-                <div className='game__board'>
-                    {!game.started &&
-                        <div className='game__start-options'>
-                            <div className='game__code'>
-                                Code: {id}
-                                <button className='game__code-copy-link' onClick={() => navigator.clipboard.writeText(id ? id : "")} >
-                                    <FaCopy />
-                                </button>
-                            </div>
-                        </div>
-                    }
-                    {showDice &&
-                        <div className='game__dice'>
-                            <div>
-                                <Dice dice={actualDice.firstDice} type={diceEnum.first} />
-                            </div>
-                            <div>
-                                <Dice dice={actualDice.secoundDice} type={diceEnum.secound} />
-                            </div>
-                        </div>
-                    }
-                    {showExchange &&
-                        <>
-                            {players &&
-                                <Exchange
-                                    gameHerd={game.herd}
-                                    mySocketId={mySocketId}
-                                    gameId={game.gameId}
-                                    players={players}
-                                    setIsExchanged={setIsExchanged}
-                                    offerSent={offerSent}
-                                    setOfferSent={setOfferSent}
-                                />
-                            }
-                        </>
-                    }
-                    {offerRecieved &&
-                        <OfferReceived offerRecieved={offerRecieved} players={players} setOfferRecieved={setOfferRecieved} />
-                    }
-                    <div className='game__buttons'>
-                        {!game.started && isCreator &&
-                            <button onClick={handleStartGame} className="game__start-game-btn" disabled={players && players.length === 1}>
-                                Start Game
-                            </button>}
-                        {isMyRound && isExchanged && !isDiced &&
-                            <button onClick={handleDice} className="game__button">
-                                Dice
-                            </button>
-                        }
-                        {isMyRound && !isExchanged && !offerSent &&
-                            <button className='exchange__end-btn' onClick={() => setIsExchanged(true)}>End exchanges</button>
-                        }
-                    </div>
-                    {game.started &&
-                        <div className='game__herd'>
-                            <div className='game__herd-title'>
-                                Game herd
-                            </div>
-                            {game.herd && <Animals animals={game.herd} />}
-                        </div>
-                    }
-                </div>
-                {renderPlayers()}
-                <TableExchange />
-                <Chat
-                    mySocketId={mySocketId}
-                    gameId={game.gameId}
-                />
-                {winner &&
-                    <EndGame
-                        winner={winner}
-                        isCreator={isCreator}
-                        gameId={game.gameId}
-                        mySocketId={mySocketId}
-                        reset={reset}
-                        players={players}
-                    />
-                }
-            </div >
-        </>
-    );
+  const isNotMyTurn = game.started && !isMyRound && !offerReceived;
+
+  const showDice = isAfterExchanged || isNotMyTurn;
+
+  const showExchange = isMyRound && !isExchanged && !offerReceived;
+
+  return (
+    <div
+      className={`game game__players-${
+        players.length
+      } game__my-index-${players.findIndex(
+        (playerA) => playerA.playerId === mySocketId
+      )}`}
+    >
+      <div className="game__board">
+        {!game.started && (
+          <div className="game__start-options">
+            <div className="game__code">
+              Code:
+              {id}
+              <button
+                type="submit"
+                className="game__code-copy-link"
+                onClick={() => navigator.clipboard.writeText(id || "")}
+              >
+                <FaCopy />
+              </button>
+            </div>
+          </div>
+        )}
+        {showDice && (
+          <div className="game__dice">
+            <div>
+              <Dice dice={actualDice.firstDice} type={DiceEnum.first} />
+            </div>
+            <div>
+              <Dice dice={actualDice.secondDice} type={DiceEnum.second} />
+            </div>
+          </div>
+        )}
+        {showExchange && players && (
+          <Exchange
+            gameHerd={game.herd}
+            mySocketId={mySocketId}
+            gameId={game.gameId}
+            players={players}
+            setIsExchanged={setIsExchanged}
+            offerSent={offerSent}
+            setOfferSent={setOfferSent}
+          />
+        )}
+        {offerReceived && (
+          <OfferReceived
+            offerReceived={offerReceived}
+            players={players}
+            setOfferReceived={setOfferReceived}
+          />
+        )}
+        <div className="game__buttons">
+          {!game.started && isCreator && (
+            <button
+              type="submit"
+              onClick={handleStartGame}
+              className="game__start-game-btn"
+              disabled={players && players.length === 1}
+            >
+              Start Game
+            </button>
+          )}
+          {isMyRound && isExchanged && !isDiced && (
+            <button type="submit" onClick={handleDice} className="game__button">
+              Dice
+            </button>
+          )}
+          {isMyRound && !isExchanged && !offerSent && (
+            <button
+              type="submit"
+              className="exchange__end-btn"
+              onClick={() => setIsExchanged(true)}
+            >
+              End exchanges
+            </button>
+          )}
+        </div>
+        {game.started && (
+          <div className="game__herd">
+            <div className="game__herd-title">Game herd</div>
+            {game.herd && <Animals animals={game.herd} />}
+          </div>
+        )}
+      </div>
+      {renderPlayers()}
+      <TableExchange />
+      <Chat mySocketId={mySocketId} gameId={game.gameId} />
+      {winner && (
+        <EndGame
+          winner={winner}
+          isCreator={isCreator}
+          gameId={game.gameId}
+          mySocketId={mySocketId}
+          reset={reset}
+          players={players}
+        />
+      )}
+    </div>
+  );
 }
 
 export default Game;

@@ -1,74 +1,85 @@
 import { useState } from "react";
-import { FaRegPaperPlane, FaPlus } from 'react-icons/fa';
-import { socket } from "../../connection/socket";
+import { FaRegPaperPlane, FaPlus } from "react-icons/fa";
+import socket from "../../connection/socket";
 
-interface chatInterface {
-    mySocketId: string,
-    gameId: string
+interface ChatInterface {
+  mySocketId: string;
+  gameId: string;
 }
 
-interface messageInterface {
-    author: string,
-    content: string
+interface MessageInterface {
+  author: string;
+  content: string;
 }
 
-function Chat(props: chatInterface) {
+function Chat(props: ChatInterface) {
+  const { mySocketId, gameId } = props;
 
-    const { mySocketId, gameId } = props;
+  const [isChat, setIsChat] = useState(false);
+  const [messages, setMessages] = useState<MessageInterface[]>([]);
+  const [messageToSend, setMessageToSend] = useState("");
 
-    const [isChat, setIsChat] = useState(false);
-    const [messages, setMessages] = useState<messageInterface[]>([]);
-    const [messageToSend, setMessageToSend] = useState("");
+  const renderMessages = () =>
+    messages.map((message) => (
+      <div className="chat__message message" key={message.content}>
+        <p className="message__author">{message.author}:</p>
+        <p className="message__content">{message.content}</p>
+      </div>
+    ));
 
-    const renderMessages = () => {
-        return messages.map((message) => {
-            return (
-                <div className="chat__message message" key={message.author + "i" + message.content}>
-                    <p className="message__author">{message.author}: </p>
-                    <p className="message__content">{message.content}</p>
-                </div>
-            )
-        })
-
+  const sendMessage = (e?: React.FormEvent<HTMLFormElement>) => {
+    if (e) {
+      e.preventDefault();
     }
+    socket.emit("sendMessage", {
+      socketId: mySocketId,
+      gameId,
+      message: messageToSend,
+    });
+    setMessageToSend("");
+  };
 
-    const sendMessage = (e?: React.FormEvent<HTMLFormElement>) => {
-        e && e.preventDefault();
-        socket.emit("sendMessage", { socketId: mySocketId, gameId, message: messageToSend })
-        setMessageToSend("");
-    }
+  socket.on("messagesUpdate", (messagesUpdated: MessageInterface[]) => {
+    setMessages(messagesUpdated);
+  });
 
-    socket.on("messagesUpdate", (messages: messageInterface[]) => {
-        setMessages(messages);
-    })
-
-    return (
-        <>
-            {isChat ?
-                <div className="chat">
-                    <button className="chat__close-btn" onClick={() => setIsChat(false)}>
-                        <FaPlus className="chat__close-icon" />
-                    </button>
-                    <header className="chat__header">
-                        Chat
-                    </header>
-                    <div className="chat__messages">
-                        {renderMessages()}
-                    </div>
-                    <form className="chat__form" onSubmit={(e) => sendMessage(e)}>
-                        <input className="chat__input" value={messageToSend} onChange={(e) => setMessageToSend(e.target.value)} maxLength={200} />
-                        <button className="chat__send-btn" onClick={() => sendMessage()} disabled={messageToSend.length === 0}>
-                            SEND
-                        </button>
-                    </form>
-                </div>
-                :
-                <button className="chat__show-btn" onClick={() => setIsChat(true)}>
-                    <FaRegPaperPlane />
-                </button>
-            }
-        </>
-    )
+  return isChat ? (
+    <div className="chat">
+      <button
+        type="submit"
+        className="chat__close-btn"
+        onClick={() => setIsChat(false)}
+      >
+        <FaPlus className="chat__close-icon" />
+      </button>
+      <header className="chat__header">Chat</header>
+      <div className="chat__messages">{renderMessages()}</div>
+      <form className="chat__form" onSubmit={(e) => sendMessage(e)}>
+        <input
+          className="chat__input"
+          value={messageToSend}
+          onChange={(e) => setMessageToSend(e.target.value)}
+          maxLength={200}
+        />
+        <button
+          type="submit"
+          className="chat__send-btn"
+          onClick={() => sendMessage()}
+          disabled={messageToSend.length === 0}
+        >
+          SEND
+        </button>
+      </form>
+    </div>
+  ) : (
+    <button
+      type="submit"
+      className="chat__show-btn"
+      onClick={() => setIsChat(true)}
+    >
+      <FaRegPaperPlane />
+    </button>
+  );
 }
 
 export default Chat;

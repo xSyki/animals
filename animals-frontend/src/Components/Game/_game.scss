@@ -1,94 +1,93 @@
 .game {
-    position: relative;
-    height: 100vh;
-    height: --webkit-fill-available;
+  position: relative;
+  height: 100vh;
+  height: --webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  &__code {
+    margin-top: 10px;
+    justify-self: flex-start;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    width: 60vw;
+    max-width: 200px;
+    text-align: center;
+    color: white;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+
+    border: 2px solid white;
+    border-radius: 3rem;
+  }
+
+  &__code-copy-link {
+    @include button;
+    height: 4rem;
+  }
+
+  &__board {
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+    flex-direction: column;
+    transition: 0.3s linear;
+  }
+
+  &__dice {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    gap: 20vw;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    justify-self: flex-end;
+    height: 4rem;
+  }
+
+  &__herd {
+    height: 12vh;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+  }
 
-    &__code {
-        margin-top: 10px;
-        justify-self: flex-start;
-        align-self: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 2rem;
-        width: 60vw;
-        max-width: 200px;
-        text-align: center;
-        color: white;
-        text-shadow: 0 2px 2px rgba(0, 0, 0, 0.20);
+  &__herd-title {
+    color: white;
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
 
+  &__start-options {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
 
-        border: 2px solid white;
-        border-radius: 3rem;
-    }
+  &__start {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
 
-    &__code-copy-link {
-        @include button;
-        height: 4rem;
-    }
+  &__start-game-btn {
+    margin-bottom: 30px;
+    @include button;
+    align-self: center;
+    height: 4rem;
+  }
 
-    &__board {
-        display: flex;
-        flex-grow: 1;
-        height: 100%;
-        flex-direction: column;
-        transition: 0.3s linear;
-    }
-
-    &__dice {
-        flex-grow: 1;
-        display: flex;
-        justify-content: center;
-        gap: 20vw;
-        align-items: center;
-    }
-
-    &__buttons {
-        display: flex;
-        justify-content: center;
-        justify-self: flex-end;
-        height: 4rem;
-    }
-
-    &__herd {
-        height: 12vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    &__herd-title {
-        color: white;
-        font-size: 2rem;
-        text-transform: uppercase;
-    }
-
-    &__start-options {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-    }
-
-    &__start {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-    }
-
-    &__start-game-btn {
-        margin-bottom: 30px;
-        @include button;
-        align-self: center;
-        height: 4rem;
-    }
-
-    &__button {
-        @include button;
-        align-self: center;
-        height: 4rem;
-    }
+  &__button {
+    @include button;
+    align-self: center;
+    height: 4rem;
+  }
 }
