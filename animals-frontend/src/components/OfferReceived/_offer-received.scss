@@ -9,7 +9,7 @@
   align-self: center;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: var(--text);
   font-size: 2rem;
   gap: 20px;
 
@@ -38,7 +38,7 @@
     justify-content: center;
     align-items: center;
     font-size: 3rem;
-    color: white;
+    color: var(--text);
   }
 
   &__img {
@@ -51,7 +51,7 @@
     justify-content: center;
     align-items: center;
     font-size: 3rem;
-    color: white;
+    color: var(--text);
   }
 
   &__buttons {

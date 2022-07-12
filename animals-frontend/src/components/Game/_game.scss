@@ -17,10 +17,10 @@
     width: 60vw;
     max-width: 200px;
     text-align: center;
-    color: white;
+    color: var(--text);
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 
-    border: 2px solid white;
+    border: 2px solid var(--text);
     border-radius: 3rem;
   }
 
@@ -61,7 +61,7 @@
   }
 
   &__herd-title {
-    color: white;
+    color: var(--text);
     font-size: 2rem;
     text-transform: uppercase;
   }

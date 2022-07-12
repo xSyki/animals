@@ -1,13 +1,16 @@
 .player {
+  justify-self: center;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 5px;
   height: 12vh;
   margin: 0px 10px 0px 10px;
 
   &__profile {
     height: 4vh;
-    color: white;
+    color: var(--text);
     font-size: 1.5rem;
   }
 
@@ -24,13 +27,13 @@
   &__name-form {
     display: flex;
     flex-direction: row;
-    border: 2px solid white;
+    border: 2px solid var(--text);
     border-radius: 3rem;
   }
 
   &__name-input {
     width: 150px;
-    color: white;
+    color: var(--text);
     font-size: 1.5rem;
     background-color: transparent;
     text-align: center;

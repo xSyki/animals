@@ -8,7 +8,7 @@
     position: absolute;
     padding: 30px;
     font-size: 4rem;
-    color: white;
+    color: var(--text);
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   }
 
@@ -21,7 +21,7 @@
   }
 
   &__join-game {
-    color: white;
+    color: var(--text);
   }
 
   &__join-title {
@@ -31,7 +31,7 @@
   }
 
   &__join-box {
-    border: 2px solid white;
+    border: 2px solid var(--text);
     border-radius: 3rem;
   }
 
@@ -42,7 +42,7 @@
     background: transparent;
     border: none;
     padding-left: 10px;
-    color: white;
+    color: var(--text);
 
     &::placeholder {
       color: rgb(230, 230, 230);
@@ -67,14 +67,14 @@
   &__or {
     padding: 20px;
     font-size: 2rem;
-    color: white;
+    color: var(--text);
     text-align: center;
     overflow: hidden;
     width: 100%;
 
     &:before,
     &:after {
-      background-color: rgb(255, 255, 255);
+      background-color: var(--text);
       content: "";
       display: inline-block;
       height: 2px;

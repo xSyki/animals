@@ -1,6 +1,9 @@
 @import "./_reset";
 @import "./_variables";
+
 @import "./mixins/button";
+@import "./mixins/scrollbar-mixin";
+
 @import "../Components/_app";
 @import "../Components/Game/game768px/mixin-players-4";
 @import "../Components/Game/game768px/mixin-players-5";

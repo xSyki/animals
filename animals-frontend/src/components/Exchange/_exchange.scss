@@ -15,23 +15,7 @@
     overflow-y: auto;
     align-items: center;
 
-    &::-webkit-scrollbar {
-      background: transparent;
-      width: 7px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: rgba(255, 0, 0, 0);
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: white;
-      border-radius: 3rem;
-    }
-
-    &::-webkit-scrollbar-thumb:hover {
-      background: #ececec;
-    }
+    @include scrollbar-mixin;
   }
 
   &__wait {
@@ -40,7 +24,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: var(--text);
     font-size: 3rem;
     flex-direction: column;
     gap: 20px;
@@ -58,9 +42,9 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #ffffff;
-  color: #ffffff;
-  box-shadow: 9999px 0 0 -5px #ffffff;
+  background-color: var(--text);
+  color: var(--text);
+  box-shadow: 9999px 0 0 -5px var(--text);
   animation: dotPulse 1.5s infinite linear;
   animation-delay: 0.25s;
 }
@@ -74,63 +58,63 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #ffffff;
-  color: #ffffff;
+  background-color: var(--text);
+  color: var(--text);
 }
 
 .dot-pulse::before {
-  box-shadow: 9984px 0 0 -5px #ffffff;
+  box-shadow: 9984px 0 0 -5px var(--text);
   animation: dotPulseBefore 1.5s infinite linear;
   animation-delay: 0s;
 }
 
 .dot-pulse::after {
-  box-shadow: 10014px 0 0 -5px #ffffff;
+  box-shadow: 10014px 0 0 -5px var(--text);
   animation: dotPulseAfter 1.5s infinite linear;
   animation-delay: 0.5s;
 }
 
 @keyframes dotPulseBefore {
   0% {
-    box-shadow: 9984px 0 0 -5px #ffffff;
+    box-shadow: 9984px 0 0 -5px var(--text);
   }
 
   30% {
-    box-shadow: 9984px 0 0 2px #ffffff;
+    box-shadow: 9984px 0 0 2px var(--text);
   }
 
   60%,
   100% {
-    box-shadow: 9984px 0 0 -5px #ffffff;
+    box-shadow: 9984px 0 0 -5px var(--text);
   }
 }
 
 @keyframes dotPulse {
   0% {
-    box-shadow: 9999px 0 0 -5px #ffffff;
+    box-shadow: 9999px 0 0 -5px var(--text);
   }
 
   30% {
-    box-shadow: 9999px 0 0 2px #ffffff;
+    box-shadow: 9999px 0 0 2px var(--text);
   }
 
   60%,
   100% {
-    box-shadow: 9999px 0 0 -5px #ffffff;
+    box-shadow: 9999px 0 0 -5px var(--text);
   }
 }
 
 @keyframes dotPulseAfter {
   0% {
-    box-shadow: 10014px 0 0 -5px #ffffff;
+    box-shadow: 10014px 0 0 -5px var(--text);
   }
 
   30% {
-    box-shadow: 10014px 0 0 2px #ffffff;
+    box-shadow: 10014px 0 0 2px var(--text);
   }
 
   60%,
   100% {
-    box-shadow: 10014px 0 0 -5px #ffffff;
+    box-shadow: 10014px 0 0 -5px var(--text);
   }
 }
