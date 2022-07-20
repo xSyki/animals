@@ -32,7 +32,7 @@ function Player(props: PlayerPropsInterface) {
     <div className={`player player__${index}`}>
       <div className="player__profile">
         {isMe && !isStarted ? (
-          <form onSubmit={() => handleSubmit} className="player__name-form">
+          <form onSubmit={(e) => handleSubmit(e)} className="player__name-form">
             <input
               className="player__name-input"
               maxLength={12}
