@@ -9,6 +9,7 @@ function TableExchange() {
     <div className="table">
       <button
         type="submit"
+        title="Close table"
         className="table__close-btn"
         onClick={() => setIsTableExchange(false)}
       >
@@ -41,6 +42,7 @@ function TableExchange() {
   ) : (
     <button
       type="submit"
+      title="Open table"
       className="table__show-btn"
       onClick={() => setIsTableExchange(true)}
     >

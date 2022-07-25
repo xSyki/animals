@@ -39,7 +39,7 @@ function SplashScreen() {
                 maxLength={5}
                 value={code}
                 onChange={(event) =>
-                  setCode(event.target.value.toLocaleUpperCase())
+                  setCode(event.target.value.toLocaleUpperCase().slice(0, 5))
                 }
               />
               <button
@@ -48,7 +48,7 @@ function SplashScreen() {
                 disabled={code.length !== 5}
                 onClick={() => handleJoinGame()}
               >
-                Join
+                JOIN
               </button>
             </form>
           </div>

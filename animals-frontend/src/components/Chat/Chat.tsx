@@ -39,6 +39,15 @@ function Chat(props: ChatInterface) {
     setMessageToSend("");
   };
 
+  const handleMessageInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.length > 200) {
+      const message = e.target.value.slice(0, 200);
+      setMessageToSend(message);
+      return;
+    }
+    setMessageToSend(e.target.value);
+  };
+
   socket.on("messagesUpdate", (messagesUpdated: MessageInterface[]) => {
     setMessages(messagesUpdated);
   });
@@ -47,6 +56,7 @@ function Chat(props: ChatInterface) {
     <div className="chat">
       <button
         type="submit"
+        title="Close chat"
         className="chat__close-btn"
         onClick={() => setIsChat(false)}
       >
@@ -56,13 +66,16 @@ function Chat(props: ChatInterface) {
       <div className="chat__messages">{renderMessages()}</div>
       <form className="chat__form" onSubmit={(e) => sendMessage(e)}>
         <input
+          type="text"
           className="chat__input"
           value={messageToSend}
-          onChange={(e) => setMessageToSend(e.target.value)}
+          onChange={handleMessageInput}
+          placeholder="Aa"
           maxLength={200}
         />
         <button
           type="submit"
+          title="Send message"
           className="chat__send-btn"
           onClick={() => sendMessage()}
           disabled={messageToSend.length === 0}
@@ -74,6 +87,7 @@ function Chat(props: ChatInterface) {
   ) : (
     <button
       type="submit"
+      title="Open chat"
       className="chat__show-btn"
       onClick={() => setIsChat(true)}
     >

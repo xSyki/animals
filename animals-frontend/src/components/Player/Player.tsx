@@ -15,11 +15,13 @@ function Player(props: PlayerPropsInterface) {
   const { players, player, mySocketId, updateNickName, isStarted, gameRound } =
     props;
 
+  const [temporaryName, setTemporaryName] = useState(player.name);
   const [name, setName] = useState(player.name);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    updateNickName(name);
+    setName(temporaryName);
+    updateNickName(temporaryName);
   };
 
   const isMe = player.playerId === mySocketId;
@@ -37,10 +39,10 @@ function Player(props: PlayerPropsInterface) {
               className="player__name-input"
               maxLength={12}
               type="text"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
+              value={temporaryName}
+              onChange={(event) => setTemporaryName(event.target.value)}
             />
-            {player.name !== name && (
+            {temporaryName !== name && (
               <button
                 type="submit"
                 className="player__input-submit"

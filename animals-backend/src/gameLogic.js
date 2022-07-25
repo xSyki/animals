@@ -106,7 +106,7 @@ function playerJoinsGame(idData) {
 
   sock.join(idData.gameId);
 
-  const newName = name && `Player#${idData.mySocketId.slice(0, 5)}`;
+  const newName = name ? name : `Player#${idData.mySocketId.slice(0, 5)}`;
 
   const defaultHerd = {
     rabbit: 0,

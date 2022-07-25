@@ -85,6 +85,9 @@
         border: none;
         outline: none;
       }
+      &::placeholder {
+        color: #d1d1d1;
+      }
     }
 
     &__send-btn {
@@ -128,6 +131,8 @@
     &__author {
       display: inline;
       font-weight: bold;
+
+      margin-right: 0.25rem;
     }
 
     &__content {
