@@ -2,6 +2,8 @@
 
 SuperFarmer is an online implementation of childhood games. Created thanks to the socket.io library. It can be played by 2 to 6 players.
 
+[Demo](https://syki-animals.herokuapp.com/)
+
 ![SuperFarmerScreen](https://syki.pl/Photos/superFarmer/superFarmer-pc.png)
 
 ## To run app
