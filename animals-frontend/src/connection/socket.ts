@@ -1,21 +1,7 @@
-import io from "socket.io-client";
+import lookup from 'socket.io-client'
 
-let URL = "";
+const URL = ''
 
-switch (process.env.NODE_ENV) {
-  case "production":
-    URL = "https://www.superfarmer.io";
-    break;
-  case "development":
-    URL = "http://localhost:3000";
-    break;
-  case "test":
-    URL = "http://localhost:3000";
-    break;
-  default:
-    URL = "https://www.superfarmer.io";
-}
+const socket = lookup(URL)
 
-const socket = io(URL);
-
-export default socket;
+export default socket

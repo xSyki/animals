@@ -1,29 +1,29 @@
 .dice {
-  transform-style: preserve-3d;
-  transition: 1.5s ease-in-out;
+    transform-style: preserve-3d;
+    transition: 1.5s ease-in-out;
 
-  span {
-    position: absolute;
-    display: block;
-    font-size: 2.5em;
-  }
-
-  .side {
-    backface-visibility: hidden;
-    background: transparent url(../../assets/images/dice.png) 0 0 no-repeat;
-  }
-
-  .number {
-    .animal-img {
-      max-height: 50px;
-      max-width: 50px;
+    span {
+        position: absolute;
+        display: block;
+        font-size: 2.5em;
     }
-  }
 
-  .number.center {
-    margin-top: 20px;
-    text-align: center;
-  }
+    .side {
+        backface-visibility: hidden;
+        background: transparent url(../../assets/images/dice.png) 0 0 no-repeat;
+    }
+
+    .number {
+        .animal-img {
+            max-height: 50px;
+            max-width: 50px;
+        }
+    }
+
+    .number.center {
+        margin-top: 20px;
+        text-align: center;
+    }
 }
 
 $rotateY: 72deg;
@@ -34,185 +34,196 @@ $width: 100px;
 $height: 96px;
 
 #d12 {
-  width: $width;
-  height: $height;
-
-  .side {
-    position: absolute;
     width: $width;
     height: $height;
-    background-position: 0 -479px;
-  }
 
-  .cap-top {
-    transform-style: preserve-3d;
-    transform: translateY($setY);
-  }
+    .side {
+        position: absolute;
+        width: $width;
+        height: $height;
+        background-position: 0 -479px;
+    }
 
-  .cap-bottom {
-    transform-style: preserve-3d;
-    transform: translateY(-$setY);
-  }
+    .cap-top {
+        transform-style: preserve-3d;
+        transform: translateY($setY);
+    }
 
-  .one {
-    transform: rotateX(-90deg) rotateZ(36deg) translateZ($setZ + 3px)
-      translateY(-6px);
-  }
+    .cap-bottom {
+        transform-style: preserve-3d;
+        transform: translateY(-$setY);
+    }
 
-  .two {
-    transform: rotateY($rotateY * 0) rotateX($rotateX) translateZ($setZ);
-  }
+    .one {
+        transform: rotateX(-90deg) rotateZ(36deg) translateZ($setZ + 3px)
+            translateY(-6px);
+    }
 
-  .three {
-    transform: rotateY($rotateY * 1) rotateX($rotateX) translateZ($setZ);
-  }
+    .two {
+        transform: rotateY($rotateY * 0) rotateX($rotateX) translateZ($setZ);
+    }
 
-  .four {
-    transform: rotateY($rotateY * 2) rotateX($rotateX) translateZ($setZ);
-  }
+    .three {
+        transform: rotateY($rotateY * 1) rotateX($rotateX) translateZ($setZ);
+    }
 
-  .five {
-    transform: rotateY($rotateY * 3) rotateX($rotateX) translateZ($setZ);
-  }
+    .four {
+        transform: rotateY($rotateY * 2) rotateX($rotateX) translateZ($setZ);
+    }
 
-  .six {
-    transform: rotateY($rotateY * 4) rotateX($rotateX) translateZ($setZ);
-  }
+    .five {
+        transform: rotateY($rotateY * 3) rotateX($rotateX) translateZ($setZ);
+    }
 
-  .seven {
-    transform: rotateY($rotateY * 0) rotateX(-180deg + $rotateX)
-      translateZ($setZ);
-  }
+    .six {
+        transform: rotateY($rotateY * 4) rotateX($rotateX) translateZ($setZ);
+    }
 
-  .eight {
-    transform: rotateY($rotateY * 1) rotateX(-180deg + $rotateX)
-      translateZ($setZ);
-  }
+    .seven {
+        transform: rotateY($rotateY * 0) rotateX(-180deg + $rotateX)
+            translateZ($setZ);
+    }
 
-  .nine {
-    transform: rotateY($rotateY * 2) rotateX(-180deg + $rotateX)
-      translateZ($setZ);
-  }
+    .eight {
+        transform: rotateY($rotateY * 1) rotateX(-180deg + $rotateX)
+            translateZ($setZ);
+    }
 
-  .ten {
-    transform: rotateY($rotateY * 3) rotateX(-180deg + $rotateX)
-      translateZ($setZ);
-  }
+    .nine {
+        transform: rotateY($rotateY * 2) rotateX(-180deg + $rotateX)
+            translateZ($setZ);
+    }
 
-  .eleven {
-    transform: rotateY($rotateY * 4) rotateX(-180deg + $rotateX)
-      translateZ($setZ);
-  }
+    .ten {
+        transform: rotateY($rotateY * 3) rotateX(-180deg + $rotateX)
+            translateZ($setZ);
+    }
 
-  .twelve {
-    transform: rotateX(90deg) rotateZ(36deg) translateZ($setZ + 3px)
-      translateY(-6px);
-  }
+    .eleven {
+        transform: rotateY($rotateY * 4) rotateX(-180deg + $rotateX)
+            translateZ($setZ);
+    }
 
-  .number {
-    font-size: 4em;
-    letter-spacing: -4px;
-  }
+    .twelve {
+        transform: rotateX(90deg) rotateZ(36deg) translateZ($setZ + 3px)
+            translateY(-6px);
+    }
 
-  .number.center {
-    margin-top: 26px;
-    margin-left: -6px;
-    text-align: center;
-  }
+    .number {
+        font-size: 4em;
+        letter-spacing: -4px;
+    }
+
+    .number.center {
+        margin-top: 26px;
+        margin-left: -6px;
+        text-align: center;
+    }
 }
 
 #wrapper {
-  /* green marble */
-  &.side-one {
-    #d12 {
-      color: #fff;
-      text-shadow: 2px 2px 2px #000;
+    /* green marble */
+    &.side-one {
+        #d12 {
+            color: #fff;
+            text-shadow: 2px 2px 2px #000;
+        }
+
+        #d12 .side {
+            background-position: -140px -479px;
+        }
     }
 
-    #d12 .side {
-      background-position: -140px -479px;
-    }
-  }
+    /* pink marble */
+    &.side-two {
+        #d12 {
+            color: #000000;
+            text-shadow: -2px 2px 2px #ffffff;
+        }
 
-  /* pink marble */
-  &.side-two {
-    #d12 {
-      color: #000000;
-      text-shadow: -2px 2px 2px #ffffff;
-    }
+        #d4 .side {
+            background-position: -280px 0;
+        }
 
-    #d4 .side {
-      background-position: -280px 0;
-    }
+        #d6 .side {
+            background-position: -280px -132px;
+        }
 
-    #d6 .side {
-      background-position: -280px -132px;
-    }
+        #d8 .side {
+            background-position: -280px -243px;
+        }
 
-    #d8 .side {
-      background-position: -280px -243px;
-    }
+        #d10 .side {
+            background-position: -280px -356px;
+        }
 
-    #d10 .side {
-      background-position: -280px -356px;
-    }
+        #d12 .side {
+            background-position: -280px -479px;
+        }
 
-    #d12 .side {
-      background-position: -280px -479px;
+        #d20 .side {
+            background-position: -280px -585px;
+        }
     }
-
-    #d20 .side {
-      background-position: -280px -585px;
-    }
-  }
 }
 
 .dice {
-  &__show-1 {
-    transform: translateZ(-100px) rotateX(450deg) rotateY(-35deg) rotateZ(0deg);
-  }
+    &__show-1 {
+        transform: translateZ(-100px) rotateX(450deg) rotateY(-35deg)
+            rotateZ(0deg);
+    }
 
-  &__show-2 {
-    transform: translateZ(-100px) rotateX(35deg) rotateY(-5deg) rotateZ(0deg);
-  }
+    &__show-2 {
+        transform: translateZ(-100px) rotateX(35deg) rotateY(-5deg)
+            rotateZ(0deg);
+    }
 
-  &__show-3 {
-    transform: translateZ(0px) rotateX(30deg) rotateY(-430deg) rotateZ(0deg);
-  }
+    &__show-3 {
+        transform: translateZ(0px) rotateX(30deg) rotateY(-430deg) rotateZ(0deg);
+    }
 
-  &__show-4 {
-    transform: translateZ(-100px) rotateX(20deg) rotateY(220deg) rotateZ(0deg);
-  }
+    &__show-4 {
+        transform: translateZ(-100px) rotateX(20deg) rotateY(220deg)
+            rotateZ(0deg);
+    }
 
-  &__show-5 {
-    transform: translateZ(-100px) rotateX(20deg) rotateY(-210deg) rotateZ(7deg);
-  }
+    &__show-5 {
+        transform: translateZ(-100px) rotateX(20deg) rotateY(-210deg)
+            rotateZ(7deg);
+    }
 
-  &__show-6 {
-    transform: translateZ(-100px) rotateX(-340deg) rotateY(70deg) rotateZ(0deg);
-  }
+    &__show-6 {
+        transform: translateZ(-100px) rotateX(-340deg) rotateY(70deg)
+            rotateZ(0deg);
+    }
 
-  &__show-7 {
-    transform: translateZ(-100px) rotateX(-150deg) rotateY(360deg) rotateZ(0deg);
-  }
+    &__show-7 {
+        transform: translateZ(-100px) rotateX(-150deg) rotateY(360deg)
+            rotateZ(0deg);
+    }
 
-  &__show-8 {
-    transform: translateZ(-100px) rotateX(25deg) rotateY(255deg) rotateZ(180deg);
-  }
+    &__show-8 {
+        transform: translateZ(-100px) rotateX(25deg) rotateY(255deg)
+            rotateZ(180deg);
+    }
 
-  &__show-9 {
-    transform: translateZ(-100px) rotateX(25deg) rotateY(-45deg) rotateZ(180deg);
-  }
+    &__show-9 {
+        transform: translateZ(-100px) rotateX(25deg) rotateY(-45deg)
+            rotateZ(180deg);
+    }
 
-  &__show-10 {
-    transform: translateZ(-100px) rotateX(25deg) rotateY(400deg) rotateZ(180deg);
-  }
+    &__show-10 {
+        transform: translateZ(-100px) rotateX(25deg) rotateY(400deg)
+            rotateZ(180deg);
+    }
 
-  &__show-11 {
-    transform: translateZ(-100px) rotateX(25deg) rotateY(110deg) rotateZ(180deg);
-  }
+    &__show-11 {
+        transform: translateZ(-100px) rotateX(25deg) rotateY(110deg)
+            rotateZ(180deg);
+    }
 
-  &__show-12 {
-    transform: translateZ(-100px) rotateX(277deg) rotateY(35deg) rotateZ(0deg);
-  }
+    &__show-12 {
+        transform: translateZ(-100px) rotateX(277deg) rotateY(35deg)
+            rotateZ(0deg);
+    }
 }

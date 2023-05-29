@@ -1,50 +1,50 @@
 .offer {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 10px 50px 10px 50px;
-  height: 7vh;
-  justify-content: center;
-  align-items: center;
-  background: transparent url(../../assets/images/boards/single-board.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  max-width: 600px;
-
-  &__what {
+    margin-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3rem;
-    color: var(--text);
-  }
-
-  &__arrow {
-    margin: 0px 5px 0px 5px;
-    font-size: 3rem;
-    color: var(--text);
-  }
-
-  &__for {
-    display: flex;
+    width: 100%;
+    padding: 10px 50px 10px 50px;
+    height: 7vh;
     justify-content: center;
     align-items: center;
-    font-size: 3rem;
-    color: var(--text);
-  }
+    background: transparent url(../../assets/images/boards/single-board.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    max-width: 600px;
 
-  &__img {
-    max-height: 50px;
-    max-width: 50px;
-    padding: 2px 0px 2px 0px;
-  }
+    &__what {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        color: var(--text);
+    }
 
-  &__submit-btn {
-    @include button;
-    margin-left: 10px;
-    padding: 5px 10px 5px 10px;
-  }
+    &__arrow {
+        margin: 0px 5px 0px 5px;
+        font-size: 3rem;
+        color: var(--text);
+    }
+
+    &__for {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        color: var(--text);
+    }
+
+    &__img {
+        max-height: 50px;
+        max-width: 50px;
+        padding: 2px 0px 2px 0px;
+    }
+
+    &__submit-btn {
+        @include button;
+        margin-left: 10px;
+        padding: 5px 10px 5px 10px;
+    }
 }

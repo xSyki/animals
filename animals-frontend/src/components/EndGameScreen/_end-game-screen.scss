@@ -1,53 +1,53 @@
 .end-screen {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 90%;
-  max-width: 500px;
-  height: 70vh;
-  max-height: 600px;
-
-  background: transparent url(../../assets/images/boards/board-16-9.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-
-  color: white;
-  font-size: 3rem;
-  text-align: center;
-
-  &__winner-name {
-    font-weight: bold;
-    font-size: 3rem;
-  }
-
-  &__create-game-btn {
-    @include button;
-
-    margin: auto;
-    margin-top: 20px;
-    height: 4rem;
-  }
-
-  &__join-game-btn {
-    @include button;
-
-    margin: auto;
-    margin-top: 20px;
-    height: 4rem;
-  }
-
-  &__bg {
-    position: absolute;
-    height: 100vh;
-    height: --webkit-fill-available;
-    width: 100%;
-
-    background-color: rgba(0, 0, 0, 0.3);
-
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+
+    width: 90%;
+    max-width: 500px;
+    height: 70vh;
+    max-height: 600px;
+
+    background: transparent url(../../assets/images/boards/board-16-9.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+
+    &__winner-name {
+        font-weight: bold;
+        font-size: 3rem;
+    }
+
+    &__create-game-btn {
+        @include button;
+
+        margin: auto;
+        margin-top: 20px;
+        height: 4rem;
+    }
+
+    &__join-game-btn {
+        @include button;
+
+        margin: auto;
+        margin-top: 20px;
+        height: 4rem;
+    }
+
+    &__bg {
+        position: absolute;
+        height: 100vh;
+        height: --webkit-fill-available;
+        width: 100%;
+
+        background-color: rgba(0, 0, 0, 0.3);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

@@ -1,29 +1,29 @@
 @mixin button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(to bottom, #e6a827, #f48c24);
-  padding: 20px 30px 20px 30px;
-  border-radius: 3rem;
-  font-size: 1.5rem;
-  border: 2px solid white;
-  text-transform: uppercase;
-  color: white;
-  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-  box-shadow: -1px 1px 0 #b2d4ec, -1px 1px 0 #b2d4ec inset,
-    0 3px 2px rgba(0, 0, 0, 0.2), 0 3px 4px rgba(0, 0, 0, 0.2) inset,
-    0 6px 6px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #e6a827, #f48c24);
+    padding: 20px 30px 20px 30px;
+    border-radius: 3rem;
+    font-size: 1.5rem;
+    border: 2px solid white;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: -1px 1px 0 #b2d4ec, -1px 1px 0 #b2d4ec inset,
+        0 3px 2px rgba(0, 0, 0, 0.2), 0 3px 4px rgba(0, 0, 0, 0.2) inset,
+        0 6px 6px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
 
-  &:hover {
-    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.3);
-  }
+    &:hover {
+        box-shadow: 0 3px 2px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.3);
+    }
 
-  &:active {
-    box-shadow: none;
-  }
+    &:active {
+        box-shadow: none;
+    }
 
-  &:disabled {
-    background: linear-gradient(to bottom, #acacac, #9f9f9f);
-  }
+    &:disabled {
+        background: linear-gradient(to bottom, #acacac, #9f9f9f);
+    }
 }

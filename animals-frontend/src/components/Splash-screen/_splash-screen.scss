@@ -1,101 +1,101 @@
 .splash-screen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-
-  &__title {
-    position: absolute;
-    padding: 30px;
-    font-size: 4rem;
-    color: var(--text);
-    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-  }
-
-  &__handle-game {
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-  }
+    height: 100%;
 
-  &__join-game {
-    color: var(--text);
-  }
-
-  &__join-title {
-    text-align: center;
-    font-size: 2.5rem;
-    padding: 10px;
-  }
-
-  &__join-box {
-    border: 2px solid var(--text);
-    border-radius: 3rem;
-  }
-
-  &__join-input {
-    height: 4rem;
-    font-size: 1.5rem;
-    width: 7rem;
-    background: transparent;
-    border: none;
-    padding-left: 10px;
-    color: var(--text);
-
-    &::placeholder {
-      color: rgb(230, 230, 230);
+    &__title {
+        position: absolute;
+        padding: 30px;
+        font-size: 4rem;
+        color: var(--text);
+        text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
     }
 
-    border: none;
-    outline: none;
-    &:active {
-      border: none;
-      outline: none;
-    }
-  }
-
-  &__join-button {
-    @include button;
-    display: unset;
-    padding: 10px 15px 10px 15px;
-    height: 4rem;
-    text-transform: uppercase;
-  }
-
-  &__or {
-    padding: 20px;
-    font-size: 2rem;
-    color: var(--text);
-    text-align: center;
-    overflow: hidden;
-    width: 100%;
-
-    &:before,
-    &:after {
-      background-color: var(--text);
-      content: "";
-      display: inline-block;
-      height: 2px;
-      position: relative;
-      vertical-align: middle;
-      width: 50%;
+    &__handle-game {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
-    &:before {
-      right: 0.5em;
-      margin-left: -50%;
+    &__join-game {
+        color: var(--text);
     }
 
-    &:after {
-      left: 0.5em;
-      margin-right: -50%;
+    &__join-title {
+        text-align: center;
+        font-size: 2.5rem;
+        padding: 10px;
     }
-  }
 
-  &__create-button {
-    @include button;
-    height: 4rem;
-  }
+    &__join-box {
+        border: 2px solid var(--text);
+        border-radius: 3rem;
+    }
+
+    &__join-input {
+        height: 4rem;
+        font-size: 1.5rem;
+        width: 7rem;
+        background: transparent;
+        border: none;
+        padding-left: 10px;
+        color: var(--text);
+
+        &::placeholder {
+            color: rgb(230, 230, 230);
+        }
+
+        border: none;
+        outline: none;
+        &:active {
+            border: none;
+            outline: none;
+        }
+    }
+
+    &__join-button {
+        @include button;
+        display: unset;
+        padding: 10px 15px 10px 15px;
+        height: 4rem;
+        text-transform: uppercase;
+    }
+
+    &__or {
+        padding: 20px;
+        font-size: 2rem;
+        color: var(--text);
+        text-align: center;
+        overflow: hidden;
+        width: 100%;
+
+        &:before,
+        &:after {
+            background-color: var(--text);
+            content: '';
+            display: inline-block;
+            height: 2px;
+            position: relative;
+            vertical-align: middle;
+            width: 50%;
+        }
+
+        &:before {
+            right: 0.5em;
+            margin-left: -50%;
+        }
+
+        &:after {
+            left: 0.5em;
+            margin-right: -50%;
+        }
+    }
+
+    &__create-button {
+        @include button;
+        height: 4rem;
+    }
 }

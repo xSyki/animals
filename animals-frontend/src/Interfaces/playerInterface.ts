@@ -1,11 +1,11 @@
-import HerdInterface from "./HerdInterface";
+import HerdInterface from './herdInterface'
 
 interface PlayerInterface {
-  name: string;
-  playerId: string;
-  gameId: string;
-  creator: string;
-  herd: HerdInterface;
+    name: string
+    playerId: string
+    gameId: string
+    creator: string
+    herd: HerdInterface
 }
 
-export default PlayerInterface;
+export default PlayerInterface

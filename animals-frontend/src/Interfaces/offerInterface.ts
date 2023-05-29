@@ -1,13 +1,13 @@
-import { AnimalInterface } from "../components/TableExchange/exchangeTable";
+import { AnimalInterface } from '../components/TableExchange/exchangeTable'
 
 export interface OfferReceivedInterface {
-  socketId: string;
-  toPlayerId: string;
-  gameId: string;
-  offerFor: AnimalInterface;
-  offerWhat: AnimalInterface;
+    socketId: string
+    toPlayerId: string
+    gameId: string
+    offerFor: AnimalInterface
+    offerWhat: AnimalInterface
 }
 
-type OfferReceivedType = OfferReceivedInterface | undefined;
+type OfferReceivedType = OfferReceivedInterface | undefined
 
-export default OfferReceivedType;
+export default OfferReceivedType

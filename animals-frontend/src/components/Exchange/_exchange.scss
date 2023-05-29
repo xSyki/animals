@@ -1,120 +1,120 @@
 .exchange {
-  flex-grow: 1;
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  &__offers {
-    height: 30vh;
     flex-grow: 1;
-    width: max-content;
+    width: 100%;
+    position: relative;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
     align-items: center;
 
-    @include scrollbar-mixin;
-  }
+    &__offers {
+        height: 30vh;
+        flex-grow: 1;
+        width: max-content;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        align-items: center;
 
-  &__wait {
-    height: 100%;
-    align-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--text);
-    font-size: 3rem;
-    flex-direction: column;
-    gap: 20px;
-  }
+        @include scrollbar-mixin;
+    }
 
-  &__end-btn {
-    @include button;
-    height: 4rem;
-  }
+    &__wait {
+        height: 100%;
+        align-self: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--text);
+        font-size: 3rem;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    &__end-btn {
+        @include button;
+        height: 4rem;
+    }
 }
 
 .dot-pulse {
-  position: relative;
-  left: -9999px;
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
-  background-color: var(--text);
-  color: var(--text);
-  box-shadow: 9999px 0 0 -5px var(--text);
-  animation: dotPulse 1.5s infinite linear;
-  animation-delay: 0.25s;
+    position: relative;
+    left: -9999px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: var(--text);
+    color: var(--text);
+    box-shadow: 9999px 0 0 -5px var(--text);
+    animation: dotPulse 1.5s infinite linear;
+    animation-delay: 0.25s;
 }
 
 .dot-pulse::before,
 .dot-pulse::after {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
-  background-color: var(--text);
-  color: var(--text);
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: var(--text);
+    color: var(--text);
 }
 
 .dot-pulse::before {
-  box-shadow: 9984px 0 0 -5px var(--text);
-  animation: dotPulseBefore 1.5s infinite linear;
-  animation-delay: 0s;
+    box-shadow: 9984px 0 0 -5px var(--text);
+    animation: dotPulseBefore 1.5s infinite linear;
+    animation-delay: 0s;
 }
 
 .dot-pulse::after {
-  box-shadow: 10014px 0 0 -5px var(--text);
-  animation: dotPulseAfter 1.5s infinite linear;
-  animation-delay: 0.5s;
+    box-shadow: 10014px 0 0 -5px var(--text);
+    animation: dotPulseAfter 1.5s infinite linear;
+    animation-delay: 0.5s;
 }
 
 @keyframes dotPulseBefore {
-  0% {
-    box-shadow: 9984px 0 0 -5px var(--text);
-  }
+    0% {
+        box-shadow: 9984px 0 0 -5px var(--text);
+    }
 
-  30% {
-    box-shadow: 9984px 0 0 2px var(--text);
-  }
+    30% {
+        box-shadow: 9984px 0 0 2px var(--text);
+    }
 
-  60%,
-  100% {
-    box-shadow: 9984px 0 0 -5px var(--text);
-  }
+    60%,
+    100% {
+        box-shadow: 9984px 0 0 -5px var(--text);
+    }
 }
 
 @keyframes dotPulse {
-  0% {
-    box-shadow: 9999px 0 0 -5px var(--text);
-  }
+    0% {
+        box-shadow: 9999px 0 0 -5px var(--text);
+    }
 
-  30% {
-    box-shadow: 9999px 0 0 2px var(--text);
-  }
+    30% {
+        box-shadow: 9999px 0 0 2px var(--text);
+    }
 
-  60%,
-  100% {
-    box-shadow: 9999px 0 0 -5px var(--text);
-  }
+    60%,
+    100% {
+        box-shadow: 9999px 0 0 -5px var(--text);
+    }
 }
 
 @keyframes dotPulseAfter {
-  0% {
-    box-shadow: 10014px 0 0 -5px var(--text);
-  }
+    0% {
+        box-shadow: 10014px 0 0 -5px var(--text);
+    }
 
-  30% {
-    box-shadow: 10014px 0 0 2px var(--text);
-  }
+    30% {
+        box-shadow: 10014px 0 0 2px var(--text);
+    }
 
-  60%,
-  100% {
-    box-shadow: 10014px 0 0 -5px var(--text);
-  }
+    60%,
+    100% {
+        box-shadow: 10014px 0 0 -5px var(--text);
+    }
 }

@@ -1,11 +1,11 @@
 export enum DiceEnum {
-  first = "first",
-  second = "second",
+    first = 'first',
+    second = 'second',
 }
 
 interface DiceRollInterface {
-  firstDice: number;
-  secondDice: number;
+    firstDice: number
+    secondDice: number
 }
 
-export default DiceRollInterface;
+export default DiceRollInterface
